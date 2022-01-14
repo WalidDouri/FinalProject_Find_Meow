@@ -7,6 +7,9 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
+const db = require('./db');
+const dbHelpers = require('./helpers/dbHelpers')(db)
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -20,5 +23,6 @@ app.use('/users', usersRouter);
 
 // ### CREATE ROUTES HERE 
 
+app.use('/api/users', usersRouter(dbHelpers));
 
 module.exports = app;
