@@ -7,7 +7,7 @@ CREATE TABLE cat_form (
   
     description VARCHAR(500) NOT NULL,
     image TEXT,
-    cat_name VARCHAR(255) NOT NULL,
+    cat_name VARCHAR(255),
     gender VARCHAR(255) NOT NULL,
     last_seen_date DATE NOT NULL,
     last_seen_address VARCHAR(255) NOT NULL,
