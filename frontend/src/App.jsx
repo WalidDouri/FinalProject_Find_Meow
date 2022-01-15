@@ -1,23 +1,31 @@
 import './App.css';
-import useApplicationData from './hooks/useApplicationData';
+// import useApplicationData from './hooks/useApplicationData';
 // import users from './components/users';
+import Navbar from './components/Navbar';
+import About from './Pages/About';
+// import Report_Pet from './components/Report_Pet';
+// import Search_Pet from './components/Search_Pet';
+// // import Login from './components/Login';
+// import Form from './components/Form';
 
-const App = () => {
-  const { state, dispatch} = useApplicationData();
-    const userList = state.users.map((user) => 
-    (<li 
-      key={user.id} > 
-      {user.first_name} 
-      {user.last_name} 
-      {user.email} 
-    </li>));
 
-    return (<div className="App" >
-      <h1> Users </h1>
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-      <ul> {userList} </ul>
-    </div >
+export default function App() {
+
+    return (
+      
+      <BrowserRouter>
+        <Routes>
+          {/* Nested Routes */}
+          <Route path="/" element={<Navbar />}>
+            {/* <Route path="home" element={<Home />}/> */}
+            <Route path="about" element={<About />}/>
+            {/* <Route path="report Pet" element={<Report_Pet />}/>
+            <Route path="search Pet" element={<Search_Pet />}/> */}
+            {/* <Route path="Login" exact /> */}
+          </Route>
+        </Routes>
+      </BrowserRouter>     
     );
-  };
-
-export default App;
+}

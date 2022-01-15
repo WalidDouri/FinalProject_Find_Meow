@@ -1,10 +1,9 @@
 import React from 'react'
 
-export default function users() {
+export default function About() {
   return (
     <div>
-      <h1>HELLO WORLD</h1>
+      test
     </div>
   )
 }
-
