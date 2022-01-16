@@ -15,6 +15,7 @@ export default function SignUp() {
     password: "",
     password_confirmation: ""
   });
+  
 
   const { first_name, last_name, username, phone_number, email,password, password_confirmation } = formData;
 
@@ -25,7 +26,9 @@ export default function SignUp() {
         e.preventDefault();
         if(password === password_confirmation) {
           console.log("handle submit clicked", formData)
-          save(formData);   
+          const newUser = {...formData };
+          delete newUser.password_confirmation;
+          save(newUser);   
         } else {
             console.log('Passwords do not match');
         }
