@@ -1,7 +1,7 @@
 import React from 'react'
 import './SignUp.scss'
 
-export default function Register() {
+export default function SignUp() {
   return (
 <section className="vh-100 bg-image" >
   {/* <div className="mask d-flex align-items-center h-100 gradient-custom-3"> */}
