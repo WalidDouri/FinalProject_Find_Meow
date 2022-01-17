@@ -2,15 +2,23 @@ import React from 'react'
 // import cat1 from './assets/images/cat1'
 // import Carousel from './Carousel'
 // import Navbar from './components/Navbar'
+import { Layout, Button } from 'antd';
+
+// const { Header, Footer, Sider, Content } = Layout;
+
 
 export default function Home() {
   return (
-    <div>
-        <h1>UMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM</h1>
-        {/* <img src={cat1} width="300" alt="Cat1"/> */}
-        {/* <img alt='cat'src={cat1} /> */}
-      
-    </div>
+    
+    <>
+    <h1>HOME PAGE </h1>
+    <Button type="primary">Primary Button</Button>
+    <Button>Default Button</Button>
+    <Button type="dashed">Dashed Button</Button>
+    <br />
+    <Button type="text">Text Button</Button>
+    <Button type="link">Link Button</Button>
+    </>
   )
 }
 

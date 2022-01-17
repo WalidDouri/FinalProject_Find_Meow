@@ -1,133 +1,301 @@
-import React, { useState } from 'react';
-import Axios from 'axios';
+import React from 'react';
+import axios from 'axios';
+import { Upload, message, InputNumber } from 'antd';
+// import { DatePicker, Space } from 'antd';
+import { InboxOutlined } from '@ant-design/icons';
+import {
+  Form,
+  Input,
+  // InputNumber,
+  // Cascader,
+  Select,
+  // Row,
+  // Col,
+  Checkbox,
+  Button,
+  // AutoComplete,
+} from 'antd';
 
-import './SubmitForm.scss'
+const { Dragger } = Upload;
 
-// import { Button } from './Button';
-import Row from 'react-bootstrap/Row'
-// import InputGroup from 'react-bootstrap/InputGroup'
-// import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
-// import Feedback from 'react-bootstrap/Feedback'
+  const props = {
+    name: 'file',
+    multiple: true,
+    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    onChange(info) {
+      const { status } = info.file;
+      if (status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+      if (status === 'done') {
+        message.success(`${info.file.name} file uploaded successfully.`);
+      } else if (status === 'error') {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+    onDrop(e) {
+      console.log('Dropped files', e.dataTransfer.files);
+    },
+  };
 
-
-
-export default function SubmitForm(props) {
-  const url = "http://localhost:3000/report-pet"
-  // const [validated, setValidated] = useState(false);
-  const [data, setData] = useState({
-    description: '',  
-    image: '',
-    cat_name: '',
-    gender: '',
-    last_seen_date: '',
-    last_seen_address: '',
-    last_seen_city: '',
-    last_seen_postal_code: '',
-    state: '',
-    // date_posted:Date.now()
-  })
-
-  function handle(event) {
-    const newdata = {...data}
-    newdata[event.target.id] = event.target.value
-    setData(newdata)
-    console.log(newdata)
+  function onChange(value) {
+    console.log('changed', value);
   }
 
-  function submit(event) {
-    event.preventDefault();
-    Axios.post(url, {
-      description: data.description,  
-      image: data.image,
-      cat_name: data.cat_name,
-      gender: data.gender,
-      last_seen_date: data.last_seen_date,
-      last_seen_address: data.last_seen_address,
-      last_seen_city: data.last_seen_city,
-      last_seen_postal_code: data.last_seen_postal_code,
-      status: data.status
-    })
+const { Option } = Select;
+
+const formItemLayout = {
+  labelCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 8,
+    },
+  },
+  wrapperCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 16,
+    },
+  },
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
+
+
+
+const SubmitForm = () => {
+  const [form] = Form.useForm();
+
+  const onFinish = (values) => {
+    const url = "http://localhost:3001/report-pet"
+    const  payload = {
+      ...values,
+      last_seen_date: '2021,12,25',
+      last_seen_address: '1500 Gerrard St',
+      status: 'lost',
+
+      }
+    
+    console.log('Received values of form: ', payload);
+    axios.post(url, payload) 
     .then(res => {
         console.log(res.data)
     })
-  }
+    .catch(err => {console.log(err)})
 
-  // const handleSubmit = (event) => {
-  //   const form = event.currentTarget;
-  //   if (form.checkValidity() === false) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  //   }
+  };
 
-  //   setValidated(true);
-  // };
+ 
 
-  return (
 
+<<<<<<< HEAD
     // <Form noValidate validated={validated} onSubmit={(event) => submit(event)}>
+=======
+  return (
+    
+    <Form
+      {...formItemLayout}
+      form={form}
+      name="register"
+      onFinish={onFinish}
+      initialValues={{
+        residence: ['zhejiang', 'hangzhou', 'xihu'],
+        prefix: '86',
+      }}
+      scrollToFirstError
+    >
+>>>>>>> 25fcabb4f226c29ca3d8046d5faa90203b826e91
 
-      <section className="submit-form">
+      <Form.Item >
+        <Dragger {...props} >
+            <p className="ant-upload-drag-icon">
+              <InboxOutlined />
+            </p>
+            <p className="ant-upload-text">Click or drag file to this area to upload</p>
+            <p className="ant-upload-hint">
+              Support for a single or bulk upload. Strictly prohibit from uploading company data or other
+              band files
+            </p>
+        </Dragger>
+      </Form.Item>
 
-      <Row className="mb-3">
+      <Form.Item
+        name="image"
+        label="IMAGE^^ TO FIX THIS LATER"
         
-        <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label> UPLOAD A PICTURE HERE </Form.Label>
-          <Form.Control type="file" />
-        </Form.Group>
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <Input style={{ width: '50%' }} placeholder="IMAGE UP THERE LATER" />
+      </Form.Item>
+
+      <Form.Item
+        name="cat_name"
+        label="Cat's Name"
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <Input style={{ width: '50%' }}/>
+      </Form.Item>
+
+      <Form.Item
+        name="gender"
+        label="Gender"
+        rules={[
+          {
+            required: true,
+            message: 'Please select gender!',
+          },
+        ]}
+      >
+        <Select placeholder="select your gender" style={{ width: '50%' }}>
+          <Option value="male">Male</Option>
+          <Option value="female">Female</Option>
+          <Option value="other">Other</Option>
+        </Select >
+      </Form.Item>
+
+      <Form.Item
+        name="age"
+        label="Age"
+      >
+      <InputNumber min={0} max={25} defaultValue={0} onChange={onChange} />
+      </Form.Item>
+  
+      <Form.Item label="Address">
+        <Input.Group compact>
+          <Form.Item
+            name={['address', 'province']}
+            noStyle
+            rules={[{ 
+              required: true, 
+              message: 'Province is required' 
+            }]}
+          >
+            <Select placeholder="Select province">
+              <Option value="Alberta">Alberta</Option>
+              <Option value="British Columbia">British Columbia</Option>
+              <Option value="Manitoba">Manitoba</Option>
+              <Option value="New Brunswick">New Brunswick</Option>
+              <Option value="Newfoundland and Labrador">Newfoundland and Labrador</Option>
+              <Option value="Northwest Territories">Northwest Territories</Option>
+              <Option value="Nova Scotia">Nova Scotia</Option>
+              <Option value="Nunavut">Nunavut</Option>
+              <Option value="Ontario">Ontario</Option>
+              <Option value="Prince Edward Island">Prince Edward Island</Option>
+              <Option value="Quebec">Quebec</Option>
+              <Option value="Saskatchewan">Saskatchewan</Option>
+              <Option value="Yukon">Yukon</Option>
+            </Select>
+          </Form.Item>
+          <Form.Item
+            name={['address', 'street']}
+            noStyle
+            rules={[{ 
+              required: true, 
+              message: 'Street is required' }]}
+          >
+            <Input style={{ width: '40%' }} placeholder="Input Street" />
+          </Form.Item>
+        </Input.Group>
+      </Form.Item>
+
+      {/* <Row gutter={2}>  */}
+      <Form.Item
+        name="last_seen_city"
+        label="City"
         
-        <Form.Group>
-          <Form.Label> Description </Form.Label>
-        <Form.Control as='textarea' row={3} md="4" id="description" onChange={(e) => handle(e)} value={data.description} type="text" placeholder="Description"/>
-          <Form.Text id="description" className="text-under" muted>
-            Please include as much information as well such as any habits, scars or unique attributes the cat has that would be noticeable.
-          </Form.Text>
-        </Form.Group>
+        rules={[
+          {
+            required: true,
+            message: 'Please enter a city'
+          },
+        ]}
+      >
+        <Input style={{ width: '10%' }} placeholder="City" />
+      </Form.Item>
+
+      <Form.Item
+        name="last_seen_postal_code"
+        label="Postal Code"
         
-        <Form.Group>
-          <Form.Label> Cat's Name</Form.Label>
-        <Form.Control id="cat_name" onChange={(e) => handle(e)} value={data.cat_name} type="text" placeholder="Cat's Name"/>
-        </Form.Group>
-        
-        <Form.Group>
-          <Form.Label> Gender </Form.Label>
-        <Form.Control  md="4" id="gender" onChange={(e) => handle(e)} value={data.gender} type="text" placeholder="Gender"/>
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label> Last Seen Date </Form.Label>
-        <Form.Control  md="4" id="last_seen_date" onChange={(e) => handle(e)} value={data.last_seen_date} type="date" placeholder="Last Seen Date"/>
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label> Last Seen Address </Form.Label>
-        <Form.Control  md="4" id="last_seen_address" onChange={(e) => handle(e)} value={data.last_seen_address} type="address" placeholder="Address"/>
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label> City </Form.Label>
-        <Form.Control  md="4" id="last_seen_city" onChange={(e) => handle(e)} value={data.last_seen_city} type="text" placeholder="City"/>
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label> Postal Code </Form.Label>
-        <Form.Control  md="4" id="last_seen_postal_code" onChange={(e) => handle(e)} value={data.last_seen_postal_code} type="text" placeholder="Postal Code"/>
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label> Pet Status </Form.Label>
-        <Form.Control  md="4" id="status" onChange={(e) => handle(e)} value={data.status} type="text" placeholder="Pet Status"/>
-        </Form.Group>
+        rules={[
+          {
+            required: true,
+            message: 'Please input a postal code'
+          },
+        ]}
+      >
+        <Input style={{ width: '10%' }} placeholder="Postal Code" />
+      </Form.Item>
+      {/* </Row> */}
 
     
+<<<<<<< HEAD
       </Row>
       
       <Button onClick={submit} type="submit">Submit form</Button>
       </section>
     // </Form>
     
-  );
-}
+=======
+      <Form.Item
+        name="description"
+        label="Description"
+        // rules={[
+        //   {
+        //     required: true,
+        //     message: 'Please input Description',
+        //   },
+        // ]}
+      >
+        <Input.TextArea showCount maxLength={250}  style={{ width: '50%' }}/>
+      </Form.Item>
 
-// render(<Form />);
+
+      <Form.Item
+        name="agreement"
+        valuePropName="checked"
+        rules={[
+          {
+            validator: (_, value) =>
+              value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+          },
+        ]}
+        {...tailFormItemLayout}
+      >
+        <Checkbox>
+          I have read the <a href="/">agreement</a>
+        </Checkbox>
+      </Form.Item>
+      <Form.Item {...tailFormItemLayout}>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
+>>>>>>> 25fcabb4f226c29ca3d8046d5faa90203b826e91
+  );
+};
+
+export default SubmitForm;
