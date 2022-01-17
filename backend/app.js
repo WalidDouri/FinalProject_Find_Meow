@@ -32,7 +32,7 @@ app.use('/search', searchRouter);
 // ### CREATE ROUTES HERE 
 
 app.use('/api/users', usersRouter(dbHelpers));
-app.use('/api/signup', signupRouter);
+app.use('/api/signup', signupRouter(db));
 app.use('/api/search', searchRouter);
 
 
