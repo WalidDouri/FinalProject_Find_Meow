@@ -3,7 +3,7 @@ const router = express.Router();
 
 /* Signup */
 
-router.put('/', function(req, res) {
+router.post('/', function(req, res) {
   // getting data from the client
   const newUser = req.body;
   console.log("This is from frontend", newUser);
