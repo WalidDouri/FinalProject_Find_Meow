@@ -99,12 +99,6 @@ const SubmitForm = () => {
 
   };
 
- 
-
-
-<<<<<<< HEAD
-    // <Form noValidate validated={validated} onSubmit={(event) => submit(event)}>
-=======
   return (
     
     <Form
@@ -118,7 +112,6 @@ const SubmitForm = () => {
       }}
       scrollToFirstError
     >
->>>>>>> 25fcabb4f226c29ca3d8046d5faa90203b826e91
 
       <Form.Item >
         <Dragger {...props} >
@@ -251,14 +244,6 @@ const SubmitForm = () => {
       {/* </Row> */}
 
     
-<<<<<<< HEAD
-      </Row>
-      
-      <Button onClick={submit} type="submit">Submit form</Button>
-      </section>
-    // </Form>
-    
-=======
       <Form.Item
         name="description"
         label="Description"
@@ -294,7 +279,6 @@ const SubmitForm = () => {
         </Button>
       </Form.Item>
     </Form>
->>>>>>> 25fcabb4f226c29ca3d8046d5faa90203b826e91
   );
 };
 
