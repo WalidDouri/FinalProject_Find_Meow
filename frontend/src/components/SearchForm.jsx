@@ -22,33 +22,38 @@ export default function SearchForm() {
   
   return (
     <div>
-      <Container className='d-flex'>
-        <Form onSubmit={handleSubmit}>
-        <Form.Group>
-        
-          <Form.Control
-              
-          placeholder="Postal Code"
-          aria-label="Location"
-          aria-describedby="basic-addon2"
-          ref={postalCodeRef}/>
+      <Container className="search-page">
+        <Form onSubmit={handleSubmit} className="form">
+          <Form.Group className="form-left">
+            <Form.Control
+              className="form-input"
+              placeholder="Postal Code"
+              aria-label="Location"
+              aria-describedby="basic-addon2"
+              ref={postalCodeRef}
+            />
           </Form.Group>
-          &nbsp;&nbsp;
-        <Form.Group>
-        <Form.Control
-          
-          placeholder="Lost, Found"
-          aria-label="Status"
-          aria-describedby="basic-addon2"
-          ref={statusRef}/>
-        </Form.Group>
-          &nbsp;&nbsp;
-        <Button variant="outline-secondary" id="button-addon2" type='submit'>
-          Search
-        </Button>
-      </Form> 
-    </Container>
-  </div>
-  )
+          <Form.Group className="form-center">
+            <Form.Control
+              className="form-input"
+              placeholder="Lost, Found"
+              aria-label="Status"
+              aria-describedby="basic-addon2"
+              ref={statusRef}
+            />
+          </Form.Group>
+          <Form.Group className="form-right">
+            <Button
+              variant="outline-secondary"
+              id="button-addon2"
+              type="submit"
+            >
+              Search
+            </Button>
+          </Form.Group>
+        </Form>
+      </Container>
+    </div>
+  );
 }
 
