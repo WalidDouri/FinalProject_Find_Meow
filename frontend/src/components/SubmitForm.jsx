@@ -66,7 +66,7 @@ export default function SubmitForm(props) {
 
   return (
 
-    <Form noValidate validated={validated} onSubmit={(event) => submit(event)}>
+    // <Form noValidate validated={validated} onSubmit={(event) => submit(event)}>
 
       <section className="submit-form">
 
@@ -125,7 +125,7 @@ export default function SubmitForm(props) {
       
       <Button onClick={submit} type="submit">Submit form</Button>
       </section>
-    </Form>
+    // </Form>
     
   );
 }
