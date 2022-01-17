@@ -2,10 +2,10 @@ import React, { useRef } from 'react'
 import './SearchForm.scss';
 
 
-import InputGroup from 'react-bootstrap/InputGroup'
+import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import FormControl from 'react-bootstrap/FormControl'
+
 
 
 export default function SearchForm() {
@@ -22,26 +22,32 @@ export default function SearchForm() {
   
   return (
     <div>
-    <Form className="search" onSubmit={handleSubmit} >
-    <InputGroup className="hello">
-    <FormControl
-      placeholder="Postal Code"
-      aria-label="Location"
-      aria-describedby="basic-addon2"
-      ref={postalCodeRef}/>
-    <div className='hi'> 
-    <FormControl
-      placeholder="Lost, Found"
-      aria-label="Status"
-      aria-describedby="basic-addon2"
-      ref={statusRef}/>
-    <Button variant="outline-secondary" id="button-addon2" type='submit'>
-      Search
-    </Button>
-    </div>
-  </InputGroup>
-  
-  </Form>
+      <Container className='d-flex'>
+        <Form onSubmit={handleSubmit}>
+        <Form.Group>
+        
+          <Form.Control
+              
+          placeholder="Postal Code"
+          aria-label="Location"
+          aria-describedby="basic-addon2"
+          ref={postalCodeRef}/>
+          </Form.Group>
+          &nbsp;&nbsp;
+        <Form.Group>
+        <Form.Control
+          
+          placeholder="Lost, Found"
+          aria-label="Status"
+          aria-describedby="basic-addon2"
+          ref={statusRef}/>
+        </Form.Group>
+          &nbsp;&nbsp;
+        <Button variant="outline-secondary" id="button-addon2" type='submit'>
+          Search
+        </Button>
+      </Form> 
+    </Container>
   </div>
   )
 }
