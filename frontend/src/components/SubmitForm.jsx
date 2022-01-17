@@ -1,120 +1,131 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
+import Axios from 'axios';
 
 import './SubmitForm.scss'
 
 // import { Button } from './Button';
 import Row from 'react-bootstrap/Row'
-import InputGroup from 'react-bootstrap/InputGroup'
-import Col from 'react-bootstrap/Col'
+// import InputGroup from 'react-bootstrap/InputGroup'
+// import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 // import Feedback from 'react-bootstrap/Feedback'
 
 
 
-export default function Test() {
-  
+export default function SubmitForm(props) {
+  const url = "http://localhost:3000/report-pet/submit-form/create"
   const [validated, setValidated] = useState(false);
+  const [data, setData] = useState({
+    description: '',  
+    image: '',
+    cat_name: '',
+    gender: '',
+    last_seen_date: '',
+    last_seen_address: '',
+    last_seen_city: '',
+    last_seen_postal_code: '',
+    state: '',
+    // date_posted:Date.now()
+  })
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+  function handle(event) {
+    const newdata = {...data}
+    newdata[event.target.id] = event.target.value
+    setData(newdata)
+    console.log(newdata)
+  }
 
-    setValidated(true);
-  };
+  function submit(event) {
+    event.preventDefault();
+    Axios.post(url, {
+      description: data.description,  
+      image: data.image,
+      cat_name: data.cat_name,
+      gender: data.gender,
+      last_seen_date: data.last_seen_date,
+      last_seen_address: data.last_seen_address,
+      last_seen_city: data.last_seen_city,
+      last_seen_postal_code: data.last_seen_postal_code,
+      status: data.status
+    })
+    .then(res => {
+        console.log(res.data)
+    })
+  }
+
+  // const handleSubmit = (event) => {
+  //   const form = event.currentTarget;
+  //   if (form.checkValidity() === false) {
+  //     event.preventDefault();
+  //     event.stopPropagation();
+  //   }
+
+  //   setValidated(true);
+  // };
 
   return (
 
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form noValidate validated={validated} onSubmit={(event) => submit(event)}>
 
       <section className="submit-form">
 
       <Row className="mb-3">
-      
+        
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label> UPLOAD A PICTURE HERE </Form.Label>
           <Form.Control type="file" />
         </Form.Group>
         
-        <Form.Group as={Col} md="4" controlId="validationCustom01">
-          <Form.Label>First name</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            placeholder="CATS RULE"
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+        <Form.Group>
+          <Form.Label> Description </Form.Label>
+        <Form.Control as='textarea' row={3} md="4" id="description" onChange={(e) => handle(e)} value={data.description} type="text" placeholder="Description"/>
+          <Form.Text id="description" className="text-under" muted>
+            Please include as much information as well such as any habits, scars or unique attributes the cat has that would be noticeable.
+          </Form.Text>
         </Form.Group>
         
-        <Form.Group as={Col} md="4" controlId="validationCustom02">
-          <Form.Label>Last name</Form.Label>
-          <Form.Control
-            required
-            type="text"
-            placeholder="CATS RULE"
-          />
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+        <Form.Group>
+          <Form.Label> Cat's Name</Form.Label>
+        <Form.Control id="cat_name" onChange={(e) => handle(e)} value={data.cat_name} type="text" placeholder="Cat's Name"/>
         </Form.Group>
         
-        <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-          <Form.Label>Username</Form.Label>
-          <InputGroup hasValidation>
-            <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-            <Form.Control
-              type="text"
-              placeholder="Username"
-              aria-describedby="inputGroupPrepend"
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please select a date.
-            </Form.Control.Feedback>
-          </InputGroup>
+        <Form.Group>
+          <Form.Label> Gender </Form.Label>
+        <Form.Control  md="4" id="gender" onChange={(e) => handle(e)} value={data.gender} type="text" placeholder="Gender"/>
         </Form.Group>
-        
-      </Row>
-      
-      <Row className="mb-3">
-       
-        <Form.Group as={Col} md="6" controlId="validationCustom03">
-          <Form.Label>City</Form.Label>
-          <Form.Control type="text" placeholder="City" required />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid city.
-          </Form.Control.Feedback>
+
+        <Form.Group>
+          <Form.Label> Last Seen Date </Form.Label>
+        <Form.Control  md="4" id="last_seen_date" onChange={(e) => handle(e)} value={data.last_seen_date} type="date" placeholder="Last Seen Date"/>
         </Form.Group>
-        
-        <Form.Group as={Col} md="3" controlId="validationCustom04">
-          <Form.Label>State</Form.Label>
-          <Form.Control type="text" placeholder="State" required />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid state.
-          </Form.Control.Feedback>
+
+        <Form.Group>
+          <Form.Label> Last Seen Address </Form.Label>
+        <Form.Control  md="4" id="last_seen_address" onChange={(e) => handle(e)} value={data.last_seen_address} type="address" placeholder="Address"/>
         </Form.Group>
-        
-        <Form.Group as={Col} md="3" controlId="validationCustom05">
-          <Form.Label>Zip</Form.Label>
-          <Form.Control type="text" placeholder="Zip" required />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid zip.
-          </Form.Control.Feedback>
+
+        <Form.Group>
+          <Form.Label> City </Form.Label>
+        <Form.Control  md="4" id="last_seen_city" onChange={(e) => handle(e)} value={data.last_seen_city} type="text" placeholder="City"/>
         </Form.Group>
+
+        <Form.Group>
+          <Form.Label> Postal Code </Form.Label>
+        <Form.Control  md="4" id="last_seen_postal_code" onChange={(e) => handle(e)} value={data.last_seen_postal_code} type="text" placeholder="Postal Code"/>
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label> Pet Status </Form.Label>
+        <Form.Control  md="4" id="status" onChange={(e) => handle(e)} value={data.status} type="text" placeholder="Pet Status"/>
+        </Form.Group>
+
+    
+
         
       </Row>
       
-      <Form.Group className="mb-3">
-        <Form.Check
-          required
-          label="Agree to terms and conditions"
-          feedback="You must agree before submitting."
-          feedbackType="invalid"
-        />
-      </Form.Group>
-      
-      <Button type="submit">Submit form</Button>
+      <Button onClick={submit} type="submit">Submit form</Button>
       </section>
     </Form>
     
