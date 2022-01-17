@@ -4,6 +4,7 @@ import './App.css';
 // import users from './components/users';
 import Navbar from './components/Navbar';
 // import Form from './components/Form';
+import SubmitForm from './components/SubmitForm';
 
 
 import About from './Pages/About';
@@ -24,7 +25,11 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />}/>
               <Route path="/about" element={<About />}/>
-              <Route path="/report-pet" element={<ReportPet />}/> 
+             {/* <Routes> */}
+              <Route path="/report-pet" element={<ReportPet />}> 
+                <Route path="/report-pet/submit-form" element={<SubmitForm />}/>
+              </Route>
+              {/* </Routes> */}
               <Route path="/search-pet" element={<SearchPet />}/>
               <Route path="/sign-up" element={<SignUp/>} />
               {/* <Route path="*" element={<NotFound />} /> */}
