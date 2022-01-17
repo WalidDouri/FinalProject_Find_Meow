@@ -41,7 +41,7 @@ export default function SignUp() {
       "SIGNUP": "http://localhost:3001/api/signup"
     }
 
-    axios.put(endpoints.SIGNUP, newUser)
+    axios.post(endpoints.SIGNUP, newUser)
       .then(response => {
         console.log("Our Response:", response.data);
         console.log("I'm the callback from the put call");
