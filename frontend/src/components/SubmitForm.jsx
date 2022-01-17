@@ -18,29 +18,29 @@ import {
 
 const { Dragger } = Upload;
 
-  const props = {
-    name: 'file',
-    multiple: true,
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    onChange(info) {
-      const { status } = info.file;
-      if (status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
-      if (status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully.`);
-      } else if (status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-    onDrop(e) {
-      console.log('Dropped files', e.dataTransfer.files);
-    },
-  };
+const props = {
+  name: 'file',
+  multiple: true,
+  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+  onChange(info) {
+    const { status } = info.file;
+    if (status !== 'uploading') {
+      console.log(info.file, info.fileList);
+    }
+    if (status === 'done') {
+      message.success(`${info.file.name} file uploaded successfully.`);
+    } else if (status === 'error') {
+      message.error(`${info.file.name} file upload failed.`);
+    }
+  },
+  onDrop(e) {
+    console.log('Dropped files', e.dataTransfer.files);
+  },
+};
 
-  function onChange(value) {
-    console.log('changed', value);
-  }
+function onChange(value) {
+  console.log('changed', value);
+}
 
 const { Option } = Select;
 
@@ -82,25 +82,25 @@ const SubmitForm = () => {
 
   const onFinish = (values) => {
     const url = "http://localhost:3001/report-pet"
-    const  payload = {
+    const payload = {
       ...values,
       last_seen_date: '2021,12,25',
       last_seen_address: '1500 Gerrard St',
       status: 'lost',
 
-      }
-    
+    }
+
     console.log('Received values of form: ', payload);
-    axios.post(url, payload) 
-    .then(res => {
+    axios.post(url, payload)
+      .then(res => {
         console.log(res.data)
-    })
-    .catch(err => {console.log(err)})
+      })
+      .catch(err => { console.log(err) })
 
   };
 
   return (
-    
+
     <Form
       {...formItemLayout}
       form={form}
@@ -115,21 +115,21 @@ const SubmitForm = () => {
 
       <Form.Item >
         <Dragger {...props} >
-            <p className="ant-upload-drag-icon">
-              <InboxOutlined />
-            </p>
-            <p className="ant-upload-text">Click or drag file to this area to upload</p>
-            <p className="ant-upload-hint">
-              Support for a single or bulk upload. Strictly prohibit from uploading company data or other
-              band files
-            </p>
+          <p className="ant-upload-drag-icon">
+            <InboxOutlined />
+          </p>
+          <p className="ant-upload-text">Click or drag file to this area to upload</p>
+          <p className="ant-upload-hint">
+            Support for a single or bulk upload. Strictly prohibit from uploading company data or other
+            band files
+          </p>
         </Dragger>
       </Form.Item>
 
       <Form.Item
         name="image"
         label="IMAGE^^ TO FIX THIS LATER"
-        
+
         rules={[
           {
             required: true,
@@ -148,7 +148,7 @@ const SubmitForm = () => {
           },
         ]}
       >
-        <Input style={{ width: '50%' }}/>
+        <Input style={{ width: '50%' }} />
       </Form.Item>
 
       <Form.Item
@@ -172,17 +172,17 @@ const SubmitForm = () => {
         name="age"
         label="Age"
       >
-      <InputNumber min={0} max={25} defaultValue={0} onChange={onChange} />
+        <InputNumber min={0} max={25} defaultValue={0} onChange={onChange} />
       </Form.Item>
-  
+
       <Form.Item label="Address">
         <Input.Group compact>
           <Form.Item
             name={['address', 'province']}
             noStyle
-            rules={[{ 
-              required: true, 
-              message: 'Province is required' 
+            rules={[{
+              required: true,
+              message: 'Province is required'
             }]}
           >
             <Select placeholder="Select province">
@@ -204,9 +204,10 @@ const SubmitForm = () => {
           <Form.Item
             name={['address', 'street']}
             noStyle
-            rules={[{ 
-              required: true, 
-              message: 'Street is required' }]}
+            rules={[{
+              required: true,
+              message: 'Street is required'
+            }]}
           >
             <Input style={{ width: '40%' }} placeholder="Input Street" />
           </Form.Item>
@@ -217,7 +218,7 @@ const SubmitForm = () => {
       <Form.Item
         name="last_seen_city"
         label="City"
-        
+
         rules={[
           {
             required: true,
@@ -231,7 +232,7 @@ const SubmitForm = () => {
       <Form.Item
         name="last_seen_postal_code"
         label="Postal Code"
-        
+
         rules={[
           {
             required: true,
@@ -243,18 +244,18 @@ const SubmitForm = () => {
       </Form.Item>
       {/* </Row> */}
 
-    
+
       <Form.Item
         name="description"
         label="Description"
-        // rules={[
-        //   {
-        //     required: true,
-        //     message: 'Please input Description',
-        //   },
-        // ]}
+      // rules={[
+      //   {
+      //     required: true,
+      //     message: 'Please input Description',
+      //   },
+      // ]}
       >
-        <Input.TextArea showCount maxLength={250}  style={{ width: '50%' }}/>
+        <Input.TextArea showCount maxLength={250} style={{ width: '50%' }} />
       </Form.Item>
 
 
