@@ -6,6 +6,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const signupRouter = require('./routes/signup');
+const searchRouter = require('./routes/search');
 
 const app = express();
 const db = require('./db');
@@ -25,12 +26,14 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/signup', signupRouter);
+app.use('/search', searchRouter);
 
 
 // ### CREATE ROUTES HERE 
 
 app.use('/api/users', usersRouter(dbHelpers));
 app.use('/api/signup', signupRouter);
+app.use('/api/search', searchRouter);
 
 
 
