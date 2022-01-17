@@ -14,8 +14,8 @@ import Form from 'react-bootstrap/Form'
 
 
 export default function SubmitForm(props) {
-  const url = "http://localhost:3000/report-pet/submit-form/create"
-  const [validated, setValidated] = useState(false);
+  const url = "http://localhost:3000/report-pet"
+  // const [validated, setValidated] = useState(false);
   const [data, setData] = useState({
     description: '',  
     image: '',
@@ -121,8 +121,6 @@ export default function SubmitForm(props) {
         </Form.Group>
 
     
-
-        
       </Row>
       
       <Button onClick={submit} type="submit">Submit form</Button>

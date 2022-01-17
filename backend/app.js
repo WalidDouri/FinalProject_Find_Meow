@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
+const bodyParser = require('body-parser')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
@@ -28,10 +28,12 @@ app.use('/users', usersRouter);
 app.use('/api/users', usersRouter(dbHelpers));
 
 
-app.post('/report-pet/submit-form/create', (req, res) => {
-  const [description, image, cat_name, gender, last_seen_date, last_seen_address, last_seen_city, last_seen_postal_code, status] = req.body
 
-  console.log("OVER HERE~~~~~~~~~", req.body)
+app.post('/report-pet', (req, res) => {
+  const { description, image, cat_name, gender, last_seen_date, last_seen_address, last_seen_city, last_seen_postal_code, status } = req.body
+
+
+  console.log("OVER HERE~~~~~~~~~", req.body);
   db.query(`
   INSERT INTO cat_forms ( 
     description,  
@@ -44,7 +46,7 @@ app.post('/report-pet/submit-form/create', (req, res) => {
     last_seen_postal_code,
     status)
     
-    VALUES($1,$2,$3,to_timestamp($4),$5,$6,$7,$8) RETURNING *;`,
+    VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *;`,
     [description,
       image,
       cat_name,
@@ -55,10 +57,14 @@ app.post('/report-pet/submit-form/create', (req, res) => {
       last_seen_postal_code,
       status
     ])
-    .then(() => {
-      res.json();
+    .then((data) => {
+      // res.json(submit);
+      res.status(200);
+      res.send(data);
     })
-    .catch(error => { console.error(error) })
+    .catch(error => {
+      console.error(error)
+    })
 })
 
 
