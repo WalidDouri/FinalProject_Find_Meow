@@ -35,32 +35,34 @@ app.use('/api/signup', signupRouter);
 
 
 app.post('/report-pet', (req, res) => {
-  const { description, image, cat_name, gender, last_seen_date, last_seen_address, last_seen_city, last_seen_postal_code, status } = req.body
+  const { description, image, cat_name, gender, last_seen_date, last_seen_address, last_seen_city, last_seen_postal_code, status, age } = req.body
 
 
   console.log("OVER HERE~~~~~~~~~", req.body);
   db.query(`
   INSERT INTO cat_forms ( 
-    description,  
-    image,
     cat_name,
-    gender,
-    last_seen_date,
-    last_seen_address,
-    last_seen_city,
-    last_seen_postal_code,
-    status)
-    
-    VALUES($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *;`,
-    [description,
-      image,
-      cat_name,
       gender,
+      age,
       last_seen_date,
       last_seen_address,
       last_seen_city,
       last_seen_postal_code,
-      status
+      status,
+      image,
+      description)
+    
+    VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *;`,
+    [cat_name,
+      gender,
+      age,
+      last_seen_date,
+      last_seen_address,
+      last_seen_city,
+      last_seen_postal_code,
+      status,
+      image,
+      description
     ])
     .then((data) => {
       // res.json(submit);
