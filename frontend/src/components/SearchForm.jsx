@@ -21,25 +21,28 @@ export default function SearchForm() {
   } 
   
   return (
+    <div>
     <Form className="search" onSubmit={handleSubmit} >
     <InputGroup className="hello">
     <FormControl
       placeholder="Postal Code"
       aria-label="Location"
       aria-describedby="basic-addon2"
-      ref={postalCodeRef}
-    />
+      ref={postalCodeRef}/>
+    <div className='hi'> 
     <FormControl
       placeholder="Lost, Found"
       aria-label="Status"
       aria-describedby="basic-addon2"
-      ref={statusRef}
-    />
+      ref={statusRef}/>
     <Button variant="outline-secondary" id="button-addon2" type='submit'>
       Search
     </Button>
+    </div>
   </InputGroup>
+  
   </Form>
+  </div>
   )
 }
 

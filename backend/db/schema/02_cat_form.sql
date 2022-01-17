@@ -6,6 +6,7 @@ CREATE TABLE cat_forms (
   
     cat_name VARCHAR(255),
     gender VARCHAR(255) NOT NULL,
+    age INTEGER NOT NULL,
     last_seen_date DATE NOT NULL,
     last_seen_address VARCHAR(255) NOT NULL,
     last_seen_city VARCHAR(255) NOT NULL,
