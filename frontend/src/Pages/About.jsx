@@ -1,9 +1,11 @@
 import React from 'react'
 
+import '../Pages/About.scss'
+
 export default function About() {
   
   return (
-    <div>
+    <div className='about'>
       <h2>About Us</h2>
       <p>Destroy couch as revenge warm up laptop with butt lick butt fart rainbows until owner yells pee in litter box hiss at cats. Run at 3am jump around on couch, meow constantly until given food, . Lasers are tiny mice purr purr purr until owner pets why owner not pet me hiss scratch meow then cats take over the world. Leave buried treasure in the sandbox for the toddlers. Hey! you there, with the hands scratch at the door then walk away. I love cuddles litter kitter kitty litty little kitten big roar roar feed me or then cats take over the world yet jump up to edge of bath, fall in then scramble in a mad panic to get out for thinking about you i'm joking it's food always food but i shall purr myself to sleep. Purr poop on couch side-eyes your "jerk" other hand while being petted . Miaow then turn around and show you my bum so you're just gonna scroll by without saying meowdy? so chase imaginary bugs flop over, yet pet me pet me don't pet me. </p>
         
