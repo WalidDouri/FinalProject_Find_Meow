@@ -1,5 +1,6 @@
+
 .navbar {
-  background: #59809f;
+  background-color: #2B7A78;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -46,6 +47,7 @@
 }
 
 .nav-item {
+ 
   height: 80px;
 }
 
@@ -80,6 +82,10 @@
     position: relative;
   }
 
+  .nav-item {
+    background-color: pink;
+  }
+
   .nav-menu {
     display: flex;
     flex-direction: column;
@@ -101,7 +107,7 @@
   }
 
   .nav-links {
-    text-align: center;
+    text-align: right;
     padding: 2rem;
     width: 100%;
     display: table;

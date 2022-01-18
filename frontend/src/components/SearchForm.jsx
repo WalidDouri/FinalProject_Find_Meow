@@ -77,7 +77,7 @@ export default function SearchForm () {
         
   };
 
-  return (
+return (
     <Form
       form={form}
       name="advanced_search"

@@ -18,7 +18,9 @@ export default function Navbar() {
       setButton(false);
     } else {
       setButton(true);
+      setClick(false);
     }
+
   };
 
   useEffect(() => {

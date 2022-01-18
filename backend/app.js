@@ -7,6 +7,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const signupRouter = require('./routes/signup');
 const searchRouter = require('./routes/search');
+const loginRouter = require('./routes/login');
 
 const app = express();
 const db = require('./db');
@@ -34,6 +35,7 @@ app.use('/', indexRouter);
 app.use('/api/users', usersRouter(dbHelpers));
 app.use('/api/signup', signupRouter(db));
 app.use('/api/search', searchRouter);
+app.use('/api/login', loginRouter(db));
 
 
 
