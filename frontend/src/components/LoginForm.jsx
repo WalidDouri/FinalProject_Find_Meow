@@ -93,7 +93,6 @@ const LoginForm = () => {
             message: 'Please input your password!',
           },
         ]}
-        hasFeedback
       >
         <Input.Password style={{ width: '50%' }}/>
       </Form.Item>
