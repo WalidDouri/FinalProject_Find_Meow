@@ -24,22 +24,21 @@ app.use(cors())
 app.use(cors());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/signup', signupRouter);
-app.use('/search', searchRouter);
+// app.use('/users', usersRouter);
+// app.use('/signup', signupRouter);
+// app.use('/search', searchRouter);
 
 
 // ### CREATE ROUTES HERE 
 
 app.use('/api/users', usersRouter(dbHelpers));
-app.use('/api/signup', signupRouter);
+app.use('/api/signup', signupRouter(db));
 app.use('/api/search', searchRouter);
 
 
 
 app.post('/report-pet', (req, res) => {
   const { description, image, cat_name, gender, last_seen_date, last_seen_address, last_seen_city, last_seen_postal_code, status, age } = req.body
-
 
   console.log("OVER HERE~~~~~~~~~", req.body);
   db.query(`

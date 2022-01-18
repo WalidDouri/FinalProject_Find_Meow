@@ -1,32 +1,33 @@
 const express = require('express');
 const router = express.Router();
+const db = require('../db');
+
 
 /* Search Form */
-      ///api/searchform
-router.get('/', function(req, res) {
-  // getting data from the client
-  // const newUser = req.body;
-  console.log("req------>", req);
-  console.log('====================');
-  console.log("res------>", res)
 
-  
-  // do some db stuff
-  // const signUpQuery = "INSERT INTO users(first_name, last_name, username, phone_number, email, password) VALUES($1, $2, $3, $4, $5, $6) returning id";
-  // const queryParams = [newUser.first_name,
-  //   newUser.last_name, newUser.username, newUser.phone_number, newUser.email, newUser.password];
+router.get('/', function (req, res) {
 
-  // console.log(queryParams);
-  // db.query(signUpQuery, queryParams).then(data =>{
-  //   console.log(data.rows);
-  // }).catch(err =>{
-  //   console.log(err);
-  // });
-  
+  const { last_seen_city, last_seen_postal_code, status } = req.query
+  console.log("hello:", last_seen_city);
 
-  // sending a response back to the front
-  // res.status(204).json({result: "success!"});
-  res.send({test: "Yay! From Server"});
-  
+  // use exact values
+  db.query(`
+    SELECT 
+    last_seen_city,
+    last_seen_postal_code,
+    status
+    FROM cat_forms WHERE 
+    last_seen_city LIKE $1 OR
+    last_seen_postal_code LIKE $2 OR 
+    status LIKE $3;`,
+    [`%${last_seen_city}`, `%${last_seen_postal_code}`, `%${status}`])
+    .then(results =>
+      res.status(200).send(results.rows)
+    )
+    .catch(error => {
+      console.error(error)
+      res.send(error.message)
+    })
 });
+
 module.exports = router;

@@ -1,55 +1,63 @@
-import React from 'react'
-import './SignUp.scss'
-import { useState } from "react";
-import axios from "axios";
+import React from 'react';
+import axios from 'axios';
+import 'antd/dist/antd.css';
+import {
+  Form,
+  Input,
+  Button
+} from 'antd';
 
+const formItemLayout = {
+  labelCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 8,
+    },
+  },
+  wrapperCol: {
+    xs: {
+      span: 24,
+    },
+    sm: {
+      span: 16,
+    },
+  },
+};
+const tailFormItemLayout = {
+  wrapperCol: {
+    xs: {
+      span: 24,
+      offset: 0,
+    },
+    sm: {
+      span: 16,
+      offset: 8,
+    },
+  },
+};
 
-export default function SignUp() {
+const Test = () => {
+  const [form] = Form.useForm();
 
-  const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
-    username: "",
-    phone_number: "",
-    email: "",
-    password: "",
-    password_confirmation: ""
-  });
-  
+  const onFinish = (values) => {
+    const url = "http://localhost:3001/api/signup"
+    const  newUser = {
+      ...values
+      }
+    
+    console.log('Received values of form: ', newUser);
+    axios.post(url, newUser) 
+    .then(res => {
+        console.log(res.data)
+    })
+    .catch(err => {console.log(err)})
 
-  const { first_name, last_name, username, phone_number, email,password, password_confirmation } = formData;
-
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const handleSubmitClick = (e) => {
-        e.preventDefault();
-        if(password === password_confirmation) {
-          console.log("handle submit clicked", formData)
-          const newUser = {...formData };
-          delete newUser.password_confirmation;
-          save(newUser);   
-        } else {
-            console.log('Passwords do not match');
-        }
-  }
-  
-
-  function save(newUser) {
-
-    const endpoints = {
-      "SIGNUP": "http://localhost:3001/api/signup"
-    }
-
-    axios.put(endpoints.SIGNUP, newUser)
-      .then(response => {
-        console.log("Our Response:", response.data);
-        console.log("I'm the callback from the put call");
-      });
-    }
-
+  };
 
   return (
+<<<<<<< HEAD
 <section className="vh-100 bg-image signup" >
   {/* <div className="mask d-flex align-items-center h-100 gradient-custom-3"> */}
     <div className="container h-100">
@@ -74,112 +82,134 @@ export default function SignUp() {
                     required
                   />
                 </div>
+=======
+    
+    <Form
+      {...formItemLayout}
+      form={form}
+      name="register"
+      onFinish={onFinish}
+      // initialValues={{
+      //   residence: ['zhejiang', 'hangzhou', 'xihu'],
+      //   prefix: '86',
+      // }}
+      scrollToFirstError
+    >
 
-                <div className="form-outline mb-4">
-                  <label className="form-label" htmlFor="form3Example2cg">Last Name</label>
-                  <input
-                    type="text"
-                    // id="form3Example2cg"
-                    className="form-control form-control-lg"
-                    onChange={onChange}
-                    placeholder='Last name'
-                    name='last_name'
-                    value={last_name}
-                    required
-                  />
-                </div>
+      <Form.Item
+        name="first_name"
+        label="First Name"
+        
+        rules={[
+          {
+            required: true,
+            message: 'Please input your first name'
+          },
+        ]}
+      >
+        <Input style={{ width: '50%' }} placeholder="First Name" />
+      </Form.Item>
 
-                <div className="form-outline mb-4">
-                  <label className="form-label" htmlFor="form3Example4cg">Username</label>
-                  <input
-                    type="text"
-                    // id="form3Example4cg"
-                    className="form-control form-control-lg"
-                    onChange={onChange}
-                    placeholder='Username'
-                    name='username'
-                    value={username}
-                    required
-                  />
-                </div>
+      <Form.Item
+        name="last_name"
+        label="Last Name"
+        rules={[
+          {
+            required: true,
+            message: 'Please input your Last name'
+          },
+        ]}
+      >
+        <Input style={{ width: '50%' }} placeholder="Last Name"/>
+      </Form.Item>
+>>>>>>> master
 
-                <div className="form-outline mb-4">
-                  <label className="form-label" htmlFor="form3Example3cg">Phone number</label>
-                  <input
-                    type="text"
-                    // id="form3Example3cg"
-                    className="form-control form-control-lg"
-                    onChange={onChange}
-                    placeholder='000000000'
-                    name='phone_number'
-                    value={phone_number}
-                    required
-                  />
-                </div>
+  
+      {/* <Row gutter={2}>  */}
+      <Form.Item
+        name="username"
+        label="Username"
+        rules={[
+          {
+            required: true,
+            message: 'Please input your Username'
+          },
+        ]}
+      >
+        <Input style={{ width: '50%' }} placeholder="Username"/>
+      </Form.Item>
 
-                <div className="form-outline mb-4">
-                  <label className="form-label" htmlFor="form3Example3cg">email</label>
-                  <input
-                    type="text"
-                    // id="form3Example3cg"
-                    className="form-control form-control-lg"
-                    onChange={onChange}
-                    placeholder='email'
-                    name='email'
-                    value={email}
-                    required
-                  />
-                </div>
+      <Form.Item
+        name="phone_number"
+        label="Phone number"
+        rules={[{ required: true, message: 'Please input your phone number!' }]}
+      >
+        <Input style={{ width: '50%' }} placeholder="Phone number" />
+      </Form.Item>
+      
+      {/* </Row> */}
 
-                <div className="form-outline mb-4">
-                  <label className="form-label" htmlFor="form3Example4cg">Password</label>
-                  <input
-                    type="password"
-                    // id="form3Example4cg" className="form-control form-control-lg"
-                    onChange={onChange}
-                    placeholder='Password'
-                    name='password'
-                    value={password}
-                    required
-                  />
-                </div>
+      <Form.Item
+        name="email"
+        label="E-mail"
+        rules={[
+          {
+            type: 'email',
+            message: 'The input is not valid E-mail!',
+          },
+          {
+            required: true,
+            message: 'Please input your E-mail!',
+          },
+        ]}
+      >
+        <Input />
+      </Form.Item>
 
-                <div className="form-outline mb-4">
-                  <label className="form-label" htmlFor="form3Example4cdg">Repeat your password</label>
-                  <input
-                    type="password"
-                    // id="form3Example4cdg" className="form-control form-control-lg"
-                    onChange={onChange}
-                    placeholder='Password_confirmation'
-                    name='password_confirmation'
-                    value={password_confirmation}
-                    required
-                  />
-                </div>
+      <Form.Item
+        name="password"
+        label="Password"
+        rules={[
+          {
+            required: true,
+            message: 'Please input your password!',
+          },
+        ]}
+        hasFeedback
+      >
+        <Input.Password />
+      </Form.Item>
 
+      <Form.Item
+        name="confirm"
+        label="Confirm Password"
+        dependencies={['password']}
+        hasFeedback
+        rules={[
+          {
+            required: true,
+            message: 'Please confirm your password!',
+          },
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              if (!value || getFieldValue('password') === value) {
+                return Promise.resolve();
+              }
+              return Promise.reject(new Error('The two passwords that you entered do not match!'));
+            },
+          }),
+        ]}
+      >
+        <Input.Password />
+      </Form.Item>
+      
+      <Form.Item {...tailFormItemLayout}>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
+  );
+};
 
-                <div className="d-flex justify-content-center">
-                  <button
-                    type="button"
-                    className="btn btn-success btn-block btn-lg gradient-custom-4 text-body" 
-                    onClick={handleSubmitClick}
-                    >Register</button>
-                </div>
-
-                <p className="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!" className="fw-bold text-body"><u>Login here</u></a></p>
-
-              </form>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  {/* </div> */}
-</section>
-  )
-}
-
-
-//         {/* <carsouel /> put flex position on the carousel */}
-//         {/* https://react-bootstrap.github.io/forms/validation/ */}
+export default Test;
