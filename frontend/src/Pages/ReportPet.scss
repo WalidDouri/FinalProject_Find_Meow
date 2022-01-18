@@ -1,5 +1,12 @@
+@import './Variables.scss';
+
+.report {
+  background-color: $backgroundColor;
+  height: 95vh;
+}
 div.ant-row.ant-form-item {
   display: flex;
   justify-content: space-evenly;
   // margin-left: 30em;
-}
+  ;
+} 
