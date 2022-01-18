@@ -6,6 +6,7 @@ import {
   Input,
   Button
 } from 'antd';
+import { Link } from 'react-router-dom';
 
 const formItemLayout = {
   labelCol: {
@@ -101,6 +102,7 @@ const LoginForm = () => {
         <Button type="primary" htmlType="submit">
           Login
         </Button>
+        Or <Link to="/sign-up">Register now!</Link>
       </Form.Item>
     </Form>
   );
