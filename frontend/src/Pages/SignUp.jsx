@@ -57,32 +57,6 @@ const Test = () => {
   };
 
   return (
-<<<<<<< HEAD
-<section className="vh-100 bg-image signup" >
-  {/* <div className="mask d-flex align-items-center h-100 gradient-custom-3"> */}
-    <div className="container h-100">
-      <div className="row d-flex justify-content-center align-items-center h-100">
-        <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div className="card" >
-            <div className="card-body p-5">
-              <h2 className="text-uppercase text-center mb-5">Create an account</h2>
-
-              <form>
-
-                <div className="form-outline mb-4">
-                  <label className="form-label" htmlFor="form3Example1cg">First Name</label>
-                  <input
-                    type="text"
-                    // id="form3Example1cg"
-                    className="form-control form-control-lg"
-                    onChange={onChange}
-                    placeholder='First name'
-                    name='first_name'
-                    value={first_name}
-                    required
-                  />
-                </div>
-=======
     
     <Form
       {...formItemLayout}
@@ -122,7 +96,6 @@ const Test = () => {
       >
         <Input style={{ width: '50%' }} placeholder="Last Name"/>
       </Form.Item>
->>>>>>> master
 
   
       {/* <Row gutter={2}>  */}
