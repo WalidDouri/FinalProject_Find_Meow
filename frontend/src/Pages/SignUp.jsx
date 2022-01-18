@@ -38,7 +38,7 @@ const tailFormItemLayout = {
   },
 };
 
-const Test = () => {
+const SignUp = () => {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
@@ -136,7 +136,7 @@ const Test = () => {
           },
         ]}
       >
-        <Input />
+        <Input style={{ width: '50%' }}/>
       </Form.Item>
 
       <Form.Item
@@ -150,7 +150,7 @@ const Test = () => {
         ]}
         hasFeedback
       >
-        <Input.Password />
+        <Input.Password style={{ width: '50%' }}/>
       </Form.Item>
 
       <Form.Item
@@ -173,7 +173,7 @@ const Test = () => {
           }),
         ]}
       >
-        <Input.Password />
+        <Input.Password style={{ width: '50%' }}/>
       </Form.Item>
       
       <Form.Item {...tailFormItemLayout}>
@@ -185,4 +185,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default SignUp;
