@@ -5,7 +5,7 @@ import './SignUp.scss'
 
 export default function SignUP() {
   return (
-    <div className='searchpet'>
+    <div className='signup'>
       {/* <Navbar /> */}
       <h1>THIS IS THE Signup</h1>
       <SignupForm />
