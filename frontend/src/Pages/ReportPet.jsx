@@ -7,7 +7,7 @@ import './ReportPet.scss'
 export default function ReportPet() {
   return (
     <section>
-      <div>
+      <div className='report'>
       {/* <ProgressBar/> */}
         <div>
           <h1>THIS IS THE REPORT pET PAGE</h1>
