@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Form, Row, Col, Input, Button, Select } from 'antd';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
@@ -6,11 +6,13 @@ import { DownOutlined, UpOutlined } from '@ant-design/icons';
 
 
 
-export default function SearchForm () {
+
+export default function SearchForm ({onApples}) {
   const [expand, setExpand] = useState(false);
   const [form] = Form.useForm();
   const [catForm, setCatForm] = useState(null);
   const [pure, setPure] = useState({});
+
 
     // useEffect(() => {
     //         axios.get(`http://localhost:3001/api/search?last_seen_city=${pure.last_seen_city}&status=${pure.status}&last_seen_postal_code=${pure.last_seen_postal_code}`)
@@ -35,7 +37,7 @@ export default function SearchForm () {
             name= "status"
             label='Status'
           >
-            <Select defaultValue="" style={{ width: 120 }}allowClear name= "status">
+            <Select style={{ width: 120 }}allowClear name= "status">
                 <Option value="lost">Lost</Option>
                 <Option value="found">Found/Stray</Option>
             </Select>
@@ -62,22 +64,22 @@ export default function SearchForm () {
 
     return children;
   };
-
+  
   const onFinish = (values) => {
-    setPure(values);
+    // setPure(values);
 
     console.log('Received values of form: ', values);
 
-    return axios.get(`http://localhost:3001/api/search?last_seen_city=${pure.last_seen_city}&status=${pure.status}&last_seen_postal_code=${pure.last_seen_postal_code}`)
-        .then(res => setCatForm(res.data.total))
+    return axios.get(`http://localhost:3001/api/search?last_seen_city=${values.last_seen_city}&status=${values.status}&last_seen_postal_code=${values.last_seen_postal_code}`)
+        .then(res => onApples(res.data))
         .catch(error => {
-          this.setState({ errorMessage: error.toString() });
-          console.error('There was an error!', error);
-          });
+        this.setState({ errorMessage: error.toString() });
+        console.error('There was an error!', error);
+        });
         
   };
 
-return (
+  return (
     <Form
       form={form}
       name="advanced_search"
