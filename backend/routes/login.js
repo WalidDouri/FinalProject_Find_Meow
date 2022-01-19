@@ -3,6 +3,7 @@ const router = express.Router();
 
 
 
+
 module.exports = (db) => {
 
   router.post('/', (req, res) => {
@@ -12,15 +13,12 @@ module.exports = (db) => {
       .then(data => {
         const user = data.rows[0];
         if (!user) {
-          res.send('This username is not registered!');
-          res.status(403);
+          res.status(403).json({msg: 'This username is not registered!'});
           return;
         }
 
         if (user.username === req.body.username && user.password === req.body.password) {
-          res.send({ result: "Login success!" });
-          res.status(204);
-          res.redirect("/");
+          res.status(204).json({ result: "Login success!" });
         } else {
           res.send({ result: "Incorrect password!" });
           res.status(403);
