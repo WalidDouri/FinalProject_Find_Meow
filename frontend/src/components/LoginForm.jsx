@@ -42,7 +42,7 @@ const tailFormItemLayout = {
 
 const LoginForm = () => {
   const [form] = Form.useForm();
-  const [message, setMessage] = useState("default");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const onFinish = (values) => {
@@ -62,7 +62,7 @@ const LoginForm = () => {
     })
     .catch(err => {
       console.log(err)})
-      setMessage('Something wrong!');
+      setMessage('Login failed.');
   };
 
   return (
