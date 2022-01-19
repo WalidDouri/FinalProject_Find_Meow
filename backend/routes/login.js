@@ -1,29 +1,50 @@
 const express = require('express');
 const router = express.Router();
 
+
+
+
 module.exports = (db) => {
 
   router.post('/', (req, res) => {
-    // getting data from the client
-    const loginInfo = req.body;
-    console.log("This is from frontend", loginInfo);
+    const signUpQuery = `SELECT * FROM users WHERE username = $1;`;
+    const queryParams = [req.body.username];
+    db.query(signUpQuery, queryParams)
+      .then(data => {
+        const user = data.rows[0];
+        if (!user) {
+          res.status(403).json({msg: 'This username is not registered!'});
+          return;
+        }
 
-    // Insert user data to database
-    // const signUpQuery = "INSERT INTO users(first_name, last_name, username, phone_number, email, password) VALUES($1, $2, $3, $4, $5, $6) returning *";
-    
-    // const queryParams = [newUser.first_name, newUser.last_name, newUser.username, newUser.phone_number, newUser.email, newUser.password];
+        if (user.username === req.body.username && user.password === req.body.password) {
+          res.status(204).json({ result: "Login success!" });
+        } else {
+          res.send({ result: "Incorrect password!" });
+          res.status(403);
+        }
+      }).catch(err => {
+        console.log(err);
+      });
 
-    // // console.log(queryParams);
-    // db.query(signUpQuery, queryParams).then(data =>{
-    //   console.log(data.rows);
-    // }).catch(err =>{
-    //   console.log(err);
-    // });
-
+    // const user = getUserByUsername(loginInfo.username);
+    // console.log(user);
+    // if (!user) {
+    //   res.status(400);
+    //   res.send('This username is not registered!');
+    //   return;
+    // } else if (user.password === loginInfo.password) {
+    //   req.session.userId = user.id;
+    //   console.log(req.session.userId);
+    //   if (!req.session.userId) {
+    //     res.redirect("/");
+    //     return;
+    //   }
+    // }
 
     // sending a response back to the front
     // res.status(204).json({result: "success!"});
-    res.send({ test: "Yay! From Server" });
+    // res.send({ test: "Yay! From Server" });
   });
 
   return router;

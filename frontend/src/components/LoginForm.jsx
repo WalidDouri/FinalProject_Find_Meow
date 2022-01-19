@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import axios from 'axios';
 import 'antd/dist/antd.css';
 import {
@@ -6,6 +6,8 @@ import {
   Input,
   Button
 } from 'antd';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const formItemLayout = {
   labelCol: {
@@ -40,6 +42,8 @@ const tailFormItemLayout = {
 
 const LoginForm = () => {
   const [form] = Form.useForm();
+  const [message, setMessage] = useState("default");
+  const navigate = useNavigate();
 
   const onFinish = (values) => {
     const url = "http://localhost:3001/api/login"
@@ -47,17 +51,23 @@ const LoginForm = () => {
       ...values
       }
     
-    console.log('Received values of form: ', values);
+    // console.log('Received values of form: ', values);
     axios.post(url, loginInfo) 
     .then(res => {
-        console.log(res.data)
+        console.log(res.status)
+        if (res.status === 204) {
+          console.log("Login succesfully")
+          navigate("/about", { replace: true });
+        }
     })
-    .catch(err => {console.log(err)})
-
+    .catch(err => {
+      console.log(err)})
+      setMessage('Something wrong!');
   };
 
   return (
-    
+    <Fragment>
+    <p>{message}</p>
     <Form
       {...formItemLayout}
       form={form}
@@ -93,7 +103,6 @@ const LoginForm = () => {
             message: 'Please input your password!',
           },
         ]}
-        hasFeedback
       >
         <Input.Password style={{ width: '50%' }}/>
       </Form.Item>
@@ -102,8 +111,10 @@ const LoginForm = () => {
         <Button type="primary" htmlType="submit">
           Login
         </Button>
+        Or <Link to="/sign-up">Register now!</Link>
       </Form.Item>
     </Form>
+    </Fragment>
   );
 };
 
