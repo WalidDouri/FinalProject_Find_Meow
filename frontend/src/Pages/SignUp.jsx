@@ -99,7 +99,7 @@ const Test = () => {
 
   
       {/* <Row gutter={2}>  */}
-      <Form.Item
+      <Form.Itemmobi
         name="username"
         label="Username"
         rules={[
