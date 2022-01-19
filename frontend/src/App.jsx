@@ -14,6 +14,7 @@ import SearchPet from './Pages/SearchPet';
 import SignUp from './Pages/SignUp';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import CatVideo from './Pages/CatVideo';
 
 export default function App() {
 
@@ -21,8 +22,10 @@ export default function App() {
 
       <BrowserRouter>
         <Navbar />
+        
         {/* <Form /> */}
             <Routes>
+            {/* <CatVideo /> */}
               <Route path="/" element={<Home />}/>
               <Route path="/about" element={<About />}/>
              {/* <Routes> */}
