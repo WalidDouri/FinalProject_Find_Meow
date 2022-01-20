@@ -8,6 +8,7 @@ import {
 } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import CarouselTest from './Carousel';
 
 const formItemLayout = {
   labelCol: {
@@ -65,8 +66,9 @@ const SignUpForm = () => {
   };
 
   return (
-    <Fragment>
+    <div id='annoyAF'>
       <p>{message}</p>
+      <div>
       <Form
         {...formItemLayout}
         form={form}
@@ -188,11 +190,16 @@ const SignUpForm = () => {
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
             Register
-          </Button>
-          Or <Link to="/login">Login</Link>
+          </Button> &nbsp;&nbsp;
+          Or &nbsp;&nbsp; <Link to="/login">Login</Link>
         </Form.Item>
       </Form>
-    </Fragment>
+      </div>
+      <div>
+        <CarouselTest/>
+      </div>
+    </div>
+
   );
 };
 
