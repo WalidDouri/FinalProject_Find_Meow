@@ -1,5 +1,4 @@
-@import './Variables.scss';
-
+@import "./Variables.scss";
 
 // .signup {
 //   display: flex;
@@ -42,3 +41,21 @@
   );
 }
 
+#box {
+  // display: flex;
+}
+
+#RCard {
+  display: flex;
+  float: right;
+  width: 70%;
+}
+
+#LCard {
+  display: flex;
+  float: left;
+  width: 30%;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 130px;
+}
