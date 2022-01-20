@@ -36,14 +36,15 @@
 }
 
 .nav-menu {
-  display: grid;
-  grid-template-columns: repeat(5, auto);
+  display: flex;
+  // grid-template-columns: repeat(5, auto);
   // grid-gap: 10px;
   list-style: none;
   text-align: center;
   width: 60vw;
   justify-content: end;
   margin-right: 2rem;
+  margin-bottom: 0px;
 }
 
 .nav-item {
@@ -77,7 +78,7 @@
   display: none;
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1145px) {
   .NavbarItems {
     position: relative;
   }
