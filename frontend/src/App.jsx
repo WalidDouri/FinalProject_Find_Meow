@@ -5,7 +5,9 @@ import './App.css';
 import Navbar from './components/Navbar';
 // import Form from './components/Form';
 import SubmitForm from './components/SubmitForm';
-
+// import Comments from './comments/Comments';
+import Comments1 from './components/Comments1';
+import CommentsList1 from './components/CommentsList1';
 
 import About from './Pages/About';
 import Home from './Pages/Home';
@@ -19,7 +21,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 export default function App() {
 
     return (
-
       <BrowserRouter>
         <Navbar />
         {/* <Form /> */}
@@ -34,7 +35,12 @@ export default function App() {
               <Route path="/search-pet" element={<SearchPet />}/>
               <Route path="/sign-up" element={<SignUp/>} />
               <Route path="/login" element={<Login/>} />
-              {/* <Route path="*" element={<NotFound />} /> */}
+              {/* <Route path="/comments" element={<Comment />} /> */}
+              <Route path="/comments" element={<CommentsList1
+
+              //  commentsUrl="http://localhost:3000/comments"
+              //  currentUserId="2"
+               />} />
             </Routes>
       </BrowserRouter>     
     );
