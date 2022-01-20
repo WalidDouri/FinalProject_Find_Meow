@@ -9,7 +9,7 @@ const signupRouter = require('./routes/signup');
 const searchRouter = require('./routes/search');
 const loginRouter = require('./routes/login');
 const smsRouter = require('./routes/sms');
-const dashboardRouter = require('./routes/dashboard');
+const mypageRouter = require('./routes/mypage');
 
 const app = express();
 const db = require('./db');
@@ -33,7 +33,7 @@ app.use('/api/signup', signupRouter(db));
 app.use('/api/search', searchRouter);
 app.use('/api/login', loginRouter(db));
 app.use('/api/sms', smsRouter(db)); //for test
-app.use('/api/dashboard', dashboardRouter(db));
+app.use('/api/mypage', mypageRouter(db));
 
 
 

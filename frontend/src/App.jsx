@@ -13,7 +13,7 @@ import ReportPet from './Pages/ReportPet';
 import SearchPet from './Pages/SearchPet';
 import SignUp from './Pages/SignUp';
 import Login from './Pages/Login';
-import Dashboard from './Pages/Dashboard';
+import MyPage from './Pages/MyPage';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import CatVideo from './Pages/CatVideo';
@@ -38,7 +38,7 @@ export default function App() {
               <Route path="/search-pet" element={<SearchPet />}/>
               <Route path="/sign-up" element={<SignUp/>} />
               <Route path="/login" element={<Login/>} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/mypage" element={<MyPage />} />
               {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
       </BrowserRouter>     
