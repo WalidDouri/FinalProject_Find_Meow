@@ -9,11 +9,12 @@ const signupRouter = require('./routes/signup');
 const searchRouter = require('./routes/search');
 const loginRouter = require('./routes/login');
 const smsRouter = require('./routes/sms');
+const dashboardRouter = require('./routes/dashboard');
 
 const app = express();
 const db = require('./db');
-const dbHelpers = require('./helpers/dbHelpers')(db)
-const cors = require('cors')
+const dbHelpers = require('./helpers/dbHelpers')(db);
+const cors = require('cors');
 
 
 app.use(logger('dev'));
@@ -21,15 +22,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors())
-
 app.use(cors());
 
 app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-// app.use('/signup', signupRouter);
-// app.use('/search', searchRouter);
-
 
 // ### CREATE ROUTES HERE 
 
@@ -37,7 +32,8 @@ app.use('/api/users', usersRouter(dbHelpers));
 app.use('/api/signup', signupRouter(db));
 app.use('/api/search', searchRouter);
 app.use('/api/login', loginRouter(db));
-app.use('/api/sms', smsRouter(db));
+app.use('/api/sms', smsRouter(db)); //for test
+app.use('/api/dashboard', dashboardRouter(db));
 
 
 
