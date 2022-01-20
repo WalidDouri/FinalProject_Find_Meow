@@ -38,7 +38,7 @@ export default function App() {
               <Route path="/search-pet" element={<SearchPet />}/>
               <Route path="/sign-up" element={<SignUp/>} />
               <Route path="/login" element={<Login/>} />
-              <Route path="/mypage" element={<MyPage />} />
+              <Route path="/mypage/:id" element={<MyPage />} />
               {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
       </BrowserRouter>     

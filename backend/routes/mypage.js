@@ -14,7 +14,7 @@ module.exports = (db) => {
 
     Promise.all([userPromise, catFomrsPromise])
       .then(data => {
-        const user = data[0].rows;
+        const user = data[0].rows[0];
         const catForms = data[1].rows;
         res
           .status(200)
