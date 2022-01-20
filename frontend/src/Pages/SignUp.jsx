@@ -8,11 +8,13 @@ import './SignUp.scss'
 
 export default function SignUP() {
   return (
-    <div className='signup'>
-      {/* <Navbar /> */}
-      <h1>THIS IS THE Signup</h1>
-      <SignupForm />
-      <CarouselTest/>
+    <div id="box">
+       <div id="LCard" >
+        <SignupForm />
+       </div>
+       <div id="RCard">
+        <CarouselTest/>
+       </div>
     </div>
   )
 }
