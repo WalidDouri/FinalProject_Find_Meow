@@ -127,6 +127,22 @@ const SubmitForm = () => {
       </Form.Item>
 
       <Form.Item
+            name= "status"
+            label='Status'
+            rules={[
+              {
+                required: true,
+                message: 'Please select a status',
+              },
+            ]}
+          >
+            <Select style={{ width: 120 }}allowClear name= "status">
+                <Option value="lost">Lost</Option>
+          <Option value="found">Found/Stray</Option>
+        </Select>
+      </Form.Item>
+
+      <Form.Item
         name="image"
         label="IMAGE^^ TO FIX THIS LATER"
 
@@ -157,7 +173,7 @@ const SubmitForm = () => {
         rules={[
           {
             required: true,
-            message: 'Please select gender!',
+            message: 'Please select gender',
           },
         ]}
       >
@@ -182,7 +198,7 @@ const SubmitForm = () => {
             noStyle
             rules={[{
               required: true,
-              message: 'Province is required'
+              message: 'Please select a province'
             }]}
           >
             <Select placeholder="Select province">
@@ -206,7 +222,7 @@ const SubmitForm = () => {
             noStyle
             rules={[{
               required: true,
-              message: 'Street is required'
+              message: 'Please select a street'
             }]}
           >
             <Input style={{ width: '40%' }} placeholder="Input Street" />

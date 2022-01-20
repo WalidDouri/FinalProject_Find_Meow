@@ -24,7 +24,7 @@ export default function DisplayCats({apples, cats}) {
         )
       } else {
         return (
-          <h3>No apples yet </h3>
+          <h3>No Cats yet xD</h3>
         )
     } 
   }

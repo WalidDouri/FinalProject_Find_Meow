@@ -10,18 +10,8 @@ import { DownOutlined, UpOutlined } from '@ant-design/icons';
 export default function SearchForm ({onApples}) {
   const [expand, setExpand] = useState(false);
   const [form] = Form.useForm();
-  const [catForm, setCatForm] = useState(null);
-  const [pure, setPure] = useState({});
+ 
 
-
-    // useEffect(() => {
-    //         axios.get(`http://localhost:3001/api/search?last_seen_city=${pure.last_seen_city}&status=${pure.status}&last_seen_postal_code=${pure.last_seen_postal_code}`)
-    //         .then(res => setCatForm(res.data.total))
-    //         .catch(error => {
-    //           this.setState({ errorMessage: error.toString() });
-    //           console.error('There was an error!', error);
-    //       });
-    // }, []);
 
   const { Option } = Select;
 
