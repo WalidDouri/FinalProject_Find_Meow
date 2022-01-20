@@ -1,6 +1,8 @@
+import { Row } from 'antd'
+import Layout, { Content } from 'antd/lib/layout/layout'
 import React from 'react'
 import CarouselTest from '../components/Carousel'
-// import AwesomeSlider from 'react-awesome-slider'
+
 
 import SignupForm from '../components/SignupForm'
 import './SignUp.scss'
@@ -8,11 +10,18 @@ import './SignUp.scss'
 
 export default function SignUP() {
   return (
-    <div className='signup'>
-      {/* <Navbar /> */}
-      <h1>THIS IS THE Signup</h1>
-      <SignupForm />
-      <CarouselTest/>
+    // <div className='signup'>
+      <div >
+
+        <Layout id='Lurry'>
+          {/* <Content id='Kirkland'> */}
+         
+          <SignupForm />
+          {/* </Content> */}
+        
+      </Layout>
+  
     </div>
   )
 }
+
