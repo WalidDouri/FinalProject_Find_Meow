@@ -1,5 +1,5 @@
 import React from 'react'
-import { Carousel, Image } from 'antd';
+import { Carousel} from 'antd';
 import './Carousel.scss'
 import catLay from './images/catlay.png'
 import blueEyes from './images/blueEyeCatSC.png'
@@ -20,30 +20,30 @@ export default function CarouselTest (){
   // };
 
     return (
-      <div className='catPhotos'>
-        <Carousel autoplay>
+      // <div className='catPhotos'>
+        <Carousel className='catPhotos' autoplay>
 
-          <div className='photo'>
+          
             <img src={catLay} alt="Grey Cat laying down"/>
-          </div>
+          
 
-          <div className='test'>
+          
             <img src={blueEyes} alt="Blue Eyed Cat"/>
-          </div>
           
-          <div className='test2'>
+          
+          
             <img src={multiCat} alt="Multi Colour Cat"/>
-          </div>
           
-          <div className='test3'>
+          
+          
             <img src={grassCat} alt="Cat in Grass"/>
-          </div>
+          
 
-          <div className='test4'>
+          
             <img src={stripeCat} alt="Striped Cat"/> 
-          </div>
+          
         </Carousel>
-      </div>
+        // {/* </div> */}
   
 
     );
