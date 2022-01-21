@@ -1,5 +1,6 @@
 import React from 'react'
 import CarouselTest from '../components/Carousel'
+import Footer from '../components/Footer'
 // import AwesomeSlider from 'react-awesome-slider'
 
 import SignupForm from '../components/SignupForm'
@@ -15,6 +16,7 @@ export default function SignUP() {
        <div id="RCard">
         <CarouselTest/>
        </div>
+       <Footer/>
     </div>
   )
 }

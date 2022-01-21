@@ -12,14 +12,6 @@ import test2 from './images/test2.jpg'
 
 export default function CarouselTest (){
 
-  // const contentStyle = {
-  //   height: '700px',
-  //   // color: '#fff',
-  //   // lineHeight: '160px',
-  //   // textAlign: 'center',
-  //   // background: 'pink'
-
-  // };
 
     return (
       <div className='catPhotos'>
@@ -27,29 +19,29 @@ export default function CarouselTest (){
 
           <div className='photo'>
             <img src={test2} alt="Grey Cat laying down"
-            width="100%" height="1000"
+            width="100%" height="850"
             />
           </div>
 
           <div className='test'>
             <img src={blackCat} alt="Blue Eyed Cat"
-            width="100%" height="1000"/>
+            width="100%" height="850"/>
           </div>
           
           <div className='test2'>
             <img src={streetCat} alt="Multi Colour Cat"
-            width="100%" height="1000"
+            width="100%" height="850"
             />
           </div>
           
           <div className='test3'>
             <img src={siameseCat} alt="Cat in Grass"
-            width="100%" height="1000"/>
+            width="100%" height="850"/>
           </div>
 
           <div className='test4'>
             <img src={pokeCat} alt="Striped Cat"
-            width="100%" height="1000"/> 
+            width="100%" height="850"/> 
           </div>
         </Carousel>
       </div>

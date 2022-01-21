@@ -51,15 +51,16 @@ const SignUpForm = () => {
       ...values
     }
 
-    console.log('Received values of form: ', newUser);
+    // console.log('Received values of form: ', newUser);
     axios.post(url, newUser)
       .then(res => {
-        console.log(res.data);
-        navigate("/about", { replace: true });
+        // console.log(res.data);
+        const id = res.data.id;
+        navigate(`/mypage/${id}`, { replace: true });
       })
       .catch(err => {
-        console.log(err)
-        setMessage('Signup failed.');
+        const errorMessage = err.response.data.message;
+        setMessage(errorMessage);
       })
 
   };
