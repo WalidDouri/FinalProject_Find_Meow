@@ -188,8 +188,8 @@ const SignUpForm = () => {
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
             Register
-          </Button>
-          Or <Link to="/login">Login</Link>
+          </Button>&nbsp;&nbsp;
+          Or&nbsp;&nbsp; <Link to="/login">Login</Link>
         </Form.Item>
       </Form>
     </Fragment>
