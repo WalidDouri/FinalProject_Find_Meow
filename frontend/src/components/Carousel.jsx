@@ -1,5 +1,5 @@
 import React from 'react'
-import { Carousel, Image } from 'antd';
+import { Carousel} from 'antd';
 import './Carousel.scss'
 import catLay from './images/catlay.png'
 import blueEyes from './images/blueEyeCatSC.png'
@@ -27,29 +27,29 @@ export default function CarouselTest (){
 
           <div className='photo'>
             <img src={test2} alt="Grey Cat laying down"
-            width="100%" height="700"
+            width="85%" height="700"
             />
           </div>
 
           <div className='test'>
             <img src={blueEyes} alt="Blue Eyed Cat"
-            width="100%" height="700"/>
+            width="85%" height="350"/>
           </div>
           
           <div className='test2'>
             <img src={multiCat} alt="Multi Colour Cat"
-            width="100%" height="700"
+            width="85%" height="700"
             />
           </div>
           
           <div className='test3'>
             <img src={grassCat} alt="Cat in Grass"
-            width="100%" height="700"/>
+            width="85%" height="700"/>
           </div>
 
           <div className='test4'>
             <img src={stripeCat} alt="Striped Cat"
-            width="100%" height="700"/> 
+            width="85%" height="700"/> 
           </div>
         </Carousel>
       </div>
