@@ -11,7 +11,7 @@ module.exports = (db) => {
         const user = data.rows[0];
         if (!user) {
           res
-            .status(403)
+            .status(401)
             .send({ message: 'This username is not registered!' });
           return;
         }
@@ -26,7 +26,7 @@ module.exports = (db) => {
             });
         } else {
           res
-            .status(403)
+            .status(401)
             .send({ message: "Incorrect password!" });
         }
       }).catch(err => {
