@@ -15,14 +15,14 @@ module.exports = (db) => {
         const user = data.rows[0];
         console.log(user);
         if (user) {
-          res.status(403).json({ msg: 'This username already registerd' });
+          res.status(403).send({ message: 'The username is already registered' });
           console.log("RETURNING, NO MORE QUERIES");
           // throwing an error is like a break statement
           // it will jump directly to the catch block
-          throw new Error("User already Exist");
+          throw new Error("The username is already registered, username has to be unique");
         }
         // Insert user data to database
-        const signUpQuery = "INSERT INTO users(first_name, last_name, username, phone_number, email, password) VALUES($1, $2, $3, $4, $5, $6) returning *";
+        const signUpQuery = "INSERT INTO users(first_name, last_name, username, phone_number, email, password) VALUES($1, $2, $3, $4, $5, $6) returning id";
 
         const queryParams = [newUser.first_name, newUser.last_name, newUser.username, newUser.phone_number, newUser.email, newUser.password];
 
@@ -30,8 +30,11 @@ module.exports = (db) => {
         // need to include 'return', or else it will not pass data to next block
         return db.query(signUpQuery, queryParams);
       }).then((data) => {
-        console.log(data.rows);
-        res.status(204).json({ result: "Signup success!" });
+        const id = data.rows[0].id;
+        res.status(200).send({
+          message: "Signup successfully!",
+          id: id
+        });
       }).catch(err => {
         console.log(err);
       });
