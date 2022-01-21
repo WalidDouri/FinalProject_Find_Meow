@@ -1,4 +1,4 @@
-@import './Variables.scss';
+@import "./Variables.scss";
 
 .report {
   background-color: $backgroundColor;
@@ -8,5 +8,30 @@ div.ant-row.ant-form-item {
   display: flex;
   justify-content: space-evenly;
   // margin-left: 30em;
-  ;
-} 
+}
+
+#header {
+  background-color: rgb(47, 155, 4);
+}
+
+#content {
+  background-color: rgb(4, 132, 155);
+}
+
+#footer {
+  background-color: rgb(155, 4, 29);
+}
+
+#sider {
+  display: flex;
+  background-color: rgb(42, 99, 42);
+  width: 50px;
+}
+
+.share-icons {
+  display: flex;
+  font-size: xx-large;
+  flex-direction: column;
+  row-gap: 30px;
+  align-content: space-between;
+}
