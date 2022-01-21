@@ -15,7 +15,7 @@ module.exports = (db) => {
         const user = data.rows[0];
         console.log(user);
         if (user) {
-          res.status(403).send({ message: 'The username is already registered' });
+          res.status(401).send({ message: 'The username is already registered' });
           console.log("RETURNING, NO MORE QUERIES");
           // throwing an error is like a break statement
           // it will jump directly to the catch block
