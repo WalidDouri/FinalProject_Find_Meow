@@ -4,9 +4,6 @@ import { Form, Row, Col, Input, Button, Select } from 'antd';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
 
 
-
-
-
 export default function SearchForm ({onApples}) {
   const [expand, setExpand] = useState(false);
   const [form] = Form.useForm();
@@ -113,9 +110,3 @@ export default function SearchForm ({onApples}) {
   );
 };
 
-// export default SearchForm(
-//   <div>
-//     <SearchForm />
-//     <div className="search-result-list">Search Result List</div>
-//   </div>
-// );

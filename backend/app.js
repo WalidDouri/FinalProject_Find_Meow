@@ -9,7 +9,11 @@ const signupRouter = require('./routes/signup');
 const searchRouter = require('./routes/search');
 const loginRouter = require('./routes/login');
 const smsRouter = require('./routes/sms');
+const dashboardRouter = require('./routes/dashboard');
+// const commentRouter = require('./routes/comment');
+
 const mypageRouter = require('./routes/mypage');
+
 
 const app = express();
 const db = require('./db');
@@ -32,8 +36,10 @@ app.use('/api/users', usersRouter(dbHelpers));
 app.use('/api/signup', signupRouter(db));
 app.use('/api/search', searchRouter);
 app.use('/api/login', loginRouter(db));
+// app.use('/api/comment', commentRouter(db));
 app.use('/api/sms', smsRouter(db)); //for test
 app.use('/api/mypage', mypageRouter(db));
+
 
 
 

@@ -1,17 +1,14 @@
+const express = require('express');
+const router = express.Router();
+const db = require('../db');
+
+
+/* Search Form */
+
 router.get('/', function (req, res) {
 
-
   const query = {
-    text: `SELECT 
-    users.id as user_id, 
-    first_name, 
-    last_name, 
-    email, 
-    comments.id as comment_id, 
-    comment
-    FROM users
-    INNER JOIN posts
-    ON users.id = comments.user_id`
+    text: `SELECT * FROM comments`
   }
 
   return db.query(query)
@@ -19,3 +16,5 @@ router.get('/', function (req, res) {
     .catch(err => err);
 
 });
+
+module.exports = router;

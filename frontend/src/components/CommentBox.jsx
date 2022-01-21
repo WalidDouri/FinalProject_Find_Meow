@@ -1,6 +1,7 @@
 import React from 'react';
 import { Comment, Avatar, Form, Button, List, Input } from 'antd';
 import moment from 'moment';
+import axios from 'axios';
 
 const { TextArea } = Input;
 
@@ -13,7 +14,7 @@ const CommentList = ({ comments }) => (
   />
 );
 
-const Editor = ({ onChange, onSubmit, submitting, value }) => (
+const Editor = ({ onChange, onSubmit, submitting, value, onFinish }) => (
   <>
     <Form.Item>
       <TextArea rows={4} onChange={onChange} value={value} showCount maxLength={130} style={{ width: '50%' }} />
@@ -26,7 +27,7 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
   </>
 );
 
-class Comments1 extends React.Component {
+class CommentBox extends React.Component {
   state = {
     comments: [],
     submitting: false,
@@ -49,6 +50,7 @@ class Comments1 extends React.Component {
         comments: [
           ...this.state.comments,
           {
+            // Change to pull info from DB username/ we dont have a avatar column
             author: 'Han Solo',
             avatar: 'https://joeschmoe.io/api/v1/random',
             content: <p>{this.state.value}</p>,
@@ -65,6 +67,24 @@ class Comments1 extends React.Component {
     });
   };
 
+  
+  onFinish = (value) => {
+    const url = "http://localhost:3001/comments"
+    const payload = {
+      ...value,
+      date_created: '2025,01,01',
+      cat_form_id: 1,
+      user_id: 1,
+    }
+    console.log('Received values of form: ', payload);
+    axios.post(url, payload)
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => { console.log(err) })
+
+  };
+
   render() {
     const { comments, submitting, value } = this.state;
 
@@ -75,11 +95,12 @@ class Comments1 extends React.Component {
           avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
           content={
             <Editor
-              onChange={this.handleChange}
-              onSubmit={this.handleSubmit}
-              submitting={submitting}
-              value={value}
-              
+            onChange={this.handleChange}
+            onSubmit={this.handleSubmit}
+            submitting={submitting}
+            value={value}
+            onFinish={this.onFinish}
+
             />
           }
         />
@@ -88,4 +109,4 @@ class Comments1 extends React.Component {
   }
 }
 
-export default Comments1; 
+export default CommentBox; 
