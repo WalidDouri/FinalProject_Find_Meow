@@ -18,6 +18,7 @@ import Login from './Pages/Login';
 import MyPage from './Pages/MyPage';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Footer from './components/Footer';
 // import CatVideo from './Pages/CatVideo';
 
 export default function App() {
@@ -44,9 +45,10 @@ export default function App() {
               <Route path="/comments" element={<CommentsList1
               //  commentsUrl="http://localhost:3000/comments"
               //  currentUserId="2"
-               />} />
+              />} />
               {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
+              <Footer/>
       </BrowserRouter>     
     );
 }
