@@ -12,7 +12,47 @@ export default function CatFormItem(props) {
   // console.log("Cat Form Item",props.catFormItem);
   console.log("------------>",props)
   return (
-    <div className="card mb-3" style={{width: '1000px'}}>
+      <>  
+      <div className="tweet"> 
+      
+      <span className="username"> <img src={props.image} alt=''/>{props.name}</span>
+        <span>123</span>
+        <p>456</p>
+        
+        <div className="tweet-content">
+        </div>
+        
+        <p>{props.last_seen_date}</p>
+        <div>
+            {/* <i className="far fa-flag"></i> 
+            <i className="fas fa-retweet"></i>
+            <i className="fa-solid fa-heart"></i> */}
+            </div>
+        </div>
+        </>
+  );
+  }
+
+{/* <article class="tweet"> 
+  <header>
+  <span class="username"><img src="${user.avatars}">${user.name}</span>
+  <span class="userHandle">${user.handle}</span>
+    </header>
+    <div class="tweet-content">
+    <p>${escape(content.text)}</p>
+    </div>
+    <footer>
+    <p>${timeago.format(created_at)}</p>
+    <div>
+        <i class="far fa-flag"></i> 
+        <i class="fas fa-retweet"></i>
+        <i class="fa-solid fa-heart"></i>
+        </div>
+    </footer>
+    </article> */}
+
+
+    {/* <div className="card mb-3" style={{width: '1000px'}}>
       <div className="row no-gutters">
         <div className="col-md-4">
             <Card hoverable>
@@ -46,7 +86,4 @@ export default function CatFormItem(props) {
           </div>
         </div>
       </div>
-    </div>
-  );
-  }
-
+    </div> */}

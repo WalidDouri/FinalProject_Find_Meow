@@ -1,6 +1,69 @@
-.cat_form {
+.tweet {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: rgb(90, 129, 212);
+  border: solid 5px #4063d8b9;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+
+article:hover {
+  box-shadow: 5px 5px #B8C0FF;
+  transition-duration: 0.2s;
+}
+
+.username{
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 20px;
 }
+
+article.tweet > header {
+  display: flex ;
+  justify-content: space-between;
+  font-weight: 300;
+
+}
+
+.tweet img {
+  margin-right: .5em;
+  height: 200px;
+  width: 200px;
+}
+
+.tweet-content {
+  align-content: center;
+  // border-bottom: midnightblue solid 5px;
+  color: midnightblue;
+  font-weight: 600;
+  font-size: 1em;
+  padding: 0 1em; 
+}
+
+article.tweet footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8em;
+}
+
+article.tweet footer > p {
+  display: flex;
+  flex: 3;
+  font-size: 1em;
+}
+
+article.tweet footer div {
+  display: flex;
+  justify-content: space-evenly;
+  flex: 0.5;
+  font-size: 1em;
+  color: #211f92;
+}
+
+article.tweet footer div i:hover  {
+  color: rgba(77, 194, 223, 0.876);
+  transition: .2s; 
+  }
