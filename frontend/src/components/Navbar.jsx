@@ -40,7 +40,7 @@ export default function Navbar() {
   return (
 
     <>
-      <nav className="navbar">
+      <nav id="navbar">
         <div className="navbar-container">
           <Link to='/' className="navbar-logo" onClick={closeMobileMenu}>
           <FontAwesomeIcon icon={faCat} /> Find Me-Ow!
