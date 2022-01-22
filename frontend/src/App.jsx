@@ -43,7 +43,7 @@ export default function App() {
 
               <Route path="/mypage/:id" element={<MyPage />} />
               {/* <Route path="/comments" element={<Comment />} /> */}
-              <Route path="/comments" element={<CommentBoxList
+              {/* <Route path="/comments" element={<CommentBoxList */}
               //  commentsUrl="http://localhost:3000/comments"
               //  currentUserId="2"
               />} />
