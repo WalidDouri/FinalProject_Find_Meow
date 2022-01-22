@@ -9,7 +9,7 @@ const signupRouter = require('./routes/signup');
 const searchRouter = require('./routes/search');
 const loginRouter = require('./routes/login');
 const smsRouter = require('./routes/sms');
-const dashboardRouter = require('./routes/dashboard');
+// const dashboardRouter = require('./routes/dashboard');
 // const commentRouter = require('./routes/comment');
 
 const mypageRouter = require('./routes/mypage');
