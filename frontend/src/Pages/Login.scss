@@ -1,6 +1,31 @@
-@import './Variables.scss';
+// @import './Variables.scss';
 
-.login {
+// .login {
+//   background-color: $backgroundColor;
+//   height: 95vh;
+//   display: flex;
+  
+// }
+
+@import "./Variables.scss";
+
+#login {
+  // display: flex;
   background-color: $backgroundColor;
-  height: 95vh;
+  padding-bottom: 8px;
+}
+
+#Right {
+  display: flex;
+  float: right;
+  width: 60%;
+}
+
+#Left {
+  display: flex;
+  float: left;
+  width: 40%;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 130px;
 }
