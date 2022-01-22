@@ -2,8 +2,6 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const bcrypt = require('bcryptjs');
-const saltRounds = 10;
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -11,6 +9,7 @@ const signupRouter = require('./routes/signup');
 const searchRouter = require('./routes/search');
 const loginRouter = require('./routes/login');
 const smsRouter = require('./routes/sms');
+// const dashboardRouter = require('./routes/dashboard');
 // const commentRouter = require('./routes/comment');
 
 const mypageRouter = require('./routes/mypage');
