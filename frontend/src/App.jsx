@@ -38,15 +38,11 @@ export default function App() {
               //  commentsUrl="http://localhost:3000/comments"
               //  currentUserId="2"
                />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              {/* <Route path="/dashboard" element={<Dashboard />} /> */}
               {/* need to implement the function below */}
 
               <Route path="/mypage/:id" element={<MyPage />} />
               {/* <Route path="/comments" element={<Comment />} /> */}
-              <Route path="/comments" element={<CommentsList1
-              //  commentsUrl="http://localhost:3000/comments"
-              //  currentUserId="2"
-              />} />
 
               {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
