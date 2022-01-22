@@ -21,6 +21,7 @@ export default function ReportPet() {
         <SubmitForm />
       </Content>
       </Layout>
+        {/* <Footer id="footer">Footer</Footer> */}
     </Layout>
   )
 }

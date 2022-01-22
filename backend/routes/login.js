@@ -10,38 +10,29 @@ module.exports = (db) => {
       .then(data => {
         const user = data.rows[0];
         if (!user) {
-          res.status(403).json({msg: 'This username is not registered!'});
+          res
+            .status(401)
+            .send({ message: 'This username is not registered!' });
           return;
         }
 
         if (user.username === req.body.username && user.password === req.body.password) {
-          res.status(204).json({ result: "Login success!" });
+          const id = data.rows[0].id;
+          res
+            .status(200)
+            .send({
+              message: "Login success!",
+              id: id
+            });
         } else {
-          res.send({ result: "Incorrect password!" });
-          res.status(403);
+          res
+            .status(401)
+            .send({ message: "Incorrect password!" });
         }
       }).catch(err => {
         console.log(err);
       });
-
-    // const user = getUserByUsername(loginInfo.username);
-    // console.log(user);
-    // if (!user) {
-    //   res.status(400);
-    //   res.send('This username is not registered!');
-    //   return;
-    // } else if (user.password === loginInfo.password) {
-    //   req.session.userId = user.id;
-    //   console.log(req.session.userId);
-    //   if (!req.session.userId) {
-    //     res.redirect("/");
-    //     return;
-    //   }
-    // }
-
-    // sending a response back to the front
-    // res.status(204).json({result: "success!"});
-    // res.send({ test: "Yay! From Server" });
+      
   });
 
   return router;

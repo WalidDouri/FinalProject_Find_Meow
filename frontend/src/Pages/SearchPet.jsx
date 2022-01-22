@@ -9,14 +9,26 @@ import './SearchPet.scss'
 export default function ReportPet() {
   const [apples, setApples] = useState([])
 
+
+  const styleObj ={
+    fontSize: 35,
+    textAlign: 'center',
+    paddingTop: 10,
+  }
+
   return (
     <div className='searchpet'>
-      {/* <Navbar /> */}
+      
       <h1>THIS IS THE SEARCH PET PAGE</h1>
       <h2> talk to team about date range for search</h2>
       <SearchForm onApples={setApples}/>
-      <div className="search-result-list">Search Result List</div>
+      <div className="search-text" style={styleObj}>Search Result List</div>
+      <div id="search-result-list">
         <DisplayCats apples={apples}/>
+        {/* <h2>TEST 1</h2>
+        <h2>TEST 2</h2>
+        <h2>TEST 3</h2> */}
+      </div>
     </div>
   )
 }

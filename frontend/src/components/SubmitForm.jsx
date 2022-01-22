@@ -1,22 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import { Upload, message, InputNumber } from 'antd';
-// import { DatePicker, Space } from 'antd';
+import moment from 'moment';
 import { InboxOutlined } from '@ant-design/icons';
-import {
-  Form,
-  Input,
-  // InputNumber,
-  // Cascader,
-  Select,
-  // Row,
-  // Col,
-  Checkbox,
-  Button,
-  // AutoComplete,
-} from 'antd';
+import { Form, Input, Select, Checkbox, Button, Upload, message, InputNumber, DatePicker } from 'antd';
+
 
 const { Dragger } = Upload;
+
+const dateFormat = 'YYYY/MM/DD';
 
 const props = {
   name: 'file',
@@ -84,9 +75,11 @@ const SubmitForm = () => {
     const url = "http://localhost:3001/report-pet"
     const payload = {
       ...values,
-      last_seen_date: '2021,12,25',
-      last_seen_address: '1500 Gerrard St',
-      status: 'lost',
+      last_seen_date: '2021,01,22',
+      // toLocaleString(),
+      // last_seen_address: '1500 Gerrard St',
+      // status: 'lost',
+      image: '123'
 
     }
 
@@ -106,10 +99,6 @@ const SubmitForm = () => {
       form={form}
       name="register"
       onFinish={onFinish}
-      initialValues={{
-        residence: ['zhejiang', 'hangzhou', 'xihu'],
-        prefix: '86',
-      }}
       scrollToFirstError
     >
 
@@ -143,16 +132,17 @@ const SubmitForm = () => {
       </Form.Item>
 
       <Form.Item
-        name="image"
-        label="IMAGE^^ TO FIX THIS LATER"
+        name="last_seen_date"
+        label="Last Seen"
 
         rules={[
           {
             required: true,
+            message: 'Please select a date',
           },
         ]}
       >
-        <Input style={{ width: '50%' }} placeholder="IMAGE UP THERE LATER" />
+        <DatePicker defaultValue={moment('2022-01-01', dateFormat)} format={dateFormat} />
       </Form.Item>
 
       <Form.Item
@@ -194,7 +184,7 @@ const SubmitForm = () => {
       <Form.Item label="Address">
         <Input.Group compact>
           <Form.Item
-            name={['address', 'province']}
+            name='province'
             noStyle
             rules={[{
               required: true,
@@ -218,7 +208,7 @@ const SubmitForm = () => {
             </Select>
           </Form.Item>
           <Form.Item
-            name={['address', 'street']}
+            name='last_seen_address'
             noStyle
             rules={[{
               required: true,

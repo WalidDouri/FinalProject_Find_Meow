@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Comment, Tooltip, List } from 'antd';
 import moment from 'moment';
-import Comments1 from './Comments1';
+import CommentBox from './CommentBox';
 
 const data = [
   {
@@ -40,7 +40,7 @@ const data = [
     avatar: 'https://joeschmoe.io/api/v1/random',
     content: (
       <p>
-        Childern
+        I like pizzzza
       </p>
     ),
     datetime: (
@@ -50,6 +50,18 @@ const data = [
     ),
   },
 ];
+
+// const onFinish = (values) => {
+//   console.log('Received values of form: ', values);
+
+//   return axios.get(`http://localhost:3001/api/comments`)
+//       .then(res => onApples(res.data))
+//       .catch(error => {
+//       this.setState({ errorMessage: error.toString() });
+//       console.error('There was an error!', error);
+//       });
+      
+// };
 
 
 export default class CommentsList1 extends Component {
@@ -74,7 +86,7 @@ export default class CommentsList1 extends Component {
         </li>
         )}
       />
-      <Comments1 />
+      <CommentBox />
     </div>
 
     );
