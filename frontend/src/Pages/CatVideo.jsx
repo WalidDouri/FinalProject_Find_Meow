@@ -12,33 +12,38 @@ export default function CatVideo() {
       <source src={mixCat} type='video/mp4'/>
       </video>
       <h1>Find Me-Ow <i class="fas fa-cat"></i></h1>
-      <p>IS YOUR CAT Missing?</p>
-      <div className='hero-btns'>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <div className='hero-btns1'>
         <Link to='/about'>
         <Button
           className='btns'
-          buttonStyle='btn--outline'
-          buttonSize='btn--large'
+          buttonStyle='btn1--outline1'
+          buttonSize='btn1--large1'
         >
           HOW IT WORKS
         </Button>
         </Link>
+        &ensp;
         <Link to='/search-pet'>
         <Button
           className='btns'
-          buttonStyle='btn--outline'
-          buttonSize='btn--large'
+          buttonStyle='btn1--outline1'
+          buttonSize='btn1--large1'
         >
           
           LOST/FOUND <i class="fas fa-search"></i>
         </Button>
         </Link>
+        &ensp;
         <Link to='/report-pet'>
         <Button
-          
+          hover
           className='btns'
-          buttonStyle='btn--primary'
-          buttonSize='btn--large'
+          buttonStyle='btn1--primary1'
+          buttonSize='btn1--large1'
           onClick={console.log('hey')}
         >
           REPORT YOUR CAT <i class="far fa-flag"></i>
