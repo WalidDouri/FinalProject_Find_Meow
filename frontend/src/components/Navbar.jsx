@@ -80,8 +80,8 @@ export default function Navbar() {
               </Link>
             </li>
           </ul>
-          {button && <Button onClick={()=> signLogInClick('sign-up')} buttonStyle='btn--outline'>SIGN UP</Button>}
-          {button && <Button onClick={()=> signLogInClick('login')}buttonStyle='btn--outline'>LOGIN</Button>}
+          {button && <Button onClick={()=> signLogInClick('sign-up')} buttonStyle='btn1--outline1'>SIGN UP</Button>}
+          {button && <Button onClick={()=> signLogInClick('login')}buttonStyle='btn1--outline1'>LOGIN</Button>}
         </div>
       </nav>
     </>
