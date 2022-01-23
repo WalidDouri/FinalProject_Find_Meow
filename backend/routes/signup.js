@@ -20,7 +20,7 @@ module.exports = (db) => {
           throw new Error("The username is already registered, username has to be unique");
         }
         // Insert user data to database
-        const signUpQuery = "INSERT INTO users(first_name, last_name, username, phone_number, email, password) VALUES($1, $2, $3, $4, $5, $6) returning id";
+        const signUpQuery = "INSERT INTO users(first_name, last_name, username, phone_number, email, password) VALUES($1, $2, $3, $4, $5, $6) returning id, first_name, last_name, username, phone_number, email";
 
         const queryParams = [newUser.first_name, newUser.last_name, newUser.username, newUser.phone_number, newUser.email, hashedPassword];
 
@@ -28,10 +28,15 @@ module.exports = (db) => {
         // need to include 'return', or else it will not pass data to next block
         return db.query(signUpQuery, queryParams);
       }).then((data) => {
-        const id = data.rows[0].id;
+        const user = data.rows[0];
         res.status(200).send({
           message: "Signed up successfully!",
-          id: id
+          id: user.id,
+          firstName: user.first_name,
+          lastName: user.last_name,
+          username: user.username,
+          phoneNumber: user.phoneNumber,
+          email: user.email
         });
       }).catch(err => {
         console.log(err);
