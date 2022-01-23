@@ -1,24 +1,22 @@
-import React from 'react';
 import './App.css';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import About from './Pages/About';
+import CommentSection from './components/CommentSection';
+import Footer from './components/Footer';
+import Home from './Pages/Home';
+import Login from './Pages/Login';
+import MyPage from './Pages/MyPage';
 // import useApplicationData from './hooks/useApplicationData';
 // import users from './components/users';
 import Navbar from './components/Navbar';
-import SubmitForm from './components/SubmitForm';
-import CommentBoxList from './components/CommentBoxList';
-
-import About from './Pages/About';
-import Home from './Pages/Home';
+/* eslint-disable react/jsx-no-comment-textnodes */
+import React from 'react';
 import ReportPet from './Pages/ReportPet';
 import SearchPet from './Pages/SearchPet';
 import SignUp from './Pages/SignUp';
-import Login from './Pages/Login';
-import MyPage from './Pages/MyPage';
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import Footer from './components/Footer';
-
-
+import SubmitForm from './components/SubmitForm';
 
 export default function App() {
     return (
@@ -34,20 +32,9 @@ export default function App() {
               <Route path="/sign-up" element={<SignUp/>} />
               <Route path="/login" element={<Login/>} />
 
-              <Route path="/comments" element={<CommentBoxList
-              //  commentsUrl="http://localhost:3000/comments"
-              //  currentUserId="2"
-               />} />
-              {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-              {/* need to implement the function below */}
-
+              <Route path="/comments" element={<CommentSection/>} />
               <Route path="/mypage/:id" element={<MyPage />} />
-              {/* <Route path="/comments" element={<Comment />} /> */}
-              {/* <Route path="/comments" element={<CommentBoxList */}
-              //  commentsUrl="http://localhost:3000/comments"
-              //  currentUserId="2"
-              />} />
-
+              <Route path="/mypage/:id" element={<MyPage />} />
               {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
               <Footer/>

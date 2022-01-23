@@ -25,9 +25,7 @@ export default function ReportPet() {
       <div className="search-text" style={styleObj}>Search Result List</div>
       <div id="search-result-list">
         <DisplayCats apples={apples}/>
-        {/* <h2>TEST 1</h2>
-        <h2>TEST 2</h2>
-        <h2>TEST 3</h2> */}
+        
       </div>
     </div>
   )
