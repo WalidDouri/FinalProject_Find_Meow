@@ -1,39 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Navigate } from 'react-router-dom'
 import './MyPage.scss'
 import Profile from '../components/Profile'
 import CatForms from '../components/CatForms'
 import './MyPage.scss'
-import axios from 'axios';
+import { authContext } from '../providers/Authprovider'
 
 
 export default function MyPage() {
-  const [state, setState] = useState({
-    user: null,
-    catForms: []
-  });
-  const params = useParams();
-  const userId = params.id;
+  const { auth } = useContext(authContext);
 
-  useEffect(() => {
-    axios.get(`http://localhost:3001/api/mypage/${userId}`)
-      .then(res => {
-        const user = res.data.user;
-        const catForms = res.data.catForms;
-        setState(prev => ({...prev , user, catForms}));
-      })
-      .catch (err => {
-        console.log(err)
-      })
-    }, [userId]);
-
+  if (auth) {
 return (
   <div className='mypage'>
     {/* <Navbar /> */}
     <h1>THIS IS THE MyPage</h1>
-
-    <Profile user={state.user} />
-    <CatForms catForms={state.catForms} />
+    <Profile />
+    <CatForms />
   </div>
 )
+  } else {
+    return <Navigate to="/login" />
+  }
 }
