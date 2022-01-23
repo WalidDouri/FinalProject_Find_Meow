@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import "./Navbar.scss";
 import { Link, useNavigate } from 'react-router-dom'
-import { Button } from './Button'
+import { Button } from './Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faCat } from '@fortawesome/free-solid-svg-icons'
@@ -61,12 +61,12 @@ export default function Navbar() {
             </li>
             <li className='nav-item'>
               <Link to='/report-pet' className='nav-links' onClick={closeMobileMenu}>
-                Report Pet
+                Report Cat
               </Link>
             </li>
             <li className='nav-item'>
               <Link to='/search-pet' className='nav-links' onClick={closeMobileMenu}>
-                Search Pet
+                Search Cat
               </Link>
             </li>
             <li className='nav-item'>

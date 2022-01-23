@@ -31,10 +31,10 @@ export default function App() {
               <Route path="/search-pet" element={<SearchPet />}/>
               <Route path="/sign-up" element={<SignUp/>} />
               <Route path="/login" element={<Login/>} />
+
               <Route path="/comments" element={<CommentSection/>} />
               <Route path="/mypage/:id" element={<MyPage />} />
-              {/* <Route path="/comments" element={<Comment />} /> */}
-
+              <Route path="/mypage/:id" element={<MyPage />} />
               {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
               <Footer/>

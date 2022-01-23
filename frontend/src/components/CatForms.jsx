@@ -13,6 +13,7 @@ export default function CatForms(props) {
       gender={catFormItem.gender}
       description={catFormItem.description}
       image={catFormItem.image}
+      last_seen_date={catFormItem.last_seen_date}
     />
   )
   return (

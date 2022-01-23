@@ -13,20 +13,9 @@ const { Header, Footer, Sider, Content } = Layout;
 export default function ReportPet() {
   return (
     <Layout>
-        {/* <Header id="header">HEADER </Header> */}
+       
       <Layout>
-      {/* <Sider id="sider">SLIDER
-        <div className="share-icons">
-          <GithubOutlined />
-          <YoutubeOutlined />
-          <InstagramOutlined />
-          <FacebookOutlined />
-          <RedditOutlined />
-          <TwitterOutlined />
-        </div> */}
-      {/* </Sider> */}
       
-      {/* </Layout > */}
       <Content id="content">
         <h1>THIS IS THE REPORT pET PAGE</h1>
         <SubmitForm />
@@ -36,4 +25,5 @@ export default function ReportPet() {
     </Layout>
   )
 }
+ 
 
