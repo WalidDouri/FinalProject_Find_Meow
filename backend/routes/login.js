@@ -18,12 +18,16 @@ module.exports = (db) => {
         bcrypt.compare(req.body.password, user.password)
           .then(result => {
             if (result) {
-              // req.session.user_id = user.id;
               res
                 .status(200)
                 .send({
                   message: "Login Success!",
-                  id: user.id
+                  id: user.id,
+                  firstName: user.first_name,
+                  lastName: user.last_name,
+                  username: user.username,
+                  phoneNumber: user.phone_number,
+                  email: user.email
                 });
             } else {
               res
