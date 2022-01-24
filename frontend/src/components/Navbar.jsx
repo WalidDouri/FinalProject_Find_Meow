@@ -73,10 +73,15 @@ export default function Navbar() {
             </li>
             {auth && user && <li className='nav-item'>
             <Link to={`/mypage/${user.id}`} className='nav-links' onClick={closeMobileMenu}>
-                My page
+                My Page
               </Link>
             </li>}
-            {!auth &&<li className='nav-item'>
+            {auth && user && <li className='nav-item'>
+            <Link to={`/mypage/${user.id}`} className='nav-links' onClick={closeMobileMenu}>
+              Hi! {user.username}
+              </Link>
+            </li>}
+            {!auth && <li className='nav-item'>
               <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
                 Sign-up
               </Link>
