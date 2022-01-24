@@ -7,7 +7,6 @@ import Loading from "./Loading";
 export default function CatForms() {
   const { user } = useContext(authContext);
   const [catForms, setCatForms] = useState(null);
-  // const isLoading =
 
   useEffect(() => {
     axios.get(`http://localhost:3001/api/catforms/user/${user.id}`)
@@ -25,6 +24,7 @@ export default function CatForms() {
   const catFormItems = catForms && catForms.map(catFormItem =>
     <CatFormItem
       key={catFormItem.id}
+      id={catFormItem.id}
       name={catFormItem.cat_name}
       age={catFormItem.age}
       gender={catFormItem.gender}
@@ -35,7 +35,7 @@ export default function CatForms() {
   )
   return (
     <Fragment>
-      <h2>This is cat form</h2>
+      <h2>My posts</h2>
       <ul>{catForms && catFormItems}</ul>
       <ul>{!catForms && <Loading />}</ul>
     </Fragment>
