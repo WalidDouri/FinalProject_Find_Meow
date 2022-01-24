@@ -34,8 +34,6 @@ export default function App() {
 
               <Route path="/comments" element={<CommentSection/>} />
               <Route path="/mypage/:id" element={<MyPage />} />
-              <Route path="/mypage/:id" element={<MyPage />} />
-              {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
               <Footer/>
       </BrowserRouter>     
