@@ -33,4 +33,4 @@ const createNotification = (postId) => {
     });
 };
 
-module.exports = createNotification;
+module.exports = { createNotification };
