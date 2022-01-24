@@ -17,7 +17,7 @@ export default function ReportPet() {
       <Layout>
       
       <Content id="content">
-        <h1>THIS IS THE REPORT pET PAGE</h1>
+        <h1>Report Missing Cat</h1>
         <SubmitForm />
       </Content>
       </Layout>

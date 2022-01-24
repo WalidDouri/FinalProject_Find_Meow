@@ -10,12 +10,24 @@ div.ant-row.ant-form-item {
   // margin-left: 30em;
 }
 
+#register {
+  padding: $padding;
+}
+
 #header {
   background-color: rgb(47, 155, 4);
 }
 
 #content {
   background-color: $backgroundColor;
+}
+
+#content h1 {
+  color: #17252a;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding-top: 8%;
 }
 
 #footer {
