@@ -16,8 +16,8 @@ export default function Login() {
   return (
     <div id='login'>
      
-      <h1>THIS IS THE Login</h1>
       <div id="Left" >
+      <h1>Welcome Back! We've missed you!</h1>
       <LoginForm />
       </div>
       <div id="Right">
