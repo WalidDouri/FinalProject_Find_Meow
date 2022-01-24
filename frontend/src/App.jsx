@@ -17,6 +17,8 @@ import ReportPet from './Pages/ReportPet';
 import SearchPet from './Pages/SearchPet';
 import SignUp from './Pages/SignUp';
 import SubmitForm from './components/SubmitForm';
+import PostDetail from './Pages/PostDetail';
+// import Map from './components/Map';
 
 export default function App() {
     return (
@@ -32,22 +34,13 @@ export default function App() {
               <Route path="/sign-up" element={<SignUp/>} />
               <Route path="/login" element={<Login/>} />
 
-<<<<<<< HEAD
-              <Route path="/comments" element={<CommentBoxList
-              //  commentsUrl="http://localhost:3000/comments"
-              //  currentUserId="2"
-               />} />
-              {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-              {/* need to implement the function below */}
 
-              <Route path="/mypage/:id" element={<MyPage />} />
-              {/* <Route path="/comments" element={<Comment />} /> */}
-
-              {/* <Route path="*" element={<NotFound />} /> */}
-=======
               <Route path="/comments" element={<CommentSection/>} />
               <Route path="/mypage/:id" element={<MyPage />} />
->>>>>>> master
+              <Route path="/post/:id" element={<PostDetail />} />
+              {/* <Route path="/map" element={<Map />} /> */}
+              {/* <Route path="*" element={<NotFound />} /> */}
+
             </Routes>
               <Footer/>
       </BrowserRouter>     
