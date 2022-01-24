@@ -9,8 +9,9 @@ const signupRouter = require('./routes/signup');
 const searchRouter = require('./routes/search');
 const loginRouter = require('./routes/login');
 const smsRouter = require('./routes/sms');
+const commentRouter = require('./routes/comment');
+// const mapDisplayRoutes = require("./routes/map");
 // const dashboardRouter = require('./routes/dashboard');
-// const commentRouter = require('./routes/comment');
 
 const mypageRouter = require('./routes/mypage');
 
@@ -19,6 +20,7 @@ const app = express();
 const db = require('./db');
 const dbHelpers = require('./helpers/dbHelpers')(db);
 const cors = require('cors');
+const router = require('./routes/search');
 
 
 app.use(logger('dev'));
@@ -36,10 +38,10 @@ app.use('/api/users', usersRouter(dbHelpers));
 app.use('/api/signup', signupRouter(db));
 app.use('/api/search', searchRouter);
 app.use('/api/login', loginRouter(db));
-// app.use('/api/comment', commentRouter(db));
+app.use('/api/comment', commentRouter);
 app.use('/api/sms', smsRouter(db)); //for test
 app.use('/api/mypage', mypageRouter(db));
-
+// app.use("/map", mapDisplayRoutes(db));
 
 
 
@@ -81,6 +83,12 @@ app.post('/report-pet', (req, res) => {
       console.error(error)
     })
 })
+
+app.get("/maps", (req, res) => {
+  console.log(req.query);
+  res.render("mapTest", req.query);
+
+});
 
 
 
