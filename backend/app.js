@@ -11,8 +11,6 @@ const loginRouter = require('./routes/login');
 const smsRouter = require('./routes/sms');
 const commentRouter = require('./routes/comment');
 const mapDisplayRouter = require("./routes/map");
-// const mypageRouter = require('./routes/mypage');
-
 const catFormsRouter = require('./routes/catForms');
 
 
@@ -40,7 +38,10 @@ app.use('/api/search', searchRouter);
 app.use('/api/login', loginRouter(db));
 app.use('/api/comment', commentRouter);
 app.use('/api/sms', smsRouter(db)); //for test
+<<<<<<< HEAD
 // app.use('/api/mypage', mypageRouter(db));
+=======
+>>>>>>> 354fe7e194f00604950d7385672063bfc7bb7c88
 app.use("/map", mapDisplayRouter);
 app.use('/api/catforms', catFormsRouter(db));
 
