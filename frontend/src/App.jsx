@@ -36,6 +36,7 @@ export default function App() {
               <Route path="/mypage/:id" element={<MyPage />} />
               {/* <Route path="/map" element={<Map />} /> */}
               {/* <Route path="*" element={<NotFound />} /> */}
+
             </Routes>
               <Footer/>
       </BrowserRouter>     

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import axios from 'axios';
 import 'antd/dist/antd.css';
 import {
@@ -8,6 +8,7 @@ import {
 } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { authContext } from '../providers/Authprovider'
 
 const formItemLayout = {
   labelCol: {
@@ -44,6 +45,7 @@ const LoginForm = () => {
   const [form] = Form.useForm();
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const { login } = useContext(authContext);
 
   const onFinish = (values) => {
     const url = "http://localhost:3001/api/login"
@@ -54,10 +56,11 @@ const LoginForm = () => {
     // console.log('Received values of form: ', values);
     axios.post(url, loginInfo)
       .then(res => {
-        // console.log(res.data);
-        console.log(res.status);
-        const id = res.data.id;
-        navigate(`/mypage/${id}`, { replace: true });
+        if (res.status === 200) {
+          const id = res.data.id;
+          login(id, res.data.firstName, res.data.lastName, res.data.username, res.data.phoneNumber, res.data.email);
+          navigate(`/mypage/${id}`, { replace: true });
+        }
       })
       .catch(err => {
         const errorMessage = err.response.data.message;

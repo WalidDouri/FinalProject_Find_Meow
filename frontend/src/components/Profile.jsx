@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Profile.scss'
+import { authContext } from '../providers/Authprovider'
 
 export default function Profile(props) {
-  console.log("props.user======", props.user);
+  const { user } = useContext(authContext);
+  
   return (
     <div className='profile'>
       <h2>This is user profile</h2>
-      <p>{props.user &&  props.user.first_name} {props.user &&  props.user.last_name} </p>
-      <p>{props.user &&  props.user.username} </p>
-      <p>{props.user &&  props.user.phone_number} </p>
-      <p>{props.user &&  props.user.email} </p>
+      <p>{user &&  user.firstName} {user &&  user.lastName} </p>
+      <p>{user &&  user.username} </p>
+      <p>{user &&  user.phoneNumber} </p>
+      <p>{user &&  user.email} </p>
     </div>
   )
 }

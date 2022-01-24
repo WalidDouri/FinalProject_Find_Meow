@@ -1,15 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import "./Navbar.scss";
 import { Link, useNavigate } from 'react-router-dom'
 import { Button } from './Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faCat } from '@fortawesome/free-solid-svg-icons'
+import { authContext } from '../providers/Authprovider'
 
 export default function Navbar() {
   const navigate = useNavigate();
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
+  const { auth, user, logout } = useContext(authContext);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -69,19 +71,36 @@ export default function Navbar() {
                 Search Cat
               </Link>
             </li>
-            <li className='nav-item'>
+            {auth && user && <li className='nav-item'>
+            <Link to={`/mypage/${user.id}`} className='nav-links' onClick={closeMobileMenu}>
+                My Page
+              </Link>
+            </li>}
+            {auth && user && <li className='nav-item'>
+            <Link to={`/mypage/${user.id}`} className='nav-links' onClick={closeMobileMenu}>
+              Hi! {user.username}
+              </Link>
+            </li>}
+            {!auth && <li className='nav-item'>
               <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
                 Sign-up
               </Link>
-            </li>
-            <li className='nav-item'>
+            </li>}
+            {!auth && <li className='nav-item'>
               <Link to='/login' className='nav-links-mobile' onClick={closeMobileMenu}>
                 Login
               </Link>
-            </li>
+            </li>}
+            {auth && <li className='nav-item'>
+              <Link to='/login' className='nav-links-mobile' onClick={() => logout()}>
+                Log out
+              </Link>
+            </li>}
+            
           </ul>
-          {button && <Button onClick={()=> signLogInClick('sign-up')} buttonStyle='btn--outline'>SIGN UP</Button>}
-          {button && <Button onClick={()=> signLogInClick('login')}buttonStyle='btn--outline'>LOGIN</Button>}
+          {!auth && button && <Button onClick={()=> signLogInClick('sign-up')}buttonStyle='btn--outline'>SIGN UP</Button>}&nbsp;&nbsp;
+          {!auth && button && <Button onClick={()=> signLogInClick('login')}buttonStyle='btn--outline'>LOGIN</Button>}
+          {auth && button && <Button onClick={() => logout()} buttonStyle='btn--outline'>LOG OUT</Button>}
         </div>
       </nav>
     </>
