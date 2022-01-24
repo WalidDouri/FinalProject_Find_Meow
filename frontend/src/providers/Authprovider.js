@@ -7,14 +7,15 @@ const AuthProvider = props => {
   const [user, setUser] = useState(null);
 
   const login = (id, firstName, lastName, username, phoneNumber, email) => {
-    setAuth(true);
-    setUser({
+    const user = {
       id,
       firstName,
       lastName,
       username,
       phoneNumber,
-      email});
+      email};
+    setAuth(true);
+    setUser(user);
   };
 
   const logout = () => {
