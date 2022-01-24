@@ -10,7 +10,9 @@ const searchRouter = require('./routes/search');
 const loginRouter = require('./routes/login');
 const smsRouter = require('./routes/sms');
 const commentRouter = require('./routes/comment');
-// const mapDisplayRoutes = require("./routes/map");
+const mapDisplayRouter = require("./routes/map");
+// const mypageRouter = require('./routes/mypage');
+
 const catFormsRouter = require('./routes/catForms');
 
 
@@ -38,9 +40,9 @@ app.use('/api/search', searchRouter);
 app.use('/api/login', loginRouter(db));
 app.use('/api/comment', commentRouter);
 app.use('/api/sms', smsRouter(db)); //for test
-// app.use("/map", mapDisplayRoutes(db));
+app.use('/api/mypage', mypageRouter(db));
+app.use("/map", mapDisplayRouter);
 app.use('/api/catforms', catFormsRouter(db));
-
 
 
 
@@ -83,11 +85,7 @@ app.post('/report-pet', (req, res) => {
     })
 })
 
-app.get("/maps", (req, res) => {
-  console.log(req.query);
-  res.render("mapTest", req.query);
 
-});
 
 
 
