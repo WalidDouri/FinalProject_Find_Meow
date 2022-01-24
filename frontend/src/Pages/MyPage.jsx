@@ -13,8 +13,7 @@ export default function MyPage() {
   if (auth) {
 return (
   <div className='mypage'>
-    {/* <Navbar /> */}
-    <h1>THIS IS THE MyPage</h1>
+    <h1>My Page</h1>
     <Profile />
     <CatForms />
   </div>
