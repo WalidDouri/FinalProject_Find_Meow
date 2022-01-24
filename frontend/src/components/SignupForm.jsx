@@ -71,7 +71,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <Fragment>
+    <div className='SignUpForm'>
       <p>{message}</p>
       <Form
         {...formItemLayout}
@@ -198,7 +198,7 @@ const SignUpForm = () => {
           Or&nbsp;&nbsp; <Link to="/login">Login</Link>
         </Form.Item>
       </Form>
-    </Fragment>
+    </div>
   );
 };
 
