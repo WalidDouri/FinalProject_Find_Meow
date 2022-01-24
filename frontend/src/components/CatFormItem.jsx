@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from 'antd'
 import './CatFormItem.scss'
-import "bootstrap/dist/css/bootstrap.min.css"
+// import "bootstrap/dist/css/bootstrap.min.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMars, faCalendar, faVenus } from '@fortawesome/free-solid-svg-icons'
 
@@ -49,4 +49,3 @@ export default function CatFormItem(props) {
     </div>
   );
   }
-

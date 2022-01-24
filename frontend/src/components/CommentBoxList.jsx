@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Comment, Tooltip, List } from 'antd';
 import moment from 'moment';
-import CommentBox from './CommentBox';
+import CommentBox from './CommentSection';
 
 const data = [
   {
