@@ -52,7 +52,6 @@ const options = {
 }
 
 
-
 export default function Map() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
@@ -68,7 +67,7 @@ export default function Map() {
         zoom={9}
         options={options} 
       >
-        {parkData.features.map(park => (
+        {/* {parkData.features.map(park => (
         <Marker
           key={park.properties.PARK_ID}
           position={{
@@ -83,7 +82,7 @@ export default function Map() {
             scaledSize: new window.google.maps.Size(25, 25)
           }}
         />
-      ))}
+      ))} */}
 
       {/* {selectedPark && (
         <InfoWindow

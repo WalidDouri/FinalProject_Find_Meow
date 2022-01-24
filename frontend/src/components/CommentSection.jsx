@@ -107,7 +107,8 @@ const CommentSection = () => {
       setComments([
         ...comments,
         {
-          // Change to pull info from DB username/ we dont have a avatar column
+          // Change to pull info from DB username/ we dont have a avatar column {}
+          username:{}
           author: 'Han Solo',
           avatar: 'https://joeschmoe.io/api/v1/random',
           content: <p>{value}</p>,
@@ -121,9 +122,9 @@ const CommentSection = () => {
     const url = "http://localhost:3001/api/comment"
     const payload = {
       comment: value,
-      date_created: '2025,01,01',
-      cat_form_id: 1,
-      user_id: 1,
+      // date_created: '2025,01,01',
+      // cat_form_id: 1,
+      // user_id: 1,
     }
     console.log('Received values of form: ', payload);
     axios.post(url, payload)
