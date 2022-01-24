@@ -6,10 +6,10 @@ import { Navigate } from 'react-router-dom'
 
 
 export default function Login() {
-  const { auth } = useContext(authContext);
+  const { auth, user } = useContext(authContext);
 
-  if (auth) {
-    return <Navigate to='/search-pet' />
+  if (auth && user) {
+  return <Navigate to={`/mypage/${user.id}`}  />
   }
   return (
     <div className='login'>

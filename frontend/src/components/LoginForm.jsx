@@ -56,7 +56,6 @@ const LoginForm = () => {
     // console.log('Received values of form: ', values);
     axios.post(url, loginInfo)
       .then(res => {
-        console.log(res.data);
         if (res.status === 200) {
           const id = res.data.id;
           login(id, res.data.firstName, res.data.lastName, res.data.username, res.data.phoneNumber, res.data.email);
