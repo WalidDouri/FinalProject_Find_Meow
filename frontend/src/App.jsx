@@ -17,6 +17,7 @@ import ReportPet from './Pages/ReportPet';
 import SearchPet from './Pages/SearchPet';
 import SignUp from './Pages/SignUp';
 import SubmitForm from './components/SubmitForm';
+import PostDetail from './Pages/PostDetail';
 // import Map from './components/Map';
 
 export default function App() {
@@ -34,6 +35,7 @@ export default function App() {
               <Route path="/login" element={<Login/>} />
               <Route path="/comments" element={<CommentSection/>} />
               <Route path="/mypage/:id" element={<MyPage />} />
+              <Route path="/post/:id" element={<PostDetail />} />
               {/* <Route path="/map" element={<Map />} /> */}
               {/* <Route path="*" element={<NotFound />} /> */}
 
