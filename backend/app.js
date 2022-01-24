@@ -11,8 +11,6 @@ const loginRouter = require('./routes/login');
 const smsRouter = require('./routes/sms');
 const commentRouter = require('./routes/comment');
 const mapDisplayRouter = require("./routes/map");
-// const mypageRouter = require('./routes/mypage');
-
 const catFormsRouter = require('./routes/catForms');
 
 

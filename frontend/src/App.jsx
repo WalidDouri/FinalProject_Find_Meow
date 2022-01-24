@@ -39,7 +39,6 @@ export default function App() {
               <Route path="/map" element={<Map />} />
               <Route path="/post/:id" element={<PostDetail />} />
               {/* <Route path="*" element={<NotFound />} /> */}
-
             </Routes>
               <Footer/>
       </BrowserRouter>     
