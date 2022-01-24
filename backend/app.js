@@ -40,7 +40,6 @@ app.use('/api/search', searchRouter);
 app.use('/api/login', loginRouter(db));
 app.use('/api/comment', commentRouter);
 app.use('/api/sms', smsRouter(db)); //for test
-app.use('/api/mypage', mypageRouter(db));
 app.use("/map", mapDisplayRouter);
 app.use('/api/catforms', catFormsRouter(db));
 
