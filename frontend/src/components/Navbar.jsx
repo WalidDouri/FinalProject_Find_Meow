@@ -73,7 +73,7 @@ export default function Navbar() {
             </li>
             {auth && user && <li className='nav-item'>
             <Link to={`/mypage/${user.id}`} className='nav-links' onClick={closeMobileMenu}>
-                My page
+                My Page
               </Link>
             </li>}
             {!auth &&<li className='nav-item'>
