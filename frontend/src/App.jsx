@@ -17,7 +17,7 @@ import ReportPet from './Pages/ReportPet';
 import SearchPet from './Pages/SearchPet';
 import SignUp from './Pages/SignUp';
 import SubmitForm from './components/SubmitForm';
-// import Map from './components/Map';
+import Map from './components/Map';
 
 export default function App() {
     return (
@@ -34,7 +34,7 @@ export default function App() {
               <Route path="/login" element={<Login/>} />
               <Route path="/comments" element={<CommentSection/>} />
               <Route path="/mypage/:id" element={<MyPage />} />
-              {/* <Route path="/map" element={<Map />} /> */}
+              <Route path="/map" element={<Map />} />
               {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
               <Footer/>
