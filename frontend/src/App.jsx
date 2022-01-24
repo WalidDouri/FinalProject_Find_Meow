@@ -18,6 +18,8 @@ import SearchPet from './Pages/SearchPet';
 import SignUp from './Pages/SignUp';
 import SubmitForm from './components/SubmitForm';
 import Map from './components/Map';
+import PostDetail from './Pages/PostDetail';
+
 
 export default function App() {
     return (
@@ -35,6 +37,7 @@ export default function App() {
               <Route path="/comments" element={<CommentSection/>} />
               <Route path="/mypage/:id" element={<MyPage />} />
               <Route path="/map" element={<Map />} />
+              <Route path="/post/:id" element={<PostDetail />} />
               {/* <Route path="*" element={<NotFound />} /> */}
 
             </Routes>

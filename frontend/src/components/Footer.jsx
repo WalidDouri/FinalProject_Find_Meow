@@ -9,16 +9,16 @@ export default function Footer() {
   return (
     <div className='footer-container'>
       <section className="footer-subscription">
-        <p className="footer-subscription-heading">
+        {/* <p className="footer-subscription-heading">
           NOTE
-        </p>
+  </p>*/}
         <p className="footer-subscription-text">
           You can unsubscribe anytime
         </p>
         <div className="input-areas">
           <form>
             <input type="email" name='email' placeholder='Your Email' className="footer-input"/>
-            {/* <Button buttonStyle='btn--outline'>Subscribe</Button> */}
+            <Button buttonStyle='btn--outline'>Subscribe</Button>
           </form>
         </div>
       </section>

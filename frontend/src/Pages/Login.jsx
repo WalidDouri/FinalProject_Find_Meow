@@ -1,3 +1,5 @@
+
+import CarouselTest from '../components/Carousel'
 import React, { useContext } from 'react'
 import LoginForm from '../components/LoginForm'
 import './Login.scss'
@@ -12,10 +14,15 @@ export default function Login() {
   return <Navigate to={`/mypage/${user.id}`}  />
   }
   return (
-    <div className='login'>
-      {/* <Navbar /> */}
-      <h1>THIS IS THE Login</h1>
+    <div id='login'>
+     
+      <div id="Left" >
+      <h1>Welcome Back! We've missed you!</h1>
       <LoginForm />
+      </div>
+      <div id="Right">
+      <CarouselTest/>
+      </div>
     </div>
   )
 }

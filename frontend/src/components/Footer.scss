@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .footer-subscription {
@@ -18,7 +19,7 @@
 
   margin-bottom: 24px;
   padding: 24px;
-  color: #DEF2F1;
+  color: $backgroundColor;
 }
 
 .footer-subscription > p {
@@ -73,11 +74,11 @@
 }
 
 .footer-link-items > h2 {
-  color: #DEF2F1;
+  color: $backgroundColor;
 }
 
 .footer-link-items a {
-  color: #DEF2F1;
+  color: $backgroundColor;
   text-decoration: none;
   margin-bottom: 0.5rem;
 }
@@ -97,7 +98,7 @@
 
 /* Social Icons */
 .social-icon-link {
-  color: #DEF2F1;
+  color: $backgroundColor;
   font-size: 24px;
 }
 
@@ -123,7 +124,7 @@
 }
 
 .social-logo {
-  color: #DEF2F1;
+  color: $backgroundColor;
   justify-self: start;
   margin-left: 20px;
   cursor: pointer;
@@ -135,7 +136,7 @@
 }
 
 .website-rights {
-  color: #DEF2F1;
+  color: $backgroundColor;
   margin-bottom: 16px;
 }
 

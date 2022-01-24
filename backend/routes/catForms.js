@@ -34,7 +34,7 @@ module.exports = (db) => {
         const catForm = data.rows[0];
         res
           .status(200)
-          .json({catForm});
+          .json(catForm);
       })
       .catch(err => {
         console.log(err);
