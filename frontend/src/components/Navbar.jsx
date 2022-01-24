@@ -93,14 +93,9 @@ export default function Navbar() {
             </li>}
             
           </ul>
-<<<<<<< HEAD
-          {button && <Button onClick={()=> signLogInClick('sign-up')} buttonStyle='btn1--outline1'>SIGN UP</Button>}
-          {button && <Button onClick={()=> signLogInClick('login')}buttonStyle='btn1--outline1'>LOGIN</Button>}
-=======
           {!auth && button && <Button onClick={()=> signLogInClick('sign-up')}buttonStyle='btn--outline'>SIGN UP</Button>}&nbsp;&nbsp;
           {!auth && button && <Button onClick={()=> signLogInClick('login')}buttonStyle='btn--outline'>LOGIN</Button>}
           {auth && button && <Button onClick={() => logout()} buttonStyle='btn--outline'>LOG OUT</Button>}
->>>>>>> master
         </div>
       </nav>
     </>
