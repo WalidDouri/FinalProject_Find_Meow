@@ -17,8 +17,9 @@ import ReportPet from './Pages/ReportPet';
 import SearchPet from './Pages/SearchPet';
 import SignUp from './Pages/SignUp';
 import SubmitForm from './components/SubmitForm';
+import Map from './components/Map';
 import PostDetail from './Pages/PostDetail';
-// import Map from './components/Map';
+
 
 export default function App() {
     return (
@@ -33,19 +34,12 @@ export default function App() {
               <Route path="/search-pet" element={<SearchPet />}/>
               <Route path="/sign-up" element={<SignUp/>} />
               <Route path="/login" element={<Login/>} />
-
-<<<<<<< HEAD
               <Route path="/comments" element={<CommentSection/>} />
               <Route path="/mypage/:id" element={<MyPage />} />
-=======
-
-              <Route path="/comments" element={<CommentSection/>} />
-              <Route path="/mypage/:id" element={<MyPage />} />
+              <Route path="/map" element={<Map />} />
               <Route path="/post/:id" element={<PostDetail />} />
-              {/* <Route path="/map" element={<Map />} /> */}
               {/* <Route path="*" element={<NotFound />} /> */}
 
->>>>>>> master
             </Routes>
               <Footer/>
       </BrowserRouter>     

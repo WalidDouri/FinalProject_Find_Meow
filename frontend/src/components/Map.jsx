@@ -25,7 +25,7 @@ import MapStyles from './MapStyles'
 const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 const mapContainerStyle = {
   width: '600px',
-  height: '400px'
+  height: '300px'
 };
 
 const center = {
@@ -33,17 +33,17 @@ const center = {
   lng:-79.383186,
 }
 
-const divStyle = {
-  background: `white`,
-  border: `1px solid #ccc`,
-  padding: 15
-}
+// const divStyle = {
+//   background: `white`,
+//   border: `1px solid #ccc`,
+//   padding: 15
+// }
 
-const onLoad = infoWindow => {
-  console.log('infoWindow: ', infoWindow)
-}
+// const onLoad = infoWindow => {
+//   console.log('infoWindow: ', infoWindow)
+// }
 
-const position = { lat: 43.653, lng: -80.214 }
+// const position = { lat: 43.653, lng: -80.214 }
 
 const options = {
   styles: MapStyles,
@@ -68,7 +68,7 @@ export default function Map() {
         zoom={9}
         options={options} 
       >
-        {/* {parkData.features.map(park => (
+        {parkData.features.map(park => (
         <Marker
           key={park.properties.PARK_ID}
           position={{
@@ -83,23 +83,24 @@ export default function Map() {
             scaledSize: new window.google.maps.Size(25, 25)
           }}
         />
-      ))} */}
+      ))}
 
-        {/* <InfoWindow
-          onLoad={onLoad}
-          position={{
-            lat: park.geometry.coordinates[1],
-            lng: park.geometry.coordinates[0],
-          }}
-          // Function is used to reset the info window if the x button is clicked - change set state
+      {/* {selectedPark && (
+        <InfoWindow
           onCloseClick={() => {
             setSelectedPark(null);
           }}
-          >
-           <div style={divStyle}>
-              <h1>InfoWindow</h1>
-            </div>
-          </InfoWindow> */}
+          position={{
+            lat: selectedPark.geometry.coordinates[1],
+            lng: selectedPark.geometry.coordinates[0]
+          }}
+        >
+          <div>
+            <h2>{selectedPark.properties.NAME}</h2>
+            <p>{selectedPark.properties.DESCRIPTIO}</p>
+          </div>
+        </InfoWindow>
+      )} */}
 
         { /* Child components, such as markers, info windows, etc. */ }
         <></>
