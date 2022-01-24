@@ -83,11 +83,11 @@ const CommentSection = () => {
   const [refreshComments, setRefreshComments] = React.useState(false)
 
   React.useEffect(() => {
-    // const url = `http://localhost:3001/comments`
+    const url = "http://localhost:3001/api/comment"
     if (refreshComments) {
       // Fetch the comments and set the comments into the components state
       // axios.get(`http://localhost:3001/:id/comments`),
-      axios.get(`http://localhost:3001/comments`)
+      axios.get(url)
       .then(response => {
         setComments(response.data)
       })
@@ -118,7 +118,7 @@ const CommentSection = () => {
     }, 1000);
 
 
-    const url = "http://localhost:3001/comments"
+    const url = "http://localhost:3001/api/comment"
     const payload = {
       comment: value,
       date_created: '2025,01,01',
