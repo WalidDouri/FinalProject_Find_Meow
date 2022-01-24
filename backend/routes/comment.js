@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
-
+const {createNotification} = require('../helpers/notificationHelpers');
 
 
 router.get('/', function (req, res) {
@@ -32,6 +32,9 @@ router.post('/', (req, res) => {
       VALUES($1, $2, $3, $4) RETURNING *;`,
     [comment, date_created, cat_form_id, user_id])
     .then((results) => {
+      // SMS
+      // const sms = createNotification(cat_form_id);
+      // console.log(sms);
       res.status(200);
       res.send(results);
     })
