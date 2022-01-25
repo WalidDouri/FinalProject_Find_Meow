@@ -3,6 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { InboxOutlined } from '@ant-design/icons';
 import { Form, Input, Select, Checkbox, Button, Upload, message, InputNumber, DatePicker } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 
 const { Dragger } = Upload;
@@ -70,6 +71,7 @@ const tailFormItemLayout = {
 
 const SubmitForm = () => {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
   const onFinish = (values) => {
     const url = "http://localhost:3001/report-pet"
@@ -83,10 +85,12 @@ const SubmitForm = () => {
 
     }
 
-    console.log('Received values of form: ', payload);
+    // console.log('Received values of form: ', payload);
     axios.post(url, payload)
       .then(res => {
-        console.log(res.data)
+        if (res.status === 200) {
+        navigate(`/post/${res.data.id}`, { replace: true });
+        }
       })
       .catch(err => { console.log(err) })
 
