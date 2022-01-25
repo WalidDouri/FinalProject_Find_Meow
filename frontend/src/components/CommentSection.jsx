@@ -108,7 +108,7 @@ const CommentSection = () => {
         ...comments,
         {
           // Change to pull info from DB username/ we dont have a avatar column {}
-          username:{}
+          username:{},
           author: 'Han Solo',
           avatar: 'https://joeschmoe.io/api/v1/random',
           content: <p>{value}</p>,
