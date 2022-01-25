@@ -19,6 +19,7 @@ import SignUp from './Pages/SignUp';
 import SubmitForm from './components/SubmitForm';
 import Map from './components/Map';
 import PostDetail from './Pages/PostDetail';
+import Confirmation from './components/Confirmation';
 
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
               <Route path="/mypage/:id" element={<MyPage />} />
               <Route path="/map" element={<Map />} />
               <Route path="/post/:id" element={<PostDetail />} />
+              <Route path="/confirmation/:id" element={<Confirmation />} />
               {/* <Route path="*" element={<NotFound />} /> */}
             </Routes>
               <Footer/>

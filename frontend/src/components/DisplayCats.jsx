@@ -3,44 +3,45 @@ import { Card } from 'antd';
 import "./DisplayCats.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarker } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 
-export default function DisplayCats({apples, cats}) {
+export default function DisplayCats({ apples, cats }) {
   const { Meta } = Card;
-    const displayInfo = () => {
-      // const { apples } = props;
+  const displayInfo = () => {
+    // const { apples } = props;
 
-      if (apples.length > 0) {
-        return (
-          apples.map ((setDetail, index) => {
-            console.log(setDetail);
-            return (
-              <>
+    if (apples.length > 0) {
+      return (
+        apples.map((setDetail, index) => {
+          return (
+            <>
               <div className="displayCat">
-              <Card
-              hoverable
-              style={{ width: 260 }}
-              cover={<img alt="example" src={setDetail.image} />}
-            >
-              <Meta title={setDetail.cat_name} description={setDetail.status} />
-              <br></br>
-              <p>Last Seen: <FontAwesomeIcon icon={faMapMarker} /> {setDetail.last_seen_city}</p>
-            </Card>
-            </div>
-            {/* {index % 5 === 0 && <br></br>} */}
+                <Link to={`/post/${setDetail.id}`}>
+                  <Card
+                    hoverable
+                    style={{ width: 260 }}
+                    cover={<img alt="example" src={setDetail.image} />}
+                  >
+                    <Meta title={setDetail.cat_name} description={setDetail.status} />
+                    <br></br>
+                    <p>Last Seen: <FontAwesomeIcon icon={faMapMarker} /> {setDetail.last_seen_city}</p>
+                  </Card>
+                </Link>
+              </div>
             </>
-            )
-          })
-        )
-      } else {
-        return (
-          <h3>No Cats yet xD</h3>
-        )
-    } 
+          )
+        })
+      )
+    } else {
+      return (
+        <h3>No Cats yet xD</h3>
+      )
+    }
   }
   return (
     <>
-    { displayInfo()}
+      {displayInfo()}
     </>
   )
 }
@@ -52,11 +53,11 @@ export default function DisplayCats({apples, cats}) {
                 <h3 className="setDetail__title">{setDetail.cat_name}</h3>
                 <p className="Gender__body">{setDetail.gender}</p>
                 {/* <p className="setDetail__body">{setDetail.content}</p> */}
-              //   <p className="Address__body">{setDetail.last_seen_address}</p>
-              //   <p className="City__body">{setDetail.last_seen_city}</p>
-              //   <p className="Postal_Code__body">{setDetail.last_seen_postal_code}</p>
-              //   <span className="setDetail__fadeOut"></span>
-              // </div> */}
+//   <p className="Address__body">{setDetail.last_seen_address}</p>
+//   <p className="City__body">{setDetail.last_seen_city}</p>
+//   <p className="Postal_Code__body">{setDetail.last_seen_postal_code}</p>
+//   <span className="setDetail__fadeOut"></span>
+// </div> */}
 
 
 

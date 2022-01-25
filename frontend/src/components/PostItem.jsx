@@ -5,12 +5,10 @@ import { Card } from 'antd'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMars, faCalendar, faVenus } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
-import { authContext } from '../providers/Authprovider'
 import Loading from "./Loading";
 
 
 export default function Post() {
-  const { user } = useContext(authContext);
   const [post, setPost] = useState(null);
   const { id } = useParams();
 
