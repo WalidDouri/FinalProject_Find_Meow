@@ -7,7 +7,37 @@
 
 #search-result-list {
   display: flex;
-  background-color: rgb(0, 202, 202);
+  // background-color: rgb(0, 202, 202);
   justify-content: space-around;
   border-radius: 100px;
+  max-height: 250px;
 }
+
+#searchForm{
+
+  border: solid 5px #17252a;
+  border-radius: 20px;
+  margin-left: 400px;
+  margin-right: 400px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-bottom: 5%;
+  background: #3aafa9;
+  display: flex;
+  align-items: center;
+}
+
+.searchTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 105px;
+  padding-bottom: 40px;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+
