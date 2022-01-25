@@ -42,7 +42,7 @@ export default function SearchForm ({onApples}) {
             name="last_seen_postal_code"
             label="Postal Code:"
           >
-            <Input placeholder="Postal Code" name="last_seen_postal_code"style={{ width: 100 }}  />
+            <Input placeholder="Postal Code" name="last_seen_postal_code"style={{ width: 150 }}  />
           </Form.Item>
         
   
