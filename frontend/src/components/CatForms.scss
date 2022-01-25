@@ -15,7 +15,7 @@
   border: red solid 5px;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   align-content: center;
   flex-wrap: nowrap;
   flex-direction: row;
@@ -52,11 +52,32 @@
   justify-content: center;
 }
 
-.overThis {
+#overThis {
 
     display: flex;
     flex-direction: column;
     height: 500px;
     justify-content: center;
     margin-left: 0;
+    width: 50%; //added
+
+    .ant-col-6 {
+      display: flex;
+      flex: 0 0 40%;
+      max-width: 40%;
+      justify-content: flex-end;
+      font-size: x-large;
+      border: 1px solid black;
+      padding-right: 10px;
+    }
+    .ant-col-18 {
+      font-size: x-large;
+      display: inline-flex;
+      flex: 0 0 60%;
+      max-width: 60%;
+      justify-content: left;
+      padding-left: 10px;
+      /* font-size: 2em; */
+      align-items: center;
+}
 }
