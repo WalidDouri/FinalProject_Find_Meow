@@ -8,10 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function CatFormItem(props) {
-  // const hasCatForms = props.catForms.length > 0;
-
-  // console.log("Cat Form Item",props.catFormItem);
-  console.log("------------>",props)
+  
   return (
     <div className="card mb-3" style={{width: '1000px'}}>
       <div className="row no-gutters">
