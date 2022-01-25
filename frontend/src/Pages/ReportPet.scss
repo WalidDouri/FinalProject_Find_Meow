@@ -10,9 +10,15 @@ div.ant-row.ant-form-item {
   // margin-left: 30em;
 }
 
+div.ant-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 #register {
   padding: $padding;
-  padding-top: 2%
+  padding-top: 2%;
 }
 
 #header {

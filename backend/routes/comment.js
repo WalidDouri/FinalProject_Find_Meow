@@ -6,16 +6,13 @@ const db = require('../db');
 
 router.get('/:id', (req, res) => {
 
-  const query = {
-    text: `SELECT comments.id, cat_form_id, comment, cat_forms.date_created, users.username
-      FROM comments 
+  const query = `SELECT comments.id, cat_form_id, comment, cat_forms.date_created, users.username
+      FROM comments
       JOIN cat_forms ON cat_forms.id = comments.cat_form_id
       JOIN users ON users.id = comments.user_id 
       WHERE cat_forms.id = $1;`
-  }
   const catFormId = [req.params.id];
 
-  // res.status(200).send("HELLO WORLD")
   db.query(query, catFormId)
     .then(results =>
       res.status(200)
@@ -29,19 +26,19 @@ router.get('/:id', (req, res) => {
 
 
 router.post('/', (req, res) => {
-  const { comment, date_created, cat_form_id } = req.body
+  const { comment, cat_form_id, user_id } = req.body;
 
   // res.status(200).send("HELLO WORLD")
   db.query(`
-      INSERT INTO comments (comment, date_created, cat_form_id, user_id)
-      VALUES($1, $2, $3, $4) RETURNING *;`,
-    [comment, date_created, cat_form_id, user_id])
-    .then((results) => {
+      INSERT INTO comments (comment,  cat_form_id, user_id)
+      VALUES($1, $2, $3) RETURNING *;`,
+    [comment, cat_form_id, user_id])
+    .then(results => {
       // SMS
       // const sms = createNotification(cat_form_id);
       // console.log(sms);
       res.status(200);
-      res.send(results);
+      res.send(results.rows[0]);
     })
     .catch(error => {
       console.error(error)
