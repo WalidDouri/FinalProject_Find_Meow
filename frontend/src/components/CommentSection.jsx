@@ -1,58 +1,57 @@
 import { Avatar, Button, Comment, Form, Input, List, Tooltip } from 'antd';
 
-import React from 'react';
+import React, { useContext } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { useParams } from 'react-router-dom'
+import { authContext } from '../providers/Authprovider'
 
 const { TextArea } = Input;
 
-const data = [
-  {
-    actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-    author: 'Luna',
-    avatar: 'https://joeschmoe.io/api/v1/random',
-    content: (
-      <p>
-        I am sorry to hear. We should plan a search party!
-      </p>
-    ),
-    datetime: (
-      <Tooltip title={moment().subtract(1, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-        <span>{moment().subtract(1, 'days').fromNow()}</span>
-      </Tooltip>
-    ),
-  },
-  {
-    actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-    author: 'Leo',
-    avatar: 'https://joeschmoe.io/api/v1/random',
-    content: (
-      <p>
-        Isnt this like the 10th time you lost your cat? #YouShouldntOwnaCatIfYouCantBeResponsible #SorryNotSorry!
-      </p>
-    ),
-    datetime: (
-      <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-        <span>{moment().subtract(2, 'days').fromNow()}</span>
-      </Tooltip>
-    ),
-  },
-  {
-    actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-    author: 'MyNameisJEFF',
-    avatar: 'https://joeschmoe.io/api/v1/random',
-    content: (
-      <p>
-        I like pizzzza
-      </p>
-    ),
-    datetime: (
-      <Tooltip title={moment().subtract(3, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-        <span>{moment().subtract(5, 'days').fromNow()}</span>
-      </Tooltip>
-    ),
-  },
-];
+// const data = [
+//   {
+//     actions: [<span key="comment-list-reply-to-0">Reply to</span>],
+//     author: {username},
+//     avatar: 'https://joeschmoe.io/api/v1/random',
+//     content: {comment},
+
+//     datetime: (
+//       <Tooltip title={moment(date_created).format('YYYY-MM-DD HH:mm:ss')}>
+//         <span>{moment(date_created).fromNow()}</span>
+//       </Tooltip>
+//     ),
+//   },
+//   {
+//     actions: [<span key="comment-list-reply-to-0">Reply to</span>],
+//     author: {username},
+//     avatar: 'https://joeschmoe.io/api/v1/random',
+//     content: (
+//       <p>
+//         Isnt this like the 10th time you lost your cat? #YouShouldntOwnaCatIfYouCantBeResponsible #SorryNotSorry!
+//       </p>
+//     ),
+//     datetime: (
+//       <Tooltip title={moment()..format('YYYY-MM-DD HH:mm:ss')}>
+//         <span>{moment().fromNow()}</span>
+//       </Tooltip>
+//     ),
+//   },
+//   {
+//     actions: [<span key="comment-list-reply-to-0">Reply to</span>],
+//     author: 'MyNameisJEFF',
+//     avatar: 'https://joeschmoe.io/api/v1/random',
+//     content: (
+//       <p>
+//         I like pizzzza
+//       </p>
+//     ),
+//     datetime: (
+//       <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
+//         <span>{moment().fromNow()}</span>
+//       </Tooltip>
+//     ),
+//   },
+// ];
 
 const CommentList = ({ comments }) => (
   <List
@@ -77,27 +76,48 @@ const Editor = ({ onChange, onSubmit, submitting, value, onFinish }) => (
 );
 
 const CommentSection = () => {
-  const [comments, setComments] = React.useState(data);
+  const [comments, setComments] = React.useState([]);
   const [submitting, setSubmitting] = React.useState(false);
   const [value, setValue] = React.useState('');
-  const [refreshComments, setRefreshComments] = React.useState(false)
+  const [refreshComments, setRefreshComments] = React.useState(true)
+
+  const { user } = useContext(authContext);
+  
+  const { id } = useParams();
+
 
   React.useEffect(() => {
-    const url = "http://localhost:3001/api/comment"
+    const url = `http://localhost:3001/api/comment/${id}`
     if (refreshComments) {
+      console.log("HEREREEEEEEEEEEEEEEEE")
       // Fetch the comments and set the comments into the components state
       // axios.get(`http://localhost:3001/:id/comments`),
+      
       axios.get(url)
       .then(response => {
-        setComments(response.data)
+        const newComments = []
+        for (let i = 0; i < response.data.length; i++) {
+          newComments.push({
+            actions: [<span key="comment-list-reply-to-0">Reply to</span>],
+            author: response.data[i].username,
+            avatar: 'https://joeschmoe.io/api/v1/random',
+            content: response.data[i].comment,
+            datetime: (
+                      <Tooltip title={moment(response.data[i].date_created).format('YYYY-MM-DD HH:mm:ss')}>
+                        <span>{moment(response.data[i].date_created).fromNow()}</span>
+                      </Tooltip>
+                    )
+          })
+          }
+          console.log(newComments,response , response.data);
+        setComments(newComments)
       })
       .catch(error => {
         console.log(error)
       })
-      setComments(true)
       setRefreshComments(false);
     }
-  }, [refreshComments])
+  }, [refreshComments, id])
 
   const handleSubmit = () => {
     if (!value) return;
@@ -108,7 +128,7 @@ const CommentSection = () => {
         ...comments,
         {
           // Change to pull info from DB username/ we dont have a avatar column {}
-          username:{}
+          username:{},
           author: 'Han Solo',
           avatar: 'https://joeschmoe.io/api/v1/random',
           content: <p>{value}</p>,
@@ -118,13 +138,13 @@ const CommentSection = () => {
       setValue('');
     }, 1000);
 
-
+      //ONCE /POST PAGE HAS BEEN LINKED TO ID TEST IF POST REQUEST IS WORKING FOLLOW UP WITH KAORU
     const url = "http://localhost:3001/api/comment"
     const payload = {
       comment: value,
       // date_created: '2025,01,01',
-      // cat_form_id: 1,
-      // user_id: 1,
+      cat_form_id: id,
+      user_id: user.id,
     }
     console.log('Received values of form: ', payload);
     axios.post(url, payload)

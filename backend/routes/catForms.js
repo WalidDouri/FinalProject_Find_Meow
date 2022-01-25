@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = (db) => {
 
   router.get('/user/:id', (req, res) => {
-    
+
     const getCatFomrsByUserIdQuery = `SELECT cat_forms.id, cat_name, gender, age, last_seen_date, last_seen_address, last_seen_city, last_seen_postal_code, status, date_created, user_id, image, description FROM cat_forms JOIN users ON users.id = cat_forms.user_id WHERE users.id = $1;`;
     const userId = [req.params.id];
 
@@ -13,7 +13,7 @@ module.exports = (db) => {
         const catForms = data.rows;
         res
           .status(200)
-          .json({catForms});
+          .json({ catForms });
       })
       .catch(err => {
         console.log(err);
@@ -25,7 +25,7 @@ module.exports = (db) => {
   });
 
   router.get('/:id', (req, res) => {
-    
+
     const getCatFomrByIdQuery = `SELECT cat_forms.id, cat_name, gender, age, last_seen_date, last_seen_address, last_seen_city, last_seen_postal_code, status, date_created, user_id, image, description FROM cat_forms WHERE id = $1;`;
     const catFormId = [req.params.id];
 
