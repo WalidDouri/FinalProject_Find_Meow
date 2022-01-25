@@ -89,7 +89,7 @@ const SubmitForm = () => {
     axios.post(url, payload)
       .then(res => {
         if (res.status === 200) {
-        navigate(`/post/${res.data.id}`, { replace: true });
+        navigate(`/confirmation/${res.data.id}`, { replace: true });
         }
       })
       .catch(err => { console.log(err) })
