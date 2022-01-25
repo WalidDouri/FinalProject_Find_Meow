@@ -19,10 +19,3 @@ export default function Profile(props) {
     </div>
   )
 }
-
-
-{/* <h2>My profile</h2>
-      <p>{user &&  user.firstName} {user &&  user.lastName} </p>
-      <p>{user &&  user.username} </p>
-      <p>{user &&  user.phoneNumber} </p>
-      <p>{user &&  user.email} </p> */}
