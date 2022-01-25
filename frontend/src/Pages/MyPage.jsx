@@ -18,7 +18,6 @@ export default function MyPage() {
         <h1>My Page</h1>
         <Profile />
         <CatForms />
-        <Confirmation/>
       </div>
     )
   } else {
