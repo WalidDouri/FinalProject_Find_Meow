@@ -15,7 +15,8 @@ export default function DisplayCats({apples, cats}) {
           apples.map ((setDetail, index) => {
             console.log(setDetail);
             return (
-              <div id="displayCat">
+              <>
+              <div className="displayCat">
               <Card
               hoverable
               style={{ width: 260 }}
@@ -26,6 +27,8 @@ export default function DisplayCats({apples, cats}) {
               <p>Last Seen: <FontAwesomeIcon icon={faMapMarker} /> {setDetail.last_seen_city}</p>
             </Card>
             </div>
+            {/* {index % 5 === 0 && <br></br>} */}
+            </>
             )
           })
         )

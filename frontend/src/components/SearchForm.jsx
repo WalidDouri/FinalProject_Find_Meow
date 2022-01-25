@@ -24,7 +24,7 @@ export default function SearchForm ({onApples}) {
             name= "status"
             label='Status'
           >
-            <Select style={{ width: 250, textAlign: 'center', fontSize: 16 }}allowClear name= "status">
+            <Select style={{ width: 200, fontSize: 16 }}allowClear name= "status">
                 <Option value="lost">Lost</Option>
                 <Option value="found">Found/Stray</Option>
             </Select>
@@ -35,14 +35,14 @@ export default function SearchForm ({onApples}) {
             name="last_seen_city"
             label="City"
           >
-            <Input style={{ width: 250 }} placeholder="City" name="last_seen_city" />
+            <Input placeholder="City" name="last_seen_city" style={{ width: 200 }} />
           </Form.Item>
 
           <Form.Item
             name="last_seen_postal_code"
-            label="Postal Code"
+            label="Postal Code:"
           >
-            <Input placeholder="Postal Code" name="last_seen_postal_code" />
+            <Input placeholder="Postal Code" name="last_seen_postal_code"style={{ width: 100 }}  />
           </Form.Item>
         
   
