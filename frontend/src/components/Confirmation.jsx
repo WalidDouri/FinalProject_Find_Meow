@@ -14,7 +14,7 @@ export default function Confirmation() {
         img src={detectiveCat}
         title="Submission Complete!!"
         extra={
-          <Link to={`/post/${id}`}>
+          <Link to={`/mypage/${id}`}>
             <Button type="primary">
               Next
             </Button>

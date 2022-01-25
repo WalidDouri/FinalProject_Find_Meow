@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { 
   GoogleMap,
   useLoadScript,
@@ -53,6 +53,7 @@ const options = {
 
 
 export default function Map() {
+  const {missingpet, setMissingPet} = useState([]);
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey
@@ -100,8 +101,7 @@ export default function Map() {
           </div>
         </InfoWindow>
       )} */}
-
-        { /* Child components, such as markers, info windows, etc. */ }
+        
         <></>
       </GoogleMap>
       </div>

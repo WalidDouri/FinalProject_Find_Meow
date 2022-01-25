@@ -26,7 +26,7 @@ module.exports = (db) => {
 
   router.get('/:id', (req, res) => {
 
-    const getCatFomrByIdQuery = `SELECT cat_forms.id, cat_name, gender, age, last_seen_date, last_seen_address, last_seen_city, last_seen_postal_code, status, date_created, user_id, image, description FROM cat_forms WHERE id = $1;`;
+    const getCatFomrByIdQuery = `SELECT cat_forms.id, cat_name, gender, age, last_seen_date, last_seen_address, last_seen_city, last_seen_postal_code, status, date_created, user_id, image, description, users.first_name, users.last_name, users.username, users.phone_number, users.email FROM cat_forms JOIN users ON user_id = users.id WHERE cat_forms.id = $1;`;
     const catFormId = [req.params.id];
 
     db.query(getCatFomrByIdQuery, catFormId)

@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
 
   // res.status(200).send("HELLO WORLD")
   db.query(`
-      INSERT INTO comments ( comment, date_created, cat_form_id, user_id )
+      INSERT INTO comments (comment, date_created, cat_form_id, user_id)
       VALUES($1, $2, $3, $4) RETURNING *;`,
     [comment, date_created, cat_form_id, user_id])
     .then((results) => {
