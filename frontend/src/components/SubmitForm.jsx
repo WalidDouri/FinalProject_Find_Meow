@@ -2,9 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { InboxOutlined } from '@ant-design/icons';
-import { Form, Input, Select, Checkbox, Button, Upload, message, InputNumber, DatePicker } from 'antd';
+import { Form, Input, Select, Checkbox, Button, Upload, message, InputNumber, DatePicker, Row, Col } from 'antd';
 import { useNavigate } from 'react-router-dom';
-
+import 'antd/dist/antd.css';
 
 const { Dragger } = Upload;
 
@@ -129,7 +129,7 @@ const SubmitForm = () => {
               },
             ]}
           >
-            <Select style={{ width: 120 }}allowClear name= "status">
+            <Select style={{ width: 150 }}allowClear name= "status" placeholder="Select status">
                 <Option value="lost">Lost</Option>
           <Option value="found">Found/Stray</Option>
         </Select>
@@ -138,7 +138,6 @@ const SubmitForm = () => {
       <Form.Item
         name="last_seen_date"
         label="Last Seen"
-
         rules={[
           {
             required: true,
@@ -158,7 +157,7 @@ const SubmitForm = () => {
           },
         ]}
       >
-        <Input style={{ width: '50%' }} />
+        <Input style={{ width: '50%' }} placeholder="Name"/>
       </Form.Item>
 
       <Form.Item
@@ -171,7 +170,7 @@ const SubmitForm = () => {
           },
         ]}
       >
-        <Select placeholder="select your gender" style={{ width: '50%' }}>
+        <Select placeholder="Select your gender" style={{ width: '50%' }}>
           <Option value="male">Male</Option>
           <Option value="female">Female</Option>
           <Option value="other">Other</Option>
@@ -180,13 +179,24 @@ const SubmitForm = () => {
 
       <Form.Item
         name="age"
-        label="Age (in months) WALID FIX THISSSSS"
+        label="Age (in months)"
+        label-r
       >
-        <InputNumber min={0} max={25} defaultValue={0} onChange={onChange} />
+        <InputNumber min={0} max={240} defaultValue={0} onChange={onChange} />
       </Form.Item>
 
       <Form.Item label="Address">
         <Input.Group compact>
+        <Form.Item
+            name='last_seen_address'
+            noStyle
+            rules={[{
+              required: true,
+              message: 'Please select a street'
+            }]}
+          >
+            <Input style={{ width: '35%' }} placeholder="Input Street" />
+          </Form.Item>
           <Form.Item
             name='province'
             noStyle
@@ -211,48 +221,42 @@ const SubmitForm = () => {
               <Option value="Yukon">Yukon</Option>
             </Select>
           </Form.Item>
-          <Form.Item
-            name='last_seen_address'
-            noStyle
-            rules={[{
-              required: true,
-              message: 'Please select a street'
-            }]}
-          >
-            <Input style={{ width: '40%' }} placeholder="Input Street" />
-          </Form.Item>
+          
         </Input.Group>
       </Form.Item>
 
-      {/* <Row gutter={2}>  */}
-      <Form.Item
-        name="last_seen_city"
-        label="City"
+      <Row > 
+        {/* <Col span={12}> */}
+          <Form.Item
+            name="last_seen_city"
+            label="City"
 
-        rules={[
-          {
-            required: true,
-            message: 'Please enter a city'
-          },
-        ]}
-      >
-        <Input style={{ width: '10%' }} placeholder="City" />
-      </Form.Item>
+            rules={[
+              {
+                required: true,
+                message: 'Please enter a city'
+              },
+            ]}
+          >
+            <Input style={{ width: '100%' }} placeholder="City" />
+          </Form.Item>
+          {/* </Col> */}
+          {/* <Col span={12}> */}
+          <Form.Item
+            name="last_seen_postal_code"
+            label="Postal Code"
 
-      <Form.Item
-        name="last_seen_postal_code"
-        label="Postal Code"
-
-        rules={[
-          {
-            required: true,
-            message: 'Please input a postal code'
-          },
-        ]}
-      >
-        <Input style={{ width: '10%' }} placeholder="Postal Code" />
-      </Form.Item>
-      {/* </Row> */}
+            rules={[
+              {
+                required: true,
+                message: 'Please input a postal code'
+              },
+            ]}
+          >
+            <Input style={{ width: '50%' }} placeholder="Postal Code" />
+          </Form.Item>
+          {/* </Col> */}
+      </Row>
 
 
       <Form.Item

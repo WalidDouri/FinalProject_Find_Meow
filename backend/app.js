@@ -12,6 +12,7 @@ const smsRouter = require('./routes/sms');
 const commentRouter = require('./routes/comment');
 const mapDisplayRouter = require("./routes/map");
 const catFormsRouter = require('./routes/catForms');
+const mapMarkerRouter = require('./routes/mapMarker')
 
 
 const app = express();
@@ -40,6 +41,7 @@ app.use('/api/comment', commentRouter);
 app.use('/api/sms', smsRouter(db)); //for test
 app.use("/map", mapDisplayRouter);
 app.use('/api/catforms', catFormsRouter(db));
+app.use('/api/marker', mapMarkerRouter(db));
 
 
 
