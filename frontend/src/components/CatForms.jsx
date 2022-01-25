@@ -1,8 +1,10 @@
-import React, { Fragment, useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import CatFormItem from './CatFormItem'
 import axios from 'axios';
 import { authContext } from '../providers/Authprovider'
 import Loading from "./Loading";
+
+import './CatForms.scss'
 
 export default function CatForms() {
   const { user } = useContext(authContext);
@@ -34,10 +36,11 @@ export default function CatForms() {
     />
   )
   return (
-    <Fragment>
-      <h2>My posts</h2>
+    <div className='myCats'>
+      <h2>My Cats</h2>
+      <p>Manage lost and found cats</p>
       <ul>{catForms && catFormItems}</ul>
       <ul>{!catForms && <Loading />}</ul>
-    </Fragment>
+    </div>
   )
 }

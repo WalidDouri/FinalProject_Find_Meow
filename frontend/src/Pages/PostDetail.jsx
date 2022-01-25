@@ -4,9 +4,11 @@ import PostItem from '../components/PostItem'
 
 export default function PostDetail() {
   return (
+    <>
     <div className='postDetail'>
       <PostItem />
-      <CommentSection />
     </div>
+      <CommentSection />
+    </>
   )
 }

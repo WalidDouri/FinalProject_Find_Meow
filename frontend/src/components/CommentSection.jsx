@@ -65,7 +65,7 @@ const CommentList = ({ comments }) => (
 const Editor = ({ onChange, onSubmit, submitting, value, onFinish }) => (
   <>
     <Form.Item>
-      <TextArea rows={4} onChange={onChange} value={value} showCount maxLength={130} style={{ width: '50%' }} />
+      <TextArea rows={4} onChange={onChange} value={value} showCount maxLength={130} style={{ width: '100%' }} />
     </Form.Item>
     <Form.Item>
       <Button htmlType="submit" loading={submitting} onClick={onSubmit} type="primary">
@@ -144,7 +144,7 @@ const CommentSection = () => {
       comment: value,
       // date_created: '2025,01,01',
       cat_form_id: id,
-      user_id: user.id,
+      user_id: 1,
     }
     console.log('Received values of form: ', payload);
     axios.post(url, payload)

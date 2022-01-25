@@ -30,7 +30,7 @@ export default function CatFormItem(props) {
  
         </div>
         <div className="col-md-8">
-          <div className="card-body">
+          <div className="card-body1">
             <h5 className="card-title">{props.name}</h5>
             <p className="card-text">{props.age}&nbsp;months old</p>
             {props.gender === 'male' ? <p className="card-text"><FontAwesomeIcon icon={faMars}/>&nbsp;{props.gender}</p> : 
