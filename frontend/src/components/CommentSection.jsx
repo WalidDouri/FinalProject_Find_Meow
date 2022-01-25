@@ -2,7 +2,7 @@ import { Avatar, Button, Comment, Form, Input, List, Tooltip } from 'antd';
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { authContext } from '../providers/Authprovider'
 
 const { TextArea } = Input;
@@ -43,26 +43,26 @@ const CommentSection = () => {
     if (refreshComments) {
       // Fetch the comments and set the comments into the components state
       axios.get(url)
-      .then(response => {
-        const newComments = []
-        for (let i = 0; i < response.data.length; i++) {
-          newComments.push({
-            actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-            author: response.data[i].username,
-            avatar: 'https://joeschmoe.io/api/v1/random',
-            content: response.data[i].comment,
-            datetime: (
-                      <Tooltip title={moment(response.data[i].date_created).format('YYYY-MM-DD HH:mm:ss')}>
-                        <span>{moment(response.data[i].date_created).fromNow()}</span>
-                      </Tooltip>
-                    )
-          })
+        .then(response => {
+          const newComments = []
+          for (let i = 0; i < response.data.length; i++) {
+            newComments.push({
+              actions: [<span key="comment-list-reply-to-0">Reply to</span>],
+              author: response.data[i].username,
+              avatar: 'https://joeschmoe.io/api/v1/random',
+              content: response.data[i].comment,
+              datetime: (
+                <Tooltip title={moment(response.data[i].date_created).format('YYYY-MM-DD HH:mm:ss')}>
+                  <span>{moment(response.data[i].date_created).fromNow()}</span>
+                </Tooltip>
+              )
+            })
           }
-        setComments(newComments)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+          setComments(newComments)
+        })
+        .catch(error => {
+          console.log(error)
+        })
       setRefreshComments(false);
     }
   }, [refreshComments, id])
@@ -83,7 +83,7 @@ const CommentSection = () => {
         ...comments,
         {
           // Change to pull info from DB username/ we dont have a avatar column {}
-          username:{},
+          username: {},
           author: user.username,
           avatar: 'https://joeschmoe.io/api/v1/random',
           content: <p>{value}</p>,
@@ -107,6 +107,17 @@ const CommentSection = () => {
     setValue(e.target.value);
   };
 
+  if (!user) {
+    return (
+      <>
+        {comments.length > 0 && <CommentList comments={comments} />}
+        <Link to="/login">
+          <Button type="primary">Login to comment</Button>
+        </Link>
+      </>
+    )
+  }
+
   return (
     <>
       {comments.length > 0 && <CommentList comments={comments} />}
@@ -114,10 +125,10 @@ const CommentSection = () => {
         avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
         content={
           <Editor
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          submitting={submitting}
-          value={value}
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+            submitting={submitting}
+            value={value}
 
           />
         }
