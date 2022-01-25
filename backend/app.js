@@ -46,7 +46,7 @@ app.use('/api/catforms', catFormsRouter(db));
 app.post('/report-pet', (req, res) => {
   const { description, image, cat_name, gender, last_seen_date, last_seen_address, last_seen_city, last_seen_postal_code, status, age } = req.body
 
-  console.log("OVER HERE~~~~~~~~~", req.body);
+  // console.log("OVER HERE~~~~~~~~~", req.body);
   db.query(`
   INSERT INTO cat_forms ( 
     cat_name,
@@ -75,7 +75,7 @@ app.post('/report-pet', (req, res) => {
     .then((data) => {
       // res.json(submit);
       res.status(200);
-      res.send(data);
+      res.send(data.rows[0]);
     })
     .catch(error => {
       console.error(error)
