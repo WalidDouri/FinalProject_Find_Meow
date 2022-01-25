@@ -4,6 +4,7 @@ import './CatFormItem.scss'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMars, faCalendar, faVenus } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 
 export default function CatFormItem(props) {
@@ -15,6 +16,7 @@ export default function CatFormItem(props) {
     <div className="card mb-3" style={{width: '1000px'}}>
       <div className="row no-gutters">
         <div className="col-md-4">
+          <Link to={`/post/${props.id}`}>
             <Card hoverable>
               
             <img src={props.image} alt="" 
@@ -24,6 +26,7 @@ export default function CatFormItem(props) {
             
             </text>
             </Card>
+          </Link>
  
         </div>
         <div className="col-md-8">

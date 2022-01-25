@@ -7,7 +7,7 @@ export default function Profile(props) {
   
   return (
     <div className='profile'>
-      <h2>This is user profile</h2>
+      <h2>My profile</h2>
       <p>{user &&  user.firstName} {user &&  user.lastName} </p>
       <p>{user &&  user.username} </p>
       <p>{user &&  user.phoneNumber} </p>

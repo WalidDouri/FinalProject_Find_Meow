@@ -52,7 +52,6 @@ const options = {
 }
 
 
-
 export default function Map() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
