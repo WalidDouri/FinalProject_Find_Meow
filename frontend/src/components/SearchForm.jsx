@@ -24,7 +24,7 @@ export default function SearchForm ({onApples}) {
             name= "status"
             label='Status'
           >
-            <Select style={{ width: 120 }}allowClear name= "status">
+            <Select style={{ width: 250, textAlign: 'center', fontSize: 16 }}allowClear name= "status">
                 <Option value="lost">Lost</Option>
                 <Option value="found">Found/Stray</Option>
             </Select>
@@ -35,7 +35,7 @@ export default function SearchForm ({onApples}) {
             name="last_seen_city"
             label="City"
           >
-            <Input placeholder="City" name="last_seen_city" />
+            <Input style={{ width: 250 }} placeholder="City" name="last_seen_city" />
           </Form.Item>
 
           <Form.Item
@@ -45,8 +45,10 @@ export default function SearchForm ({onApples}) {
             <Input placeholder="Postal Code" name="last_seen_postal_code" />
           </Form.Item>
         
+  
         </Col>,
       );
+
     // }
 
     return children;
@@ -78,7 +80,7 @@ export default function SearchForm ({onApples}) {
         <Col
           span={24}
           style={{
-            textAlign: 'right',
+            textAlign: 'center',
           }}
         >
           <Button type="primary" htmlType="submit" >
