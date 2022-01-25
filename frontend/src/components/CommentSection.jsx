@@ -1,57 +1,11 @@
 import { Avatar, Button, Comment, Form, Input, List, Tooltip } from 'antd';
-
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { authContext } from '../providers/Authprovider'
 
 const { TextArea } = Input;
-
-// const data = [
-//   {
-//     actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-//     author: {username},
-//     avatar: 'https://joeschmoe.io/api/v1/random',
-//     content: {comment},
-
-//     datetime: (
-//       <Tooltip title={moment(date_created).format('YYYY-MM-DD HH:mm:ss')}>
-//         <span>{moment(date_created).fromNow()}</span>
-//       </Tooltip>
-//     ),
-//   },
-//   {
-//     actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-//     author: {username},
-//     avatar: 'https://joeschmoe.io/api/v1/random',
-//     content: (
-//       <p>
-//         Isnt this like the 10th time you lost your cat? #YouShouldntOwnaCatIfYouCantBeResponsible #SorryNotSorry!
-//       </p>
-//     ),
-//     datetime: (
-//       <Tooltip title={moment()..format('YYYY-MM-DD HH:mm:ss')}>
-//         <span>{moment().fromNow()}</span>
-//       </Tooltip>
-//     ),
-//   },
-//   {
-//     actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-//     author: 'MyNameisJEFF',
-//     avatar: 'https://joeschmoe.io/api/v1/random',
-//     content: (
-//       <p>
-//         I like pizzzza
-//       </p>
-//     ),
-//     datetime: (
-//       <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-//         <span>{moment().fromNow()}</span>
-//       </Tooltip>
-//     ),
-//   },
-// ];
 
 const CommentList = ({ comments }) => (
   <List
@@ -76,50 +30,51 @@ const Editor = ({ onChange, onSubmit, submitting, value, onFinish }) => (
 );
 
 const CommentSection = () => {
-  const [comments, setComments] = React.useState([]);
-  const [submitting, setSubmitting] = React.useState(false);
-  const [value, setValue] = React.useState('');
-  const [refreshComments, setRefreshComments] = React.useState(true)
-
+  const [comments, setComments] = useState([]);
+  const [submitting, setSubmitting] = useState(false);
+  const [value, setValue] = useState('');
+  const [refreshComments, setRefreshComments] = useState(true)
   const { user } = useContext(authContext);
-  
   const { id } = useParams();
 
 
-  React.useEffect(() => {
+  useEffect(() => {
     const url = `http://localhost:3001/api/comment/${id}`
     if (refreshComments) {
-      console.log("HEREREEEEEEEEEEEEEEEE")
       // Fetch the comments and set the comments into the components state
-      // axios.get(`http://localhost:3001/:id/comments`),
-      
       axios.get(url)
-      .then(response => {
-        const newComments = []
-        for (let i = 0; i < response.data.length; i++) {
-          newComments.push({
-            actions: [<span key="comment-list-reply-to-0">Reply to</span>],
-            author: response.data[i].username,
-            avatar: 'https://joeschmoe.io/api/v1/random',
-            content: response.data[i].comment,
-            datetime: (
-                      <Tooltip title={moment(response.data[i].date_created).format('YYYY-MM-DD HH:mm:ss')}>
-                        <span>{moment(response.data[i].date_created).fromNow()}</span>
-                      </Tooltip>
-                    )
-          })
+        .then(response => {
+          const newComments = []
+          for (let i = 0; i < response.data.length; i++) {
+            newComments.push({
+              actions: [<span key="comment-list-reply-to-0">Reply to</span>],
+              author: response.data[i].username,
+              avatar: 'https://joeschmoe.io/api/v1/random',
+              content: response.data[i].comment,
+              datetime: (
+                <Tooltip title={moment(response.data[i].date_created).format('YYYY-MM-DD HH:mm:ss')}>
+                  <span>{moment(response.data[i].date_created).fromNow()}</span>
+                </Tooltip>
+              )
+            })
           }
-          console.log(newComments,response , response.data);
-        setComments(newComments)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+          setComments(newComments)
+        })
+        .catch(error => {
+          console.log(error)
+        })
       setRefreshComments(false);
     }
   }, [refreshComments, id])
 
   const handleSubmit = () => {
+    const url = "http://localhost:3001/api/comment"
+    const payload = {
+      comment: value,
+      cat_form_id: id,
+      user_id: user.id,
+    }
+
     if (!value) return;
     setSubmitting(true);
     setTimeout(() => {
@@ -128,8 +83,8 @@ const CommentSection = () => {
         ...comments,
         {
           // Change to pull info from DB username/ we dont have a avatar column {}
-          username:{},
-          author: 'Han Solo',
+          username: {},
+          author: user.username,
           avatar: 'https://joeschmoe.io/api/v1/random',
           content: <p>{value}</p>,
           datetime: moment().fromNow(),
@@ -138,18 +93,8 @@ const CommentSection = () => {
       setValue('');
     }, 1000);
 
-      //ONCE /POST PAGE HAS BEEN LINKED TO ID TEST IF POST REQUEST IS WORKING FOLLOW UP WITH KAORU
-    const url = "http://localhost:3001/api/comment"
-    const payload = {
-      comment: value,
-      // date_created: '2025,01,01',
-      cat_form_id: id,
-      user_id: 1,
-    }
-    console.log('Received values of form: ', payload);
     axios.post(url, payload)
       .then(res => {
-        console.log(res.data)
         setRefreshComments(true)
       })
       .catch(err => { console.log(err) })
@@ -162,6 +107,17 @@ const CommentSection = () => {
     setValue(e.target.value);
   };
 
+  if (!user) {
+    return (
+      <>
+        {comments.length > 0 && <CommentList comments={comments} />}
+        <Link to="/login">
+          <Button type="primary">Login to comment</Button>
+        </Link>
+      </>
+    )
+  }
+
   return (
     <>
       {comments.length > 0 && <CommentList comments={comments} />}
@@ -169,10 +125,10 @@ const CommentSection = () => {
         avatar={<Avatar src="https://joeschmoe.io/api/v1/random" alt="Han Solo" />}
         content={
           <Editor
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          submitting={submitting}
-          value={value}
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+            submitting={submitting}
+            value={value}
 
           />
         }
