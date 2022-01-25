@@ -1,17 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db');
-const {createNotification} = require('../helpers/notificationHelpers');
+// const { createNotification } = require('../helpers/notificationHelpers');
 
 
-router.get('/', function (req, res) {
+router.get('/:id', (req, res) => {
 
   const query = {
-    text: `SELECT * FROM comments`
+    text: `SELECT comments.id, cat_form_id, comment, cat_forms.date_created, users.username
+      FROM comments 
+      JOIN cat_forms ON cat_forms.id = comments.cat_form_id
+      JOIN users ON users.id = comments.user_id 
+      WHERE cat_forms.id = $1;`
   }
-  // const {comments , dated_created} = req.query
+  const catFormId = [req.params.id];
+
   // res.status(200).send("HELLO WORLD")
-  db.query(query)
+  db.query(query, catFormId)
     .then(results =>
       res.status(200)
         .send(results.rows)
@@ -24,7 +29,7 @@ router.get('/', function (req, res) {
 
 
 router.post('/', (req, res) => {
-  const { comment, date_created, cat_form_id, user_id } = req.body
+  const { comment, date_created, cat_form_id } = req.body
 
   // res.status(200).send("HELLO WORLD")
   db.query(`
@@ -41,6 +46,7 @@ router.post('/', (req, res) => {
     .catch(error => {
       console.error(error)
     })
+
 })
 
 
