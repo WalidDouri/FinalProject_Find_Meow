@@ -11,13 +11,13 @@ export default function MyPage() {
   const { auth } = useContext(authContext);
 
   if (auth) {
-return (
-  <div className='mypage'>
-    <h1>My Page</h1>
-    <Profile />
-    <CatForms />
-  </div>
-)
+    return (
+      <div className='mypage'>
+        <h1>My Page</h1>
+        <Profile />
+        <CatForms />
+      </div>
+    )
   } else {
     return <Navigate to="/login" />
   }
