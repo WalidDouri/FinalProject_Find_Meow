@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import Loading from "./Loading";
 import { Row, Col, Menu, Dropdown, Button } from 'antd';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { faMapMarker, faVenus, faMars, faCalendar} from '@fortawesome/free-solid-svg-icons';
 
 
 import './CatForms.scss'
@@ -56,6 +59,17 @@ export default function CatFormDetails() {
         <div className='boxDetails'>
         < Row>
             <Col className='ant-col-18' span={18} push={6}>
+          <Dropdown overlay={menu} placement="bottomCenter" arrow>
+            <Button style={{width: '50%'}}>Contact</Button>
+          </Dropdown>
+             
+            </Col>
+             <Col className='ant-col-6' span={8} pull={18}>
+              Contact Owner's Info:
+            </Col>
+          </Row>
+        < Row>
+            <Col className='ant-col-18' span={18} push={6}>
               {post.cat_name}
             </Col>
              <Col className='ant-col-6' span={6} pull={18}>
@@ -72,7 +86,8 @@ export default function CatFormDetails() {
           </Row>
           < Row>
             <Col className='ant-col-18' span={18} push={6}>
-              {post.gender}
+            {post.gender === 'male' ? <div><FontAwesomeIcon icon={faMars}/>&nbsp;{post.gender}</div> : 
+            <div><FontAwesomeIcon icon={faVenus}/>&nbsp;{post.gender}</div>}
             </Col>
              <Col className='ant-col-6' span={6} pull={18}>
               Sex:
@@ -88,6 +103,7 @@ export default function CatFormDetails() {
           </Row>
           < Row>
             <Col className='ant-col-18' span={18} push={6}>
+            <FontAwesomeIcon icon={faCalendar}/>&nbsp;
             {new Intl.DateTimeFormat('en-GB', { 
                 month: 'long', 
                 day: '2-digit',
@@ -99,7 +115,8 @@ export default function CatFormDetails() {
             </Col>
           </Row>
           < Row>
-            <Col className='ant-col-18' span={18} push={6}>
+            <Col className='ant-col-18' span={18} push={6}> 
+            <FontAwesomeIcon icon={faMapMarker} />&nbsp;&nbsp; 
               {post.last_seen_city} , {post.last_seen_postal_code}
             </Col>
              <Col className='ant-col-6' span={6} pull={18}>
@@ -108,13 +125,10 @@ export default function CatFormDetails() {
           </Row>
           < Row>
             <Col className='ant-col-18' span={18} push={6}>
-          <Dropdown overlay={menu} placement="bottomCenter" arrow>
-            <Button>Contact</Button>
-          </Dropdown>
-             
+              FOR YOU WALID
             </Col>
-             <Col className='ant-col-6' span={8} pull={18}>
-              Contact:
+             <Col className='ant-col-6' span={6} pull={18}>
+              Address Last Seen:
             </Col>
           </Row>
         </div>
