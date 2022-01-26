@@ -46,7 +46,7 @@ app.use('/api/marker', mapMarkerRouter(db));
 
 
 app.post('/report-pet', (req, res) => {
-  const { description, image, cat_name, gender, last_seen_date, last_seen_address, last_seen_city, last_seen_postal_code, status, age } = req.body
+  const { description, image, cat_name, gender, last_seen_date, last_seen_address, last_seen_city, last_seen_postal_code, status, age, user_id } = req.body
 
   // console.log("OVER HERE~~~~~~~~~", req.body);
   db.query(`
@@ -60,9 +60,10 @@ app.post('/report-pet', (req, res) => {
       last_seen_postal_code,
       status,
       image,
-      description)
+      description,
+      user_id)
     
-    VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *;`,
+    VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *;`,
     [cat_name,
       gender,
       age,
@@ -72,7 +73,8 @@ app.post('/report-pet', (req, res) => {
       last_seen_postal_code,
       status,
       image,
-      description
+      description,
+      user_id
     ])
     .then((data) => {
       // res.json(submit);
