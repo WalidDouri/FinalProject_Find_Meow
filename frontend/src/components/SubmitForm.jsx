@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react'
 import axios from 'axios';
 import moment from 'moment';
 import { InboxOutlined } from '@ant-design/icons';
 import { Form, Input, Select, Checkbox, Button, Upload, message, InputNumber, DatePicker, Row, Col } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import 'antd/dist/antd.css';
+import { authContext } from '../providers/Authprovider'
 
 const { Dragger } = Upload;
 
@@ -72,6 +73,7 @@ const tailFormItemLayout = {
 const SubmitForm = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const { user } = useContext(authContext);
 
   const onFinish = (values) => {
     const url = "http://localhost:3001/report-pet"
@@ -81,6 +83,7 @@ const SubmitForm = () => {
       // toLocaleString(),
       // last_seen_address: '1500 Gerrard St',
       // status: 'lost',
+      user_id: user.id,
       image: '123'
 
     }
