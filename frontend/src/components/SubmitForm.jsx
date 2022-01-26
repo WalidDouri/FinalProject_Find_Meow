@@ -15,20 +15,20 @@ const props = {
   name: 'file',
   multiple: true,
   action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-  onChange(info) {
-    const { status } = info.file;
-    if (status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  onDrop(e) {
-    console.log('Dropped files', e.dataTransfer.files);
-  },
+  // onChange(info) {
+  //   const { status } = info.file;
+  //   if (status !== 'uploading') {
+  //     console.log(info.file, info.fileList);
+  //   }
+  //   if (status === 'done') {
+  //     message.success(`${info.file.name} file uploaded successfully.`);
+  //   } else if (status !== 'error') {
+  //     message.error(`${info.file.name} file upload failed.`);
+  //   }
+  // },
+  // onDrop(e) {
+  //   console.log('Dropped files', e.dataTransfer.files);
+  // },
 };
 
 function onChange(value) {
@@ -79,12 +79,12 @@ const SubmitForm = () => {
     const url = "http://localhost:3001/report-pet"
     const payload = {
       ...values,
-      last_seen_date: '2021,01,22',
+      last_seen_date: '2022,01,09',
       // toLocaleString(),
       // last_seen_address: '1500 Gerrard St',
       // status: 'lost',
       user_id: user.id,
-      image: '123'
+      image: 'https://i.ytimg.com/vi/D6QO5X8N5mI/maxresdefault.jpg'
 
     }
 
