@@ -1,5 +1,5 @@
 import React from 'react'
-import CatFormTEST from '../components/CatFormTEST'
+import CatFormDetails from '../components/CatFormDetails'
 import CommentSection from '../components/CommentSection'
 import PostItem from '../components/PostItem'
 
@@ -9,13 +9,17 @@ export default function PostDetail() {
  
   return (
     <>
-    <div className='detailsTitle'>
-    <h1>Cat Details</h1>
+    <div className='detailsPage'>
+      <div className='detailsTitle'>
+        <h1>Cat Details</h1>
+      </div>
+      <div className='postDetail'>
+        <CatFormDetails/>
+      </div>
+      <div id='commentArea'>
+        <CommentSection />
+      </div>
     </div>
-    <div className='postDetail'>
-      <CatFormTEST/>
-    </div>
-      <CommentSection />
     </>
   )
 }
