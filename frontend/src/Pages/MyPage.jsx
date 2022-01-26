@@ -5,7 +5,6 @@ import Profile from '../components/Profile'
 import CatForms from '../components/CatForms'
 import './MyPage.scss'
 import { authContext } from '../providers/Authprovider'
-// import CatFormTEST from '../components/CatFormTEST'
 // import Confirmation from '../components/Confirmation'
 
 
@@ -18,7 +17,7 @@ export default function MyPage() {
         <h1>My Page</h1>
         <Profile />
         <CatForms />
-        {/* <Confirmation/> */}
+        
       </div>
     )
   } else {
