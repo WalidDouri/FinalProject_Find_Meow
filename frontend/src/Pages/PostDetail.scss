@@ -1,15 +1,53 @@
+@import "./Variables.scss";
+
+.detailsPage {
+  background-color: $backgroundColor;
+  padding: 1% 0 1% 0;
+}
+
 .postDetail {
-  border: red solid 5px;
+  border: #17252A solid 5px;
+  // border-radius: 50px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   align-content: center;
   flex-wrap: nowrap;
   flex-direction: row;
+  background: #3aafa9;
+  color: #Feffff;
 }  
 
 .detailsTitle {
   margin-top: 8%;
   display: flex;
   justify-content: center;
+}
+
+#commentArea {
+  padding: 6%;
+  margin: 5%;
+  border: solid #17252A;
+
+  .ant-list * {
+    outline: none;
+    font-size: 22px;
+  }
+
+  .ant-comment-avatar img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .ant-comment-inner {
+    display: flex;
+    padding: 16px 0;
+    border-top: solid;
+  }
+  ant-comment-content-author > span {
+    padding-right: 8px;
+    font-size: 22px;
+    line-height: 18px;
+
+  }
 }
