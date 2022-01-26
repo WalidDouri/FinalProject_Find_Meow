@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { 
   GoogleMap,
-  useLoadScript,
   Marker,
   InfoWindow,
   useJsApiLoader
@@ -24,10 +23,9 @@ const options = {
   zoomControl: true,
 }
 
-
-
 export default function Map() {
-  const [catLocation, setCatLocation] = React.useState({})
+  const [catLocation, setCatLocation] = useState({})
+  const [infoBox, setInfoBox] = useState();
   // const { user } = useContext(authContext);
   const { id } = useParams();
   const { isLoaded } = useJsApiLoader({
@@ -36,7 +34,7 @@ export default function Map() {
   })
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/api/catforms/1`)
+    axios.get(`http://localhost:3001/api/catforms/${id}`)
       .then((resFromDB) => {
       axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${resFromDB.data.last_seen_postal_code}&key=AIzaSyDuquoM3MMOrjR3Gs_kJikJxh32zOZosuA`)
        .then((respFromGoogleMaps) => {
@@ -48,47 +46,43 @@ export default function Map() {
        .catch(error => {
            console.error('There was an error!', error);
      });
-   }, [])
+   }, [id])
     
-  
+
 
   return isLoaded ? (
     <div>
-      <h1>FIND Me-Oow</h1>
+      {/* <h1>FIND Me-Oow</h1> */}
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={catLocation}
         zoom={15}
         options={options} 
-        
         >
-        
-          <Marker 
-            position={catLocation}
-            // onClick={() => {
-            //   setCatLocation(park);
-            // }}
-            icon={{
-              // url: `..../map_missingcat.png`,
-              scaledSize: new window.google.maps.Size(25, 25)
-            }}
-          />
-        {/* <InfoWindow
-          onCloseClick={() => {
-            setSelectedPark(null);
+        <Marker 
+          position={catLocation}
+          // onClick={() => {
+          //   setInfoBox([ pending]);
+          // }}
+          icon={{
+            url: `https://cdn-icons-png.flaticon.com/512/1687/1687095.png`,
+            scaledSize: new window.google.maps.Size(60, 60),
+            // animation: window.google.maps.Animation.DROP,
           }}
-          position={{
-            lat: selectedPark.geometry.coordinates[1],
-            lng: selectedPark.geometry.coordinates[0]
-          }}
-        >
-          <div>
-            <h2>{selectedPark.properties.NAME}</h2>
-            <p>{selectedPark.properties.DESCRIPTIO}</p>
-          </div>
-        </InfoWindow> */}
-      )} */}
-        
+         > 
+          {/* <InfoWindow
+              onCloseClick={() => {
+                setInfoBox(null);
+              }}
+              visible={showInfoWindow}
+              style={styles.infoWindow}
+              >
+                <div >
+                  <p style={{color: 'red'}}>TESTTTTTTTTTTTTTTT</p>
+                </div>
+            </InfoWindow> */}
+        </Marker>
+    
         <></>
       </GoogleMap>
       </div>

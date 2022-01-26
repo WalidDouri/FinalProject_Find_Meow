@@ -45,7 +45,7 @@ export default function Navbar() {
       <nav id="navbar">
         <div className="navbar-container">
           <Link to='/' className="navbar-logo" onClick={closeMobileMenu}>
-          <FontAwesomeIcon icon={faCat} /> Find Me-Ow!
+           Find Me-Ow  <FontAwesomeIcon icon={faCat} />
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
