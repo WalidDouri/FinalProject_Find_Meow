@@ -19,7 +19,7 @@ const CommentList = ({ comments }) => (
 const Editor = ({ onChange, onSubmit, submitting, value, onFinish }) => (
   <>
     <Form.Item>
-      <TextArea rows={4} onChange={onChange} value={value} showCount maxLength={130} style={{ width: '100%' }} />
+      <TextArea rows={5} onChange={onChange} value={value} showCount maxLength={250} style={{ width: '100%' }} />
     </Form.Item>
     <Form.Item>
       <Button htmlType="submit" loading={submitting} onClick={onSubmit} type="primary">
@@ -82,8 +82,7 @@ const CommentSection = () => {
       setComments([
         ...comments,
         {
-          // Change to pull info from DB username/ we dont have a avatar column {}
-          username: {},
+          // Change to pull info from DB username/ we dont have a avatar column {
           author: user.username,
           avatar: 'https://joeschmoe.io/api/v1/random',
           content: <p>{value}</p>,
