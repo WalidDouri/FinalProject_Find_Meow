@@ -35,7 +35,7 @@ export default function DisplayCats({ apples, cats }) {
       )
     } else {
       return (
-        <h3>No Cats yet xD</h3>
+        <div></div>
       )
     }
   }
@@ -45,30 +45,3 @@ export default function DisplayCats({ apples, cats }) {
     </>
   )
 }
-
-
-
-
-{/* <div className="setDetail" key={setDetail.id}>
-                <h3 className="setDetail__title">{setDetail.cat_name}</h3>
-                <p className="Gender__body">{setDetail.gender}</p>
-                {/* <p className="setDetail__body">{setDetail.content}</p> */}
-//   <p className="Address__body">{setDetail.last_seen_address}</p>
-//   <p className="City__body">{setDetail.last_seen_city}</p>
-//   <p className="Postal_Code__body">{setDetail.last_seen_postal_code}</p>
-//   <span className="setDetail__fadeOut"></span>
-// </div> */}
-
-
-
-{/* <Card style={{ width: '10rem' }}>
-<Card.Img variant="top" src={setDetail.image} />
-<Card.Body>
-<Card.Title>{setDetail.cat_name}</Card.Title>
-<Card.Text>
-  <p>{setDetail.status}</p>
-  <p>{setDetail.last_seen_city}</p>
-</Card.Text>
-{/* <Button variant="primary">Go somewhere</Button> */}
-// </Card.Body>
-// </Card> */}
