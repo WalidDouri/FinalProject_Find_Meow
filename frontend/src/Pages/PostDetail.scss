@@ -6,8 +6,8 @@
 }
 
 .postDetail {
-  border: #17252A solid 5px;
-  // border-radius: 50px;
+  border: #17252a solid 5px;
+  border-radius: 50px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -15,8 +15,8 @@
   flex-wrap: nowrap;
   flex-direction: row;
   background: #3aafa9;
-  color: #Feffff;
-}  
+  color: #feffff;
+}
 
 .detailsTitle {
   margin-top: 8%;
@@ -27,7 +27,7 @@
 #commentArea {
   padding: 6%;
   margin: 5%;
-  border: solid #17252A;
+  border: solid #17252a;
 
   .ant-list * {
     outline: none;
@@ -48,6 +48,5 @@
     padding-right: 8px;
     font-size: 22px;
     line-height: 18px;
-
   }
 }

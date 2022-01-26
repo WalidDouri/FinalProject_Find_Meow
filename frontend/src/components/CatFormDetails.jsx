@@ -6,6 +6,7 @@ import { Row, Col, Menu, Dropdown, Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faMapMarker, faVenus, faMars, faCalendar} from '@fortawesome/free-solid-svg-icons';
+import Map from '../components/Map';
 
 
 import './CatForms.scss'
@@ -48,7 +49,6 @@ export default function CatFormDetails() {
   if (!post) {
     return <Loading />
   }
-  
   return (
     <>
     
@@ -125,7 +125,7 @@ export default function CatFormDetails() {
           </Row>
           < Row>
             <Col className='ant-col-18' span={18} push={6}>
-              FOR YOU WALID
+              <Map />
             </Col>
              <Col className='ant-col-6' span={6} pull={18}>
               Address Last Seen:
