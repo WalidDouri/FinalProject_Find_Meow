@@ -13,4 +13,6 @@ VALUES
     ('Bles','Mateo','ricericebaby','416-247-7845','ricebaby@gmail.com', '$2a$10$LRu5wxixUeIFMxsa4WVt9u02ViA0NI5wT8y08PAXIZn1LyLqUI6Qm'),
     ('Stephanie','Li','findingbugs','647-342-4875','developergirl@gmail.com', '$2a$10$LRu5wxixUeIFMxsa4WVt9u02ViA0NI5wT8y08PAXIZn1LyLqUI6Qm'),
     ('Taylor','Noj','ellielover','416-342-5566','ellie@gmail.com', '$2a$10$LRu5wxixUeIFMxsa4WVt9u02ViA0NI5wT8y08PAXIZn1LyLqUI6Qm'),
-    ('Anastassia','Tsvetkova','westgirl','647-541-1133','vancouver@gmail.com', '$2a$10$LRu5wxixUeIFMxsa4WVt9u02ViA0NI5wT8y08PAXIZn1LyLqUI6Qm');
+    ('Anastassia','Tsvetkova','westgirl','647-541-1133','vancouver@gmail.com', '$2a$10$LRu5wxixUeIFMxsa4WVt9u02ViA0NI5wT8y08PAXIZn1LyLqUI6Qm'),
+    ('Adele','Singer','adele31','647-313-2222','adele@gmail.com', '$2a$10$LRu5wxixUeIFMxsa4WVt9u02ViA0NI5wT8y08PAXIZn1LyLqUI6Qm'),
+    ('Kelly','Clarkson','americanidol1','647-777-456','winnerAI1@gmail.com', '$2a$10$LRu5wxixUeIFMxsa4WVt9u02ViA0NI5wT8y08PAXIZn1LyLqUI6Qm');
