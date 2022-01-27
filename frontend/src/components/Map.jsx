@@ -10,7 +10,7 @@ import { authContext } from '../providers/Authprovider'
 import MapStyles from './MapStyles'
 import axios from 'axios';
 
-// const libraries = ['places']
+
 const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 const mapContainerStyle = {
   width: '550px',
@@ -37,6 +37,7 @@ export default function Map() {
     axios.get(`http://localhost:3001/api/catforms/${id}`)
       .then((resFromDB) => {
       axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${resFromDB.data.last_seen_postal_code}&key=AIzaSyDuquoM3MMOrjR3Gs_kJikJxh32zOZosuA`)
+      // REMOVE THE KEY WHEN WE CLEAN UP THE CODE
        .then((respFromGoogleMaps) => {
          setCatLocation(respFromGoogleMaps.data.results[0].geometry.location);
        })
@@ -52,7 +53,6 @@ export default function Map() {
 
   return isLoaded ? (
     <div>
-      {/* <h1>FIND Me-Oow</h1> */}
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={catLocation}
@@ -62,12 +62,11 @@ export default function Map() {
         <Marker 
           position={catLocation}
           // onClick={() => {
-          //   setInfoBox([ pending]);
+          //   setInfoBox([pending]);
           // }}
           icon={{
             url: `https://cdn-icons-png.flaticon.com/512/1687/1687095.png`,
             scaledSize: new window.google.maps.Size(60, 60),
-            // animation: window.google.maps.Animation.DROP,
           }}
          > 
           {/* <InfoWindow

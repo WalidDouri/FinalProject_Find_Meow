@@ -79,11 +79,7 @@ const SubmitForm = () => {
     const url = "http://localhost:3001/report-pet"
     const payload = {
       ...values,
-      // last_seen_date: '2022,01,09',
-      // toLocaleString(),
-      // last_seen_address: '1500 Gerrard St',
-      // status: 'lost',
-      user_id: user.id,
+       user_id: user.id,
       image: 'https://i.ytimg.com/vi/D6QO5X8N5mI/maxresdefault.jpg'
 
     }
