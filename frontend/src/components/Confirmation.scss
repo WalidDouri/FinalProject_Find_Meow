@@ -1,4 +1,13 @@
+@import '../Pages/Variables.scss';
+
+
 #confirmation {
-  margin-top: 200px;
-  margin-bottom: 200px;
+  padding: 20%;
+  background-color: $backgroundColor;
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+  background-image: url("./images/cutegraykitten.webp.png");
+  background-repeat: no-repeat ;
 }
+
