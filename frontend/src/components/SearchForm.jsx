@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Form, Row, Col, Input, Button, Select } from 'antd';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
 
+import '../Pages/SearchPet.scss'
 
 export default function SearchForm ({onApples}) {
   const [expand, setExpand] = useState(false);
@@ -20,11 +21,13 @@ export default function SearchForm ({onApples}) {
       children.push(
         <Col span={8} >
           {/* key={i} */}
+
           <Form.Item
             name= "status"
             label='Status'
+            className='test'
           >
-            <Select style={{ width: 200, fontSize: 16 }}allowClear name= "status">
+            <Select style={{ width: 400, fontSize: 20 ,textAlign: 'center' }}allowClear name= "status">
                 <Option value="lost">Lost</Option>
                 <Option value="found">Found/Stray</Option>
             </Select>
@@ -34,17 +37,19 @@ export default function SearchForm ({onApples}) {
           <Form.Item
             name="last_seen_city"
             label="City"
+            className='test'
           >
-            <Input placeholder="City" name="last_seen_city" style={{ width: 200 }} />
+            <Input placeholder="City" name="last_seen_city" style={{ width: 400, fontSize: 20 ,textAlign: 'center' }} />
           </Form.Item>
 
           <Form.Item
             name="last_seen_postal_code"
             label="Postal Code:"
+            className='test'
           >
-            <Input placeholder="Postal Code" name="last_seen_postal_code"style={{ width: 150 }}  />
+            <Input placeholder="Postal Code" name="last_seen_postal_code"style={{ width: 150, fontSize: 20 }}  />
           </Form.Item>
-        
+    
   
         </Col>,
       );

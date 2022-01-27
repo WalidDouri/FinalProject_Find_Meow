@@ -1,9 +1,10 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import "./Navbar.scss";
 import { Link, useNavigate } from 'react-router-dom'
 import { Button } from './Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import { Menu, Dropdown, message } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 import { faCat } from '@fortawesome/free-solid-svg-icons'
 import { authContext } from '../providers/Authprovider'
 
@@ -16,12 +17,12 @@ export default function Navbar() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const signLogInClick = (route) => {
-    if (route === 'sign-up') { 
-    navigate('/sign-up')
-  } else if (route === 'login') {
-    navigate('/login')
+    if (route === 'sign-up') {
+      navigate('/sign-up')
+    } else if (route === 'login') {
+      navigate('/login')
+    }
   }
-}
 
   const showButton = () => {
     if (window.innerWidth <= 1145) {
@@ -32,6 +33,18 @@ export default function Navbar() {
     }
 
   };
+
+  const menu = (
+    <Menu>
+      <Menu.Item key="0">
+        {auth && user &&
+          <Link to={`/mypage/${user.id}`} className='nav-links' onClick={closeMobileMenu}>
+            My Page
+          </Link>
+        }
+      </Menu.Item>
+    </Menu>
+  );
 
   useEffect(() => {
     showButton();
@@ -45,12 +58,12 @@ export default function Navbar() {
       <nav id="navbar">
         <div className="navbar-container">
           <Link to='/' className="navbar-logo" onClick={closeMobileMenu}>
-           Find Me-Ow  <FontAwesomeIcon icon={faCat} />
+            Find Me-Ow  <FontAwesomeIcon icon={faCat} />
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
-          <ul className={click ? 'nav-mean active' : 'nav-menu'}> 
+          <ul className={click ? 'nav-mean active' : 'nav-menu'}>
             <li className='nav-item'>
               <Link to='/' className='nav-links' onClick={closeMobileMenu}>
                 Home
@@ -71,15 +84,12 @@ export default function Navbar() {
                 Search Cat
               </Link>
             </li>
-            {auth && user && <li className='nav-item'>
-            <Link to={`/mypage/${user.id}`} className='nav-links' onClick={closeMobileMenu}>
-                My Page
-              </Link>
-            </li>}
-            {auth && user && <li className='nav-item'>
-            <Link to={`/mypage/${user.id}`} className='nav-links' onClick={closeMobileMenu}>
-              Hi! {user.username}
-              </Link>
+            {auth && <li className='nav-item' id='usernamebox'>
+              <Dropdown overlay={menu} trigger={['click']}>
+                <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                 Hi! {user && user.username} <DownOutlined />
+                </a>
+              </Dropdown>
             </li>}
             {!auth && <li className='nav-item'>
               <Link to='/sign-up' className='nav-links-mobile' onClick={closeMobileMenu}>
@@ -96,11 +106,11 @@ export default function Navbar() {
                 Log out
               </Link>
             </li>}
-            
+
           </ul>
-          
-          {!auth && button && <Button onClick={()=> signLogInClick('sign-up')}buttonStyle='btn--outline'>SIGN UP</Button>}&nbsp;&nbsp;
-          {!auth && button && <Button onClick={()=> signLogInClick('login')}buttonStyle='btn--outline'>LOGIN</Button>}
+
+          {!auth && button && <Button onClick={() => signLogInClick('sign-up')} buttonStyle='btn--outline'>SIGN UP</Button>}&nbsp;&nbsp;
+          {!auth && button && <Button onClick={() => signLogInClick('login')} buttonStyle='btn--outline'>LOGIN</Button>}
           {auth && button && <Button onClick={() => logout()} buttonStyle='btn--outline'>LOG OUT</Button>}
         </div>
       </nav>

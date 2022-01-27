@@ -16,19 +16,18 @@
   padding-left: 2%;
 }
 
+
 #searchForm {
   border-top: solid 5px #17252a;
   border-bottom: solid 5px #17252a;
-  // border-radius: 20px;
-  // margin-left: 400px;
-  // margin-right: 400px;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  // margin-bottom: 5%;
+  // margin-left: 25%;
+  // margin-right: 25%;
+  padding: 2%;
   background: #3aafa9;
   display: flex;
   justify-content: center;
   
+
 
   .ant-col-8 {
     display: flex;
@@ -51,3 +50,6 @@
     margin-bottom: 10px;
   }
 }
+ .test {
+   font-size: x-large;
+ }
