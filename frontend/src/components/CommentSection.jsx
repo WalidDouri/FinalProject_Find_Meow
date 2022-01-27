@@ -83,6 +83,7 @@ const CommentSection = () => {
         ...comments,
         {
           // Change to pull info from DB username/ we dont have a avatar column {
+          actions: [<span key="comment-list-reply-to-0">Reply to</span>],
           author: user.username,
           avatar: 'https://joeschmoe.io/api/v1/random',
           content: <p>{value}</p>,
