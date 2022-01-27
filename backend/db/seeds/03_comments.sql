@@ -9,6 +9,10 @@ VALUES
 ('Cat ipsum dolor sit amet, freak human out make funny noise mow mow mow mow mow mow success now attack human i is not fat, i is fluffy spend','2022, 01,06', 2, 5),
 ('Bite the neighbors bratty kid cat playing a fiddle in hey diddle diddle?','2022, 01,05', 2, 3),
 
+('Cred messenger bag bicycle rights selvage','2022, 01,06', 3, 7),
+('Try-hard paleo pour-over, banh mi synth lo-fi chambray direct','2022, 01,06', 3, 8),
+('Four dollar toast banh mi craft beer vinyl slow-carb tumeric williamsburg hammock affogato trust fund gastropub freegan','2022, 01,05', 3, 9),
+
 
 ('Cred messenger bag bicycle rights selvage','2022, 01,06', 4, 7),
 ('Try-hard paleo pour-over, banh mi synth lo-fi chambray direct','2022, 01,06', 4, 8),
