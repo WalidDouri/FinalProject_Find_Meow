@@ -65,7 +65,7 @@ export default function CatFormDetails() {
              
             </Col>
              <Col className='ant-col-6' span={8} pull={18}>
-              Contact Owner's Info:
+              Contact Info:
             </Col>
           </Row>
         < Row>
@@ -125,17 +125,16 @@ export default function CatFormDetails() {
           </Row>
           < Row>
             <Col className='ant-col-18' span={18} push={6}>
+              
               <Map />
+            
             </Col>
              <Col className='ant-col-6' span={6} pull={18}>
               Address Last Seen:
             </Col>
           </Row>
         </div>
-      <div className='boxMap'>
-         
-          </div>
-        </div> 
+      </div> 
       
     
     </>
