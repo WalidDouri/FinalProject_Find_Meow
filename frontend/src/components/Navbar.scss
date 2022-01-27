@@ -161,4 +161,16 @@
     color: #242424;
     transition: 250ms;
   }
+  
+}
+
+a.ant-dropdown-trigger.ant-dropdown-link {
+  color: white;
+}
+#usernamebox {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: space-between;
+  align-items: center;
+  padding-left: 16px;
 }
