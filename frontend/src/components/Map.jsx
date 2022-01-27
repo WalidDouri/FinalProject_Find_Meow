@@ -13,7 +13,7 @@ import axios from 'axios';
 // const libraries = ['places']
 const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 const mapContainerStyle = {
-  width: '600px',
+  width: '550px',
   height: '300px'
 };
 
