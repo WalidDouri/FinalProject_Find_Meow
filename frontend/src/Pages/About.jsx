@@ -7,9 +7,7 @@ export default function About() {
   return (
     <div className='about'>
       <h2>About Us</h2>
-      <p>Destroy couch as revenge warm up laptop with butt lick butt fart rainbows until 
-        owner yells pee in litter box hiss at cats. Run at 3am jump around on couch, meow 
-        constantly until given food
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla posuere sollicitudin aliquam ultrices sagittis orci a scelerisque. Aliquet sagittis id consectetur purus ut faucibus pulvinar elementum integer. Tortor at auctor urna nunc id cursus. Vel fringilla est ullamcorper eget. Elit sed vulputate mi sit amet. Sed risus pretium quam vulputate dignissim suspendisse in est. Vel pretium lectus quam id leo in vitae turpis. Orci eu lobortis elementum nibh tellus molestie. Ipsum faucibus vitae aliquet nec ullamcorper sit amet risus.
          
  
       </p>
