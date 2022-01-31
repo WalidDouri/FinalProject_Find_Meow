@@ -5,10 +5,10 @@ import { DownOutlined, UpOutlined } from '@ant-design/icons';
 
 import '../Pages/SearchPet.scss'
 
-export default function SearchForm ({onApples}) {
+export default function SearchForm({ onApples }) {
   const [expand, setExpand] = useState(false);
   const [form] = Form.useForm();
- 
+
 
 
   const { Option } = Select;
@@ -18,59 +18,79 @@ export default function SearchForm ({onApples}) {
     const children = [];
 
     // for (let i = 0; i < count; i++) {
-      children.push(
-        <Col span={8} >
-          {/* key={i} */}
+    children.push(
+      <Col span={8} >
+        {/* key={i} */}
 
-          <Form.Item
-            name= "status"
-            label='Status'
-            className='test'
-          >
-            <Select style={{ width: 400, fontSize: 20 ,textAlign: 'center' }}allowClear name= "status">
-                <Option value="lost">Lost</Option>
-                <Option value="found">Found/Stray</Option>
-            </Select>
-           
-          </Form.Item>
+        <Form.Item
+          name="status"
+          label='Status'
+          className='test'
+        >
+          <Select style={{ width: 400, fontSize: 20, textAlign: 'center' }} allowClear name="status">
+            <Option value="lost">Lost</Option>
+            <Option value="found">Found/Stray</Option>
+          </Select>
 
-          <Form.Item
-            name="last_seen_city"
-            label="City"
-            className='test'
-          >
-            <Input placeholder="City" name="last_seen_city" style={{ width: 400, fontSize: 20 ,textAlign: 'center' }} />
-          </Form.Item>
+        </Form.Item>
 
-          <Form.Item
-            name="last_seen_postal_code"
-            label="Postal Code:"
-            className='test'
-          >
-            <Input placeholder="Postal Code" name="last_seen_postal_code"style={{ width: 150, fontSize: 20 }}  />
-          </Form.Item>
-    
-  
-        </Col>,
-      );
+        <Form.Item
+          name="last_seen_city"
+          label="City"
+          className='test'
+        >
+          <Input placeholder="City" name="last_seen_city" style={{ width: 400, fontSize: 20, textAlign: 'center' }} />
+        </Form.Item>
+
+        <Form.Item
+          name="last_seen_postal_code"
+          label="Postal Code:"
+          className='test'
+        >
+          <Input placeholder="Postal Code" name="last_seen_postal_code" style={{ width: 150, fontSize: 20 }} />
+        </Form.Item>
+
+
+      </Col>,
+    );
 
     // }
 
     return children;
   };
-  
+
   const onFinish = (values) => {
     // setPure(values);
 
-    console.log('Received values of form: ', values);
+    const params = {
+      'last_seen_city=': values.last_seen_city,
+      'last_seen_postal_code=': values.last_seen_postal_code,
+      'status=': values.status
+    };
 
-    return axios.get(`http://localhost:3001/api/search?last_seen_city=${values.last_seen_city}&status=${values.status}&last_seen_postal_code=${values.last_seen_postal_code}`)
-        .then(res => onApples(res.data))
-        .catch(error => {
+    let paramArr = Object.keys(params).map(key => {
+      return params[key] ? key + params[key] : null;
+    })
+    paramArr = paramArr.filter(Boolean); // removes all falsy
+  
+    let paramString = '';
+    if (paramArr.length > 0) {
+      paramString = '?' + paramArr.shift();
+      paramArr.forEach(e => {
+        paramString += ("&" + e);
+      })
+    }
+
+    let url = `http://localhost:3001/api/search`;
+    url += paramString;
+
+    return axios.get(url)
+      .then(res => onApples(res.data))
+      .catch(error => {
         this.setState({ errorMessage: error.toString() });
         console.error('There was an error!', error);
-        });
-        
+      });
+
   };
 
   return (
